@@ -1,21 +1,35 @@
 extends VBoxContainer
 
-@onready var worker_label: Label = $ActionBar/WorkersLabel
-@onready var consumption_label: Label = $ActionBar/ConsumptionLabel
-@onready var action_list: VBoxContainer = $TabContainer/Actions/ActionList
-@onready var materials_list: VBoxContainer = $TabContainer/Materials/MaterialsList
-@onready var tabs: TabContainer = $TabContainer
+@onready var worker_label: Label = $EconomyHeader/WorkersLabel
+@onready var consumption_label: Label = $EconomyHeader/ConsumptionLabel
+@onready var actions_button: Button = $EconomyTabs/ActionsButton
+@onready var production_button: Button = $EconomyTabs/ProductionChainsButton
+@onready var materials_button: Button = $EconomyTabs/MaterialsButton
+@onready var pages: TabContainer = $EconomyPages
+@onready var action_list: VBoxContainer = $EconomyPages/ActionsPage/ActionList
+@onready var materials_list: VBoxContainer = $EconomyPages/MaterialsPage/MaterialsList
 
-var row_scene: PackedScene = preload("res://scenes/ui/ActionRow.tscn")
-var material_row_scene: PackedScene = preload("res://scenes/ui/MaterialRow.tscn")
+var row_scene: PackedScene = preload("res://scenes/components/ActionRow.tscn")
+var material_row_scene: PackedScene = preload("res://scenes/components/MaterialRow.tscn")
 
 func _ready() -> void:
+	pages.tabs_visible = false
+	actions_button.pressed.connect(func()->void: select_tab(0))
+	production_button.pressed.connect(func()->void: select_tab(1))
+	materials_button.pressed.connect(func()->void: select_tab(2))
 	build_actions_ui()
 	build_materials_ui()
 	update_worker_label()
 	update_consumption_labels()
 	ActionManager.workers_changed.connect(_on_workers_changed)
 	ActionManager.total_workers_changed.connect(update_worker_label)
+	select_tab(0)
+
+func select_tab(tab: int) -> void:
+	pages.current_tab = tab
+	actions_button.disabled = tab == 0
+	production_button.disabled = tab == 1
+	materials_button.disabled = tab == 2
 
 func _on_workers_changed(_action: MaterialAction) -> void:
 	update_worker_label()
@@ -41,7 +55,7 @@ func update_worker_label(_action: Variant = null) -> void:
 	var available: int = ActionManager.get_available_workers()
 	var total: int = ActionManager.total_workers
 	var optimal: int = ActionManager.optimal_worker_limit
-	worker_label.text = "%s Workers: %d / %d (Optimal: %d)" % [
+	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [
 		ActionManager.worker_race.display_name,
 		available,
 		total,
