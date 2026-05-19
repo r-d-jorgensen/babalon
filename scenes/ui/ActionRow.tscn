@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bqni4ceq653rl"]
+
+[ext_resource type="Script" uid="uid://c0avc6u4thevf" path="res://scripts/ui/ActionRow.gd" id="1_dmvyc"]
+
+[node name="ActionRow" type="HBoxContainer" unique_id=901625471]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_dmvyc")
+
+[node name="ActionButton" type="Button" parent="." unique_id=1343958132]
+layout_mode = 2
+text = "Action"
+
+[node name="ProgressLabel" type="Label" parent="." unique_id=330464371]
+layout_mode = 2
+text = "10"
+
+[node name="InputLabel" type="Label" parent="." unique_id=1999886446]
+layout_mode = 2
+text = "N/A"
+
+[node name="MinusButton" type="Button" parent="." unique_id=562074589]
+layout_mode = 2
+text = "-"
+
+[node name="WorkerLabel" type="Label" parent="." unique_id=1220964231]
+layout_mode = 2
+text = "0"
+
+[node name="PlusButton" type="Button" parent="." unique_id=1651966820]
+layout_mode = 2
+text = "+"
+
+[node name="OutputLabel" type="Label" parent="." unique_id=103870703]
+layout_mode = 2
+text = "0"

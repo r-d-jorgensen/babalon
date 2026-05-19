@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://boy1omvwuaeut"]
+
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_c16by"]
+[ext_resource type="Resource" uid="uid://b7fxunu3h7ohq" path="res://resources/source_materials/Dirt.tres" id="1_spic3"]
+
+[resource]
+script = ExtResource("1_c16by")
+id = "gather_dirt"
+display_name = "Gather Dirt"
+outputs = {
+ExtResource("1_spic3"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

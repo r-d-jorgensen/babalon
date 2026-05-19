@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://bxcdmycrs3kb"]
+
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_fbfhh"]
+[ext_resource type="Resource" uid="uid://c8ujvd5won4my" path="res://resources/intermediate_materials/Mud.tres" id="1_rdckd"]
+[ext_resource type="Resource" uid="uid://codeq8mqb30eh" path="res://resources/intermediate_materials/MudTablet.tres" id="2_awd7f"]
+
+[resource]
+script = ExtResource("1_fbfhh")
+id = "make_mud_tablet"
+display_name = "Make Mud Tablet"
+inputs = {
+ExtResource("1_rdckd"): 1
+}
+outputs = {
+ExtResource("2_awd7f"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

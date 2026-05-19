@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cyld8wfrb0lwl"]
+
+[ext_resource type="Script" uid="uid://vk76ca0tbnuv" path="res://scripts/ui/PlayerPanel.gd" id="1_rvslj"]
+[ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/ActionsPanel.gd" id="2_0bbpv"]
+
+[node name="Control" type="Control" unique_id=1983841383]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainUI" type="VBoxContainer" parent="." unique_id=1067906767]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerPanel" type="HBoxContainer" parent="MainUI" unique_id=845085847]
+layout_mode = 2
+script = ExtResource("1_rvslj")
+
+[node name="CultureLabel" type="Label" parent="MainUI/PlayerPanel" unique_id=1629923266]
+layout_mode = 2
+text = "#"
+
+[node name="TechnologyLabel" type="Label" parent="MainUI/PlayerPanel" unique_id=485255902]
+layout_mode = 2
+text = "#"
+
+[node name="PrestigeLabel" type="Label" parent="MainUI/PlayerPanel" unique_id=327628776]
+layout_mode = 2
+text = "#"
+
+[node name="ActionsPanel" type="VBoxContainer" parent="MainUI" unique_id=581480865]
+layout_mode = 2
+script = ExtResource("2_0bbpv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/ActionsPanel" unique_id=217860295]
+layout_mode = 2
+
+[node name="WorkersLabel" type="Label" parent="MainUI/ActionsPanel/HBoxContainer" unique_id=2024806734]
+layout_mode = 2
+text = "Workers: # / #"
+
+[node name="ConsumptionLabel" type="Label" parent="MainUI/ActionsPanel/HBoxContainer" unique_id=1402739866]
+layout_mode = 2
+text = "Food: # / # | Water # / #"
+
+[node name="ActionList" type="VBoxContainer" parent="MainUI/ActionsPanel" unique_id=1855296299]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=654434484]

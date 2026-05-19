@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cyld8wfrb0lwl"]
+
+[ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/ActionsPanel.gd" id="2_0bbpv"]
+
+[node name="Control" type="Control" unique_id=1983841383]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=845085847]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FoodLabel" type="Label" parent="HBoxContainer" unique_id=1589395155]
+layout_mode = 2
+
+[node name="CultureLabel" type="Label" parent="HBoxContainer" unique_id=1629923266]
+layout_mode = 2
+
+[node name="TechLabel" type="Label" parent="HBoxContainer" unique_id=485255902]
+layout_mode = 2
+
+[node name="DiscoveryLabel" type="Label" parent="HBoxContainer" unique_id=318572236]
+layout_mode = 2
+
+[node name="PrestigeLabel" type="Label" parent="HBoxContainer" unique_id=327628776]
+layout_mode = 2
+
+[node name="MainUI" type="VBoxContainer" parent="." unique_id=1067906767]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ActionsPanel" type="VBoxContainer" parent="MainUI" unique_id=581480865]
+layout_mode = 2
+script = ExtResource("2_0bbpv")
+
+[node name="Title" type="Label" parent="MainUI/ActionsPanel" unique_id=1402739866]
+layout_mode = 2
+text = "Actions"
+
+[node name="ActionList" type="VBoxContainer" parent="MainUI/ActionsPanel" unique_id=1855296299]
+layout_mode = 2

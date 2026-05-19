@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://b7fxunu3h7ohq"]
+
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://scripts/data/MaterialDefinition.gd" id="1_tmajt"]
+
+[resource]
+script = ExtResource("1_tmajt")
+tags = Array[int]([11])
+display_name = "Dirt"
+metadata/_custom_type_script = "uid://dviak2555ty3u"

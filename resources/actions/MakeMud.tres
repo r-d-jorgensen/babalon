@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://bjiwjnv07oohb"]
+
+[ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/source_materials/Water.tres" id="1_wpm0y"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_xnpy6"]
+[ext_resource type="Resource" uid="uid://b7fxunu3h7ohq" path="res://resources/source_materials/Dirt.tres" id="2_35l81"]
+[ext_resource type="Resource" uid="uid://c8ujvd5won4my" path="res://resources/intermediate_materials/Mud.tres" id="3_7ksoi"]
+
+[resource]
+script = ExtResource("1_xnpy6")
+id = "make_mud"
+display_name = "Make Mud"
+inputs = {
+ExtResource("1_wpm0y"): 1,
+ExtResource("2_35l81"): 1
+}
+outputs = {
+ExtResource("3_7ksoi"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

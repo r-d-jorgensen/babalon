@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://br4uf1ijmn7vp"]
+
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://scripts/data/MaterialDefinition.gd" id="1_n8k0w"]
+
+[resource]
+script = ExtResource("1_n8k0w")
+tags = Array[int]([5, 8])
+display_name = "Berry"
+metadata/_custom_type_script = "uid://dviak2555ty3u"

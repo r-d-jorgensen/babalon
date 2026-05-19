@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://7ki45wqgsiid"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://scripts/data/CountableObject.gd" id="1_45xhp"]
+[ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/source_materials/Water.tres" id="1_bn4gn"]
+[ext_resource type="Resource" uid="uid://d14f5nr0q67pm" path="res://resources/final_materials/DrinkableWater.tres" id="2_45xhp"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="3_o7ws5"]
+
+[resource]
+script = ExtResource("3_o7ws5")
+id = "check_water"
+display_name = "Check Water"
+inputs = Dictionary[ExtResource("1_45xhp"), int]({
+ExtResource("1_bn4gn"): 1
+})
+outputs = Dictionary[ExtResource("1_45xhp"), int]({
+ExtResource("2_45xhp"): 1
+})
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"
