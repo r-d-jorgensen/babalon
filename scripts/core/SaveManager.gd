@@ -44,12 +44,16 @@ func load_game() -> void:
 	_apply_save(save)
 
 func _apply_save(save: SaveGameData) -> void:
+	PlayerManager.currencies.clear()
 	PlayerManager.stored_ticks = save.stored_ticks + floori(Time.get_unix_time_from_system()) - save.last_save_time
 	ActionManager.total_workers = save.total_workers
 	_unpack_materials(MaterialManager.materials, save.materials)
 	_unpack_materials(MaterialManager.created, save.created)
 	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
-	PlayerManager.civilization_points = save.player.civilization_points.duplicate()
+	for id: String in save.player.currencies.keys():
+		var obj: CountableObject = PlayerManager._get_currency_by_id(id)
+		if obj != null:
+			PlayerManager.currencies[obj] = save.player.currencies[id]
 	ActionManager.states.clear()
 	for s:SaveActionStateData in save.states:
 		var state: MaterialActionState = MaterialActionState.new()
@@ -58,7 +62,7 @@ func _apply_save(save: SaveGameData) -> void:
 		ActionManager.states[s.action_path] = state
 	MaterialManager._bump()
 	ActionManager.total_workers_changed.emit()
-	PlayerManager.civilization_points_changed.emit()
+	PlayerManager.currencies_changed.emit()
 
 func _pack_materials(map: MaterialMap) -> MaterialSaveData:
 	var data: MaterialSaveData = MaterialSaveData.new()
@@ -70,7 +74,10 @@ func _unpack_materials(map: MaterialMap, data: MaterialSaveData) -> void:
 
 func _pack_player() -> PlayerSaveData:
 	var player: PlayerSaveData = PlayerSaveData.new()
-	player.civilization_points = PlayerManager.civilization_points.duplicate()
+	var packed: Dictionary[String, int] = {}
+	for obj: CountableObject in PlayerManager.currencies.keys():
+		packed[obj.id] = PlayerManager.currencies[obj]
+	player.currencies = packed
 	return player
 
 func _pack_states() -> Array[SaveActionStateData]:

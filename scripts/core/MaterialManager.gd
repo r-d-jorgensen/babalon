@@ -43,7 +43,7 @@ func add(object: CountableObject, amount: int) -> void:
 	created.add(key, amount)
 	created_all_time.add(key, amount)
 	if material.has_build_effect:
-		PlayerManager.add_civilization_points(material.object_type, amount * material.production_value)
+		PlayerManager.add_currency(material.object_type, amount * material.production_value)
 	_bump()
 
 func consume(object: CountableObject, amount: int) -> bool:

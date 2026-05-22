@@ -9,7 +9,7 @@ extends VBoxContainer
 @onready var action_list: VBoxContainer = $EconomyPages/ActionsPage/ActionList
 @onready var materials_list: VBoxContainer = $EconomyPages/MaterialsPage/MaterialsList
 
-var row_scene: PackedScene = preload("res://scenes/components/ActionRow.tscn")
+var action_row_scene: PackedScene = preload("res://scenes/components/ActionRow.tscn")
 var material_row_scene: PackedScene = preload("res://scenes/components/MaterialRow.tscn")
 
 func _ready() -> void:
@@ -39,7 +39,7 @@ func build_actions_ui() -> void:
 	for child: Node in action_list.get_children():
 		child.queue_free()
 	for action_data: MaterialAction in ActionManager.actions:
-		var row: ActionRow = row_scene.instantiate()
+		var row: ActionRow = action_row_scene.instantiate()
 		row.node = action_data
 		action_list.add_child(row)
 

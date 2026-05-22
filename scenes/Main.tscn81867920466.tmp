@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://cyld8wfrb0lwl"]
+
+[ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="1_0bbpv"]
+[ext_resource type="Script" uid="uid://dh88s5js2y03k" path="res://scripts/ui/MainUI.gd" id="1_rarhs"]
+[ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://bh7mfsm6t7ky7" path="res://scripts/ui/CatchupOverlay.gd" id="3_0bbpv"]
+
+[node name="Root" type="Control" unique_id=1983841383]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainUI" type="VBoxContainer" parent="." unique_id=1067906767]
+layout_mode = 0
+offset_right = 181.0
+offset_bottom = 66.0
+script = ExtResource("1_rarhs")
+
+[node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=1865018740]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Actions"
+
+[node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=262567430]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Actions"
+
+[node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1420970986]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="EconomyView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=1898840178]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_0bbpv")
+metadata/_tab_index = 0
+
+[node name="EconomyTabs" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=765912192]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1372412441]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Actions"
+
+[node name="ProductionChainsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=234266347]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Production Chains"
+
+[node name="MaterialsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1941188611]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Materials"
+
+[node name="EconomyHeader" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=217860295]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WorkersLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=2024806734]
+layout_mode = 2
+text = "Workers: # / #"
+
+[node name="ConsumptionLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=1402739866]
+layout_mode = 2
+text = "Food: # / # | Water # / #"
+
+[node name="EconomyPages" type="TabContainer" parent="MainUI/MainViews/EconomyView" unique_id=1947823566]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="ActionsPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=389791304]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ActionList" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/ActionsPage" unique_id=1855296299]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProductionChainPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=1955965037]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ProductionChain" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/ProductionChainPage" unique_id=1645026983]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MaterialsPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=1462379676]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MaterialsList" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/MaterialsPage" unique_id=629553390]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CivilizationView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=1210947379]
+visible = false
+layout_mode = 2
+script = ExtResource("1_0bbpv")
+metadata/_tab_index = 1
+
+[node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=565446248]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CultureButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=495600973]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Culture"
+
+[node name="TechnologyButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=2110258482]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Technology"
+
+[node name="DiscoveryButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=119573477]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Discovery"
+
+[node name="AscensionButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=1995071546]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Ascension"
+
+[node name="CivilizationHeaders" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=845085847]
+layout_mode = 2
+
+[node name="CultureLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=1629923266]
+layout_mode = 2
+text = "#"
+
+[node name="TechnologyLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=485255902]
+layout_mode = 2
+text = "#"
+
+[node name="DiscoveryLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=383204999]
+layout_mode = 2
+text = "#"
+
+[node name="AscensionLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=327628776]
+layout_mode = 2
+text = "#"
+
+[node name="CivilizationPages" type="TabContainer" parent="MainUI/MainViews/CivilizationView" unique_id=1027177714]
+layout_mode = 2
+current_tab = 0
+
+[node name="CulturePage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1317778887]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CultureList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/CulturePage" unique_id=3146010]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TechnologyPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=950779007]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TechnologyList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/TechnologyPage" unique_id=275586012]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DiscoveryPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1728755062]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="DiscoveryList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/DiscoveryPage" unique_id=134289824]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AscensionPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1581575227]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="AscensionList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/AscensionPage" unique_id=1365987948]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OfflineOverlay" type="Control" parent="." unique_id=1334566484]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_0bbpv")
+
+[node name="Blocker" type="ColorRect" parent="OfflineOverlay" unique_id=109962398]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0660077, 0.14945275, 0.050314482, 1)
+
+[node name="Panel" type="Panel" parent="OfflineOverlay" unique_id=1526820352]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OfflineOverlay/Panel" unique_id=2042670370]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LoadingLabel" type="Label" parent="OfflineOverlay/Panel/VBoxContainer" unique_id=1486509674]
+layout_mode = 2
+
+[node name="ProgressLabel" type="Label" parent="OfflineOverlay/Panel/VBoxContainer" unique_id=257726147]
+layout_mode = 2

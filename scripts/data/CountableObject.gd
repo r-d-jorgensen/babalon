@@ -4,11 +4,13 @@ class_name CountableObject
 enum ObjectType {
 	GENERAL,
 	CONSUMABLE,
-	CULTURE,
+	CIVIC,
 	TECHNOLOGY,
-	DISCOVERY,
-	ASCENSION
+	EXPLORATION,
+	ASCENSION,
+	PREMIUM
 }
 
+@export var id: String
 @export var display_name: String
 @export var object_type: ObjectType = ObjectType.GENERAL
