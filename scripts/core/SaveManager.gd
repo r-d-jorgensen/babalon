@@ -55,13 +55,14 @@ func _apply_save(save: SaveGameData) -> void:
 		if obj != null:
 			PlayerManager.currencies[obj] = save.player.currencies[id]
 	ActionManager.states.clear()
+	var state: MaterialActionState = MaterialActionState.new()
 	for s:SaveActionStateData in save.states:
-		var state: MaterialActionState = MaterialActionState.new()
+		state = MaterialActionState.new()
 		state.action = load(s.action_path)
 		state.workers_assigned = s.workers_assigned
 		ActionManager.states[s.action_path] = state
 	MaterialManager._bump()
-	ActionManager.total_workers_changed.emit()
+	ActionManager.workers_changed.emit(state.action)
 	PlayerManager.currencies_changed.emit()
 
 func _pack_materials(map: MaterialMap) -> MaterialSaveData:

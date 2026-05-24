@@ -21,8 +21,9 @@ func _ready() -> void:
 	build_materials_ui()
 	update_worker_label()
 	update_consumption_labels()
-	ActionManager.workers_changed.connect(_on_workers_changed)
-	ActionManager.total_workers_changed.connect(update_worker_label)
+	MaterialManager.inventory_changed.connect(_on_worker_update)
+	ActionManager.workers_changed.connect(_on_worker_update)
+	ActionManager.total_workers_changed.connect(_on_worker_update)
 	select_tab(0)
 
 func select_tab(tab: int) -> void:
@@ -31,7 +32,7 @@ func select_tab(tab: int) -> void:
 	production_button.disabled = tab == 1
 	materials_button.disabled = tab == 2
 
-func _on_workers_changed(_action: MaterialAction) -> void:
+func _on_worker_update(_action: MaterialAction = null) -> void:
 	update_worker_label()
 	update_consumption_labels()
 
@@ -55,12 +56,7 @@ func update_worker_label(_action: Variant = null) -> void:
 	var available: int = ActionManager.get_available_workers()
 	var total: int = ActionManager.total_workers
 	var optimal: int = ActionManager.optimal_worker_limit
-	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [
-		ActionManager.worker_race.display_name,
-		available,
-		total,
-		optimal
-	]
+	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [ActionManager.worker_race.display_name, available, total, optimal]
 
 func update_consumption_labels() -> void:
 	var supply: Dictionary[int, int] = MaterialManager.get_total_supply()
@@ -71,7 +67,8 @@ func update_consumption_labels() -> void:
 		if state.workers_assigned <= 0:
 			continue
 		var action: MaterialAction = state.action
-		for mat: MaterialDefinition in action.outputs:
+		for mat_obj:CountableObject in action.outputs:
+			var mat: MaterialDefinition = mat_obj as MaterialDefinition
 			var amount: float = (
 				float(action.outputs[mat])
 				* action.base_conversion_rate
@@ -91,12 +88,5 @@ func update_consumption_labels() -> void:
 		var sign_value: String = "+"
 		if net < 0:
 			sign_value = ""
-		parts.append(
-			"%s %d %s%.2f/s" % [
-				MaterialDefinition.tag_to_display(tag),
-				supply_amount,
-				sign_value,
-				net
-			]
-		)
+		parts.append("%s %d %s%.2f/s" % [MaterialDefinition.tag_to_display(tag), supply_amount, sign_value, net])
 	consumption_label.text = " | ".join(parts)
