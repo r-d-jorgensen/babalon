@@ -10,9 +10,12 @@ var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
 var currencies: Dictionary[CountableObject, int] = {}
 var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
+#var upgrades: Dictionary[String, UpgradeState] = {}
+#var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
 	_load_currencies()
+	_load_upgrades("res://resources/upgrades/")
 	_setup_timer()
 
 func _setup_timer() -> void:
@@ -75,3 +78,36 @@ func get_currency(currency_type: CountableObject.ObjectType) -> int:
 	if currency == null:
 		return 0
 	return currencies.get(currency, 0)
+
+func _load_upgrades(path: String) -> void:
+	var dir : DirAccess = DirAccess.open(path)
+	if dir == null:
+		return
+	dir.list_dir_begin()
+	var file : String = dir.get_next()
+	while file != "":
+		if file == "." or file == "..":
+			file = dir.get_next()
+			continue
+		var full_path : String = path + "/" + file
+		if dir.current_is_dir():
+			_load_upgrades(full_path)
+		elif file.ends_with(".tres"):
+			var res : UpgradeDefinition = load(full_path)
+			#if res is UpgradeDefinition:
+				#register_upgrade(res)
+		file = dir.get_next()
+	dir.list_dir_end()
+
+#func register_upgrade(def: UpgradeDefinition) -> void:
+	#if def == null:
+		#return
+	#if upgrade_lookup.has(def.id):
+		#push_warning("Duplicate upgrade id: " + def.id)
+		#return
+	#upgrade_lookup[def.id] = def
+	#var state := UpgradeState.new()
+	#state.definition = def
+	#if def.unlocked_by_default:
+		#state.level = 1
+	#upgrades[def.id] = state

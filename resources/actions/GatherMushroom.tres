@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://di7jh6jkbih4k"]
 
-[ext_resource type="Resource" uid="uid://b8f31hatudx41" path="res://resources/source_materials/Mushroom.tres" id="1_27wnc"]
+[ext_resource type="Resource" uid="uid://b8f31hatudx41" path="res://resources/materials/source/Mushroom.tres" id="1_27wnc"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_dgtbf"]
 
 [resource]

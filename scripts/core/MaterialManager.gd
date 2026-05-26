@@ -8,29 +8,33 @@ var created: MaterialMap = MaterialMap.new()
 var created_all_time: MaterialMap = MaterialMap.new()
 
 func _ready() -> void:
-	init_materials()
+	_load_materials("res://resources/materials/")
+	materials_list.sort_custom(func(a:MaterialDefinition, b:MaterialDefinition) -> bool:
+		return a.resource_path < b.resource_path
+	)
 
-func init_materials() -> void:
-	var resource_list: Array[String] = ["source_materials","intermediate_materials","final_materials"]
-	for folder:String in resource_list:
-		var dir:DirAccess = DirAccess.open("res://resources/" + folder)
-		if dir == null:
+func _load_materials(path: String) -> void:
+	var dir: DirAccess = DirAccess.open(path)
+	if dir == null:
+		return
+	dir.list_dir_begin()
+	var file: String = dir.get_next()
+	while file != "":
+		if file == "." or file == "..":
+			file = dir.get_next()
 			continue
-		dir.list_dir_begin()
-		var file: String = dir.get_next()
-		while file != "":
-			if file.ends_with(".tres"):
-				var path: String = "res://resources/" + folder + "/" + file
-				var res: Resource = load(path)
+		var full_path: String = path + "/" + file
+		if dir.current_is_dir():
+			_load_materials(full_path)
+		elif file.ends_with(".tres"):
+			var res : Resource = load(full_path)
+			if res is MaterialDefinition:
 				materials_list.append(res)
 				materials.set_value(res.resource_path, 0)
 				created.set_value(res.resource_path, 0)
 				created_all_time.set_value(res.resource_path, 0)
-			file = dir.get_next()
-		dir.list_dir_end()
-	materials_list.sort_custom(func(a:MaterialDefinition, b:MaterialDefinition) -> bool:
-		return a.resource_path < b.resource_path
-	)
+		file = dir.get_next()
+	dir.list_dir_end()
 
 func add(object: CountableObject, amount: int) -> void:
 	var key: String = _key(object)

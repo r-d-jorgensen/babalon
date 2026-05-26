@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://duno33j7nkch1"]
 
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_j5qnl"]
-[ext_resource type="Resource" uid="uid://codeq8mqb30eh" path="res://resources/intermediate_materials/MudTablet.tres" id="1_yqu05"]
-[ext_resource type="Resource" uid="uid://dk4kmjud86ly5" path="res://resources/intermediate_materials/SharpRock.tres" id="2_ywgsi"]
-[ext_resource type="Resource" uid="uid://bnjdon5ah1how" path="res://resources/final_materials/Pictograph.tres" id="3_ywgsi"]
+[ext_resource type="Resource" uid="uid://codeq8mqb30eh" path="res://resources/materials/intermediate/MudTablet.tres" id="1_yqu05"]
+[ext_resource type="Resource" uid="uid://dk4kmjud86ly5" path="res://resources/materials/intermediate/SharpRock.tres" id="2_ywgsi"]
+[ext_resource type="Resource" uid="uid://bnjdon5ah1how" path="res://resources/materials/final/Pictograph.tres" id="3_ywgsi"]
 
 [resource]
 script = ExtResource("1_j5qnl")

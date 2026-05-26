@@ -22,13 +22,13 @@ enum UpgradeSource {
 @export_multiline var description: String
 
 @export var category: UpgradeCategory
-@export var upgrade_source: UpgradeSource = UpgradeSource.GAMEPLAY
-@export var max_level: int = 1
-@export var infinite_levels: bool = false
-@export var auto_unlock: bool = false
-@export var hidden_by_default: bool = true
-@export var hidden_until_completed: bool = false
+@export var upgrade_source: UpgradeSource
 
-@export var requirements: Array[UpgradeRequirement]
-@export var costs: Array[UpgradeCost]
-@export var effects: Array[UpgradeEffect]
+@export var costs: Dictionary[CountableObject, int] = {} # Cost: CountableObject -> amount
+@export var required_upgrades: Dictionary[UpgradeDefinition, int] = {} # Requirements: UpgradeDefinition -> required level
+
+@export var max_level: int = 1
+
+@export var click_power_bonus: int = 0
+@export var global_production_multiplier: float = 1.0
+@export var worker_capacity_bonus: int = 0
