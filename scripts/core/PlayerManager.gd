@@ -1,17 +1,12 @@
 extends Node
 
 signal tick
-signal catchup_started
-signal catchup_progress(remaining_ticks: int)
-signal catchup_finished
 signal currencies_changed
 
 var timer: Timer
-
 var tick_rate: float = 1.0
 var stored_ticks: int = 0
-var offline_tick_spend_rate: int = 1000
-var is_catching_up: bool = false
+var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
 var currencies: Dictionary[CountableObject, int] = {}
 var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
@@ -29,24 +24,18 @@ func _setup_timer() -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	if stored_ticks > 0:
-		_process_offline_ticks()
-		return
 	tick.emit()
-
-func _process_offline_ticks() -> void:
-	if not is_catching_up:
-		is_catching_up = true
-		catchup_started.emit()
-	var ticks_to_process: int = min(offline_tick_spend_rate, stored_ticks)
-	for i:int in ticks_to_process:
-		tick.emit()
-	stored_ticks -= ticks_to_process
-	catchup_progress.emit(stored_ticks)
 	if stored_ticks <= 0:
-		stored_ticks = 0
-		is_catching_up = false
-		catchup_finished.emit()
+		catchup_speed_multiplier = 1
+	if catchup_speed_multiplier > 1:
+		stored_ticks -= 1
+
+func set_timer_speed(multiplier: int) -> void:
+	catchup_speed_multiplier = max(1, multiplier)
+	if catchup_speed_multiplier > 1 and stored_ticks > 0:
+		timer.wait_time = tick_rate / float(catchup_speed_multiplier)
+	else:
+		timer.wait_time = tick_rate
 
 func _load_currencies() -> void:
 	var dir: DirAccess = DirAccess.open("res://resources/currencies/")

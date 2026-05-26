@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="1_0bbpv"]
 [ext_resource type="Script" uid="uid://dh88s5js2y03k" path="res://scripts/ui/MainUI.gd" id="1_rarhs"]
 [ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_0bbpv"]
-[ext_resource type="Script" uid="uid://bh7mfsm6t7ky7" path="res://scripts/ui/CatchupOverlay.gd" id="3_0bbpv"]
 
 [node name="Root" type="Control" unique_id=1983841383]
 layout_mode = 3
@@ -26,12 +25,27 @@ size_flags_vertical = 3
 [node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Actions"
+text = "Economy"
 
 [node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=262567430]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Actions"
+text = "Civilization"
+
+[node name="StoredTicksLabel" type="Label" parent="MainUI/TopTabs" unique_id=76128759]
+layout_mode = 2
+
+[node name="NormalSpeedButton1" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
+layout_mode = 2
+text = "Normal"
+
+[node name="SpeedUpButton2" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
+layout_mode = 2
+text = "2x"
+
+[node name="SpeedUpButton5" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
+layout_mode = 2
+text = "5x"
 
 [node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1420970986]
 layout_mode = 2
@@ -193,34 +207,3 @@ metadata/_tab_index = 3
 [node name="AscensionList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/AscensionPage" unique_id=1365987948]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="OfflineOverlay" type="Control" parent="." unique_id=1334566484]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_0bbpv")
-
-[node name="Blocker" type="ColorRect" parent="OfflineOverlay" unique_id=109962398]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.0660077, 0.14945275, 0.050314482, 1)
-
-[node name="Panel" type="Panel" parent="OfflineOverlay" unique_id=1526820352]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 20.0
-offset_bottom = 20.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="OfflineOverlay/Panel" unique_id=2042670370]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LoadingLabel" type="Label" parent="OfflineOverlay/Panel/VBoxContainer" unique_id=1486509674]
-layout_mode = 2
-
-[node name="ProgressLabel" type="Label" parent="OfflineOverlay/Panel/VBoxContainer" unique_id=257726147]
-layout_mode = 2
