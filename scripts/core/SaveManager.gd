@@ -35,6 +35,7 @@ func save_game() -> void:
 		push_error("Failed to save game")
 
 func load_game() -> void:
+	# print(OS.get_user_data_dir().path_join(SAVE_PATH))
 	if not ResourceLoader.exists(SAVE_PATH):
 		return
 	var save: SaveGameData = ResourceLoader.load(SAVE_PATH)

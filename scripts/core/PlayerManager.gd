@@ -27,18 +27,23 @@ func _setup_timer() -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	tick.emit()
 	if stored_ticks <= 0:
 		catchup_speed_multiplier = 1
 	if catchup_speed_multiplier > 1:
-		stored_ticks -= 1
+		if catchup_speed_multiplier >= 5:
+			stored_ticks -= catchup_speed_multiplier - floori(catchup_speed_multiplier / 5.0)
+		else:
+			stored_ticks -= catchup_speed_multiplier
+		for _tick:int in range(catchup_speed_multiplier):
+			tick.emit()
+	else:
+		tick.emit()
 
 func set_timer_speed(multiplier: int) -> void:
-	catchup_speed_multiplier = max(1, multiplier)
-	if catchup_speed_multiplier > 1 and stored_ticks > 0:
-		timer.wait_time = tick_rate / float(catchup_speed_multiplier)
+	if multiplier > 1 and stored_ticks > 0:
+		catchup_speed_multiplier = max(1, multiplier)
 	else:
-		timer.wait_time = tick_rate
+		catchup_speed_multiplier = 1
 
 func _load_currencies() -> void:
 	var dir: DirAccess = DirAccess.open("res://resources/currencies/")
@@ -58,7 +63,7 @@ func _load_currencies() -> void:
 	dir.list_dir_end()
 
 func _get_currency_by_id(id: String) -> CountableObject:
-	for obj: CountableObject in PlayerManager.currencies.keys():
+	for obj: CountableObject in PlayerManager.currencies:
 		if obj.id == id:
 			return obj
 	return null
