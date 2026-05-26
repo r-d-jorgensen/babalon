@@ -6,6 +6,7 @@
 script = ExtResource("2_ylmb3")
 craft_stage = 6
 tags = Array[int]([0])
+id = "cave_painting"
 display_name = "Cave Painting"
 object_type = 2
 metadata/_custom_type_script = "uid://dviak2555ty3u"

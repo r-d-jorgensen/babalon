@@ -6,6 +6,7 @@
 script = ExtResource("1_bdwg1")
 craft_stage = 6
 tags = Array[int]([1, 2])
+id = "drinkable_water"
 display_name = "Drinkable Water"
 object_type = 1
 metadata/_custom_type_script = "uid://dviak2555ty3u"

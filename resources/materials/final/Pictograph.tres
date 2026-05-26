@@ -7,6 +7,7 @@ script = ExtResource("1_ij0kp")
 craft_stage = 6
 has_build_effect = true
 tags = Array[int]([0, 11])
+id = "pictograph"
 display_name = "Pictograph"
 object_type = 3
 metadata/_custom_type_script = "uid://dviak2555ty3u"

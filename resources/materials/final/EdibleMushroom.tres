@@ -6,6 +6,7 @@
 script = ExtResource("1_l0cix")
 craft_stage = 6
 tags = Array[int]([5, 7])
+id = "edible_mushroom"
 display_name = "Edible Mushroom"
 object_type = 1
 metadata/_custom_type_script = "uid://dviak2555ty3u"

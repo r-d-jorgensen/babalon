@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_ft2d8")
+id = "culture"
 display_name = "Culture"
 object_type = 2
 metadata/_custom_type_script = "uid://61pwnlqks4g6"

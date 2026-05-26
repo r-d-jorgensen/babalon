@@ -6,6 +6,7 @@
 script = ExtResource("2_smom0")
 craft_stage = 6
 tags = Array[int]([11, 15])
+id = "throwing_rock"
 display_name = "Throwing Rock"
 object_type = 4
 metadata/_custom_type_script = "uid://dviak2555ty3u"

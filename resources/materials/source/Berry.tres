@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_n8k0w")
 tags = Array[int]([5, 8])
+id = "berry"
 display_name = "Berry"
 metadata/_custom_type_script = "uid://dviak2555ty3u"
