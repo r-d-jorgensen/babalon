@@ -6,6 +6,7 @@ var materials_list: Array[MaterialDefinition]
 var materials: MaterialMap = MaterialMap.new()
 var created: MaterialMap = MaterialMap.new()
 var created_all_time: MaterialMap = MaterialMap.new()
+var materials_by_id: Dictionary[String, MaterialDefinition] = {}
 
 func _ready() -> void:
 	_load_materials("res://resources/materials/")
@@ -29,10 +30,12 @@ func _load_materials(path: String) -> void:
 		elif file.ends_with(".tres"):
 			var res : Resource = load(full_path)
 			if res is MaterialDefinition:
-				materials_list.append(res)
-				materials.set_value(res.resource_path, 0)
-				created.set_value(res.resource_path, 0)
-				created_all_time.set_value(res.resource_path, 0)
+				var material: MaterialDefinition = res
+				materials_list.append(material)
+				materials.set_value(material.id, 0)
+				created.set_value(material.id, 0)
+				created_all_time.set_value(material.id, 0)
+				materials_by_id[material.id] = material
 		file = dir.get_next()
 	dir.list_dir_end()
 
@@ -61,19 +64,26 @@ func consume(object: CountableObject, amount: int) -> bool:
 func get_amount(object: CountableObject) -> int:
 	return materials.get_value(_key(object))
 
+func get_material_by_id(id: String) -> MaterialDefinition:
+	return materials_by_id.get(id)
+
 func _key(object: Variant) -> String:
 	if object is String:
 		return object
-	if object is Resource:
-		return object.resource_path
+	if object is MaterialDefinition:
+		return object.id
 	return str(object)
 
 func get_total_supply() -> Dictionary[int, int]:
 	var supply: Dictionary[int, int] = {}
-	for path:String in materials.data:
-		var amount: int = materials.get_value(path)
-		var material: MaterialDefinition = load(path)
-		if amount <= 0 or material.craft_stage != MaterialDefinition.CraftingStage.FINISH:
+	for id:String in materials.data:
+		var amount: int = materials.get_value(id)
+		var material: MaterialDefinition = materials_by_id.get(id)
+		if material == null:
+			continue
+		if amount <= 0:
+			continue
+		if material.craft_stage != MaterialDefinition.CraftingStage.FINISH:
 			continue
 		var production: int = amount * material.production_value
 		for tag: MaterialDefinition.MaterialTag in material.tags:

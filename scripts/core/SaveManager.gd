@@ -45,26 +45,31 @@ func load_game() -> void:
 	_apply_save(save)
 
 func _apply_save(save: SaveGameData) -> void:
+	var offline_time: int = max(0, floori(Time.get_unix_time_from_system()) - save.last_save_time)
+	PlayerManager.stored_ticks = save.stored_ticks + offline_time
 	PlayerManager.currencies.clear()
-	PlayerManager.stored_ticks = save.stored_ticks + floori(Time.get_unix_time_from_system()) - save.last_save_time
-	ActionManager.total_workers = save.total_workers
-	_unpack_materials(MaterialManager.materials, save.materials)
-	_unpack_materials(MaterialManager.created, save.created)
-	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
 	for id: String in save.player.currencies.keys():
 		var obj: CountableObject = PlayerManager._get_currency_by_id(id)
 		if obj != null:
 			PlayerManager.currencies[obj] = save.player.currencies[id]
-	ActionManager.states.clear()
-	var state: MaterialActionState = MaterialActionState.new()
-	for s:SaveActionStateData in save.states:
-		state = MaterialActionState.new()
-		state.action = load(s.action_path)
-		state.workers_assigned = s.workers_assigned
-		ActionManager.states[s.action_path] = state
-	MaterialManager._bump()
-	ActionManager.workers_changed.emit(state.action)
 	PlayerManager.currencies_changed.emit()
+	
+	_unpack_materials(MaterialManager.materials, save.materials)
+	_unpack_materials(MaterialManager.created, save.created)
+	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
+	MaterialManager._bump()
+	
+	ActionManager.total_workers = save.total_workers
+	ActionManager.states.clear()
+	for s: SaveActionStateData in save.states:
+		var action: MaterialAction = ActionManager.get_action_by_id(s.action_id)
+		if action == null:
+			push_warning("Unknown action id: %s" % s.action_id)
+			continue
+		var state: MaterialActionState = MaterialActionState.new()
+		state.action = action
+		state.workers_assigned = s.workers_assigned
+		ActionManager.states[s.action_id] = state
 
 func _pack_materials(map: MaterialMap) -> MaterialSaveData:
 	var data: MaterialSaveData = MaterialSaveData.new()
@@ -84,10 +89,9 @@ func _pack_player() -> PlayerSaveData:
 
 func _pack_states() -> Array[SaveActionStateData]:
 	var out: Array[SaveActionStateData] = []
-	for key:String in ActionManager.states:
-		var state: MaterialActionState = ActionManager.states[key]
+	for state: MaterialActionState in ActionManager.states.values():
 		var s: SaveActionStateData = SaveActionStateData.new()
-		s.action_path = key
+		s.action_id = state.action.id
 		s.workers_assigned = state.workers_assigned
 		out.append(s)
 	return out

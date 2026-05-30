@@ -9,6 +9,7 @@ var total_workers: int = 0
 var optimal_worker_limit: int = 30
 var worker_race: WorkerDefinition = preload("res://resources/workers/Human.tres")
 var states: Dictionary[String, MaterialActionState] = {}
+var actions_by_id: Dictionary[String, MaterialAction] = {}
 var _consumption_tick: int = 0
 var need_fulfillment: Dictionary[int, float] = {}
 
@@ -18,14 +19,22 @@ func _ready() -> void:
 
 func load_actions() -> void:
 	actions.clear()
+	actions_by_id.clear()
 	var dir: DirAccess = DirAccess.open("res://resources/actions/")
-	if dir == null: return
+	if dir == null:
+		return
 	dir.list_dir_begin()
 	var file: String = dir.get_next()
 	while file != "":
 		if file.ends_with(".tres"):
 			var action: MaterialAction = load("res://resources/actions/" + file)
-			actions.append(action)
+			if action.id.is_empty():
+				push_error("Action missing id: %s" % file)
+			elif actions_by_id.has(action.id):
+				push_error("Duplicate action id: %s" % action.id)
+			else:
+				actions.append(action)
+				actions_by_id[action.id] = action
 		file = dir.get_next()
 	dir.list_dir_end()
 	actions_loaded.emit()
@@ -51,8 +60,11 @@ func get_total_assigned() -> int:
 func get_available_workers() -> int:
 	return total_workers - get_total_assigned()
 
+func get_action_by_id(id: String) -> MaterialAction:
+	return actions_by_id.get(id)
+
 func get_state(action: MaterialAction) -> MaterialActionState:
-	var key: String = action.resource_path
+	var key: String = action.id
 	if not states.has(key):
 		var state: MaterialActionState = MaterialActionState.new()
 		state.action = action
