@@ -10,6 +10,7 @@ var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
 var currencies: Dictionary[CountableObject, int] = {}
 var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
+var currency_id_lookup: Dictionary[String, CountableObject] = {}
 var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
@@ -48,35 +49,30 @@ func set_timer_speed(multiplier: int) -> void:
 func _load_currencies() -> void:
 	var dir: DirAccess = DirAccess.open("res://resources/currencies/")
 	if dir == null:
-		push_error("Failed to load currency directory")
 		return
 	dir.list_dir_begin()
 	var file_name: String = dir.get_next()
 	while file_name != "":
 		if file_name.ends_with(".tres"):
-			var path: String = ("res://resources/currencies/" + file_name)
-			var currency: CountableObject = load(path)
-			if currency != null:
-				currencies[currency] = 0
+			var currency: CountableObject = load("res://resources/currencies/" + file_name)
+			if currency:
 				currency_lookup[currency.object_type] = currency
+				currency_id_lookup[currency.id] = currency
+				if not currencies.has(currency):
+					currencies[currency] = 0
 		file_name = dir.get_next()
 	dir.list_dir_end()
-
-func _get_currency_by_id(id: String) -> CountableObject:
-	for obj: CountableObject in PlayerManager.currencies:
-		if obj.id == id:
-			return obj
-	return null
 
 func add_currency(currency_type: CountableObject.ObjectType, amount: int) -> void:
 	var currency: CountableObject = currency_lookup.get(currency_type)
 	if currency == null:
 		push_warning("Invalid currency type: ", currency_type)
 		return
-	if not currencies.has(currency):
-		currencies[currency] = 0
 	currencies[currency] += amount
 	currencies_changed.emit()
+
+func _get_currency_by_id(id: String) -> CountableObject:
+	return currency_id_lookup.get(id)
 
 func get_currency(currency_type: CountableObject.ObjectType) -> int:
 	var currency: CountableObject = currency_lookup.get(currency_type)
