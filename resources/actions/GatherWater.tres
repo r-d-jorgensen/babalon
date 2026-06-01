@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://odxu02cupwhs"]
 
-[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://scripts/data/MaterialAction.gd" id="1_kd411"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/MaterialAction.gd" id="1_kd411"]
 [ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/materials/source/Water.tres" id="1_st3ff"]
 
 [resource]
