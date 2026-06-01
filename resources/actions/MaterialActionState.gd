@@ -33,8 +33,8 @@ func _can_consume_inputs() -> bool:
 
 func _consume_inputs() -> void:
 	for mat:CountableObject in action.inputs:
-		MaterialManager.consume(mat, action.inputs[mat])
+		MaterialManager.change_materials(mat, -action.inputs[mat])
 
 func _produce_outputs() -> void:
 	for mat:CountableObject in action.outputs:
-		MaterialManager.add(mat, action.outputs[mat])
+		MaterialManager.change_materials(mat, action.outputs[mat])

@@ -8,31 +8,29 @@ func is_purchased() -> bool:
 	return level > 0
 
 func is_maxed() -> bool:
-	if definition == null:
-		return true
-	return level >= definition.max_level
+	return definition == null or level >= definition.max_level
 
-func can_level_up() -> bool:
+func can_purchase() -> bool:
 	if definition == null:
 		return false
-	return level < definition.max_level
+	if is_maxed():
+		return false
+	return true
 
-func get_costs() -> Dictionary[CountableObject, int]:
-	if definition == null:
-		return {}
-	return definition.costs
-
-func get_required_upgrades() -> Dictionary[UpgradeDefinition, int]:
-	if definition == null:
-		return {}
-	return definition.required_upgrades
+func purchase() -> bool:
+	if not can_purchase():
+		return false
+	for currency: CountableObject in definition.costs:
+		var cost: int = definition.costs[currency]
+		if not PlayerManager.change_currency(currency.object_type, -cost):
+			return false
+	level += 1
+	PlayerManager.player_click_power += definition.click_power_bonus
+	PlayerManager.currencies_changed.emit()
+	return true
 
 func get_display_name() -> String:
-	if definition == null:
-		return "Unknown Upgrade"
-	return definition.display_name
+	return definition.display_name if definition else "Unknown Upgrade"
 
 func get_description() -> String:
-	if definition == null:
-		return ""
-	return definition.description
+	return definition.description if definition else ""

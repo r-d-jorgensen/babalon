@@ -35,15 +35,15 @@ text = "Civilization"
 [node name="StoredTicksLabel" type="Label" parent="MainUI/TopTabs" unique_id=76128759]
 layout_mode = 2
 
-[node name="NormalSpeedButton1" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
+[node name="NormalSpeedButton" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
 layout_mode = 2
 text = "Normal"
 
-[node name="SpeedUpButton2" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
+[node name="SpeedUp2xButton" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
 layout_mode = 2
 text = "2x"
 
-[node name="SpeedUpButton5" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
+[node name="SpeedUp5xButton" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
 layout_mode = 2
 text = "5x"
 

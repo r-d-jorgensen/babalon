@@ -63,13 +63,18 @@ func _load_currencies() -> void:
 		file_name = dir.get_next()
 	dir.list_dir_end()
 
-func add_currency(currency_type: CountableObject.ObjectType, amount: int) -> void:
+func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
 	var currency: CountableObject = currency_lookup.get(currency_type)
 	if currency == null:
 		push_warning("Invalid currency type: ", currency_type)
-		return
-	currencies[currency] += amount
+		return false
+	var current: int = currencies.get(currency, 0)
+	var next: int = current + amount
+	if next < 0:
+		return false
+	currencies[currency] = next
 	currencies_changed.emit()
+	return true
 
 func _get_currency_by_id(id: String) -> CountableObject:
 	return currency_id_lookup.get(id)

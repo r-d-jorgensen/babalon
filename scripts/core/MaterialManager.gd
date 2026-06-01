@@ -39,27 +39,36 @@ func _load_materials(path: String) -> void:
 		file = dir.get_next()
 	dir.list_dir_end()
 
-func add(object: CountableObject, amount: int) -> void:
-	var key: String = _key(object)
+func change_materials(object: CountableObject, amount: int) -> bool:
 	if object is WorkerDefinition:
-		ActionManager.add_workers(amount)
-		_bump()
-		return
-	var material: MaterialDefinition = object as MaterialDefinition
-	materials.add(key, amount)
-	created.add(key, amount)
-	created_all_time.add(key, amount)
-	if material.has_build_effect:
-		PlayerManager.add_currency(material.object_type, amount * material.production_value)
-	_bump()
-
-func consume(object: CountableObject, amount: int) -> bool:
-	var key: String = _key(object)
-	if materials.get_value(key) < amount:
+		if amount > 0:
+			ActionManager.change_workers(amount)
+			_bump()
+			return true
+		if amount < 0:
+			if ActionManager.get_available_workers() < -amount:
+				return false
+			ActionManager.change_workers(amount)
+			_bump()
+			return true
 		return false
-	materials.add(key, -amount)
-	_bump()
-	return true
+
+	if object is MaterialDefinition:
+		var material: MaterialDefinition = object as MaterialDefinition
+		var key: String = _key(object)
+		var current: int = materials.get_value(key)
+		var next: int = current + amount
+		if next < 0:
+			return false
+		materials.set_value(key, next)
+		if amount > 0:
+			created.add(key, amount)
+			created_all_time.add(key, amount)
+			if material.has_build_effect:
+				PlayerManager.change_currency(material.object_type, amount * material.production_value)
+		_bump()
+		return true
+	return false
 
 func get_amount(object: CountableObject) -> int:
 	return materials.get_value(_key(object))

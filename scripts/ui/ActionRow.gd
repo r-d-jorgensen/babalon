@@ -109,9 +109,9 @@ func _on_action_pressed() -> void:
 			if MaterialManager.get_amount(mat) < node.inputs[mat]:
 				state.progress = 0
 				break
-			MaterialManager.consume(mat, node.inputs[mat])
+			MaterialManager.change_materials(mat, -node.inputs[mat])
 		for mat:CountableObject in node.outputs:
-			MaterialManager.add(mat, node.outputs[mat])
+			MaterialManager.change_materials(mat, node.outputs[mat])
 	update_ui()
 
 func _on_minus_pressed() -> void:

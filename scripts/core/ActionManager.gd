@@ -47,9 +47,13 @@ func _on_tick() -> void:
 		_consumption_tick = 0
 		_consume_worker_resources()
 
-func add_workers(amount: int) -> void:
+func change_workers(amount: int) -> bool:
+	if amount < 0:
+		if get_available_workers() < -amount:
+			return false
 	total_workers += amount
 	total_workers_changed.emit()
+	return true
 
 func get_total_assigned() -> int:
 	var total: int = 0
@@ -134,13 +138,13 @@ func _consume_tag_resources(tag: int, amount: int) -> int:
 		if available_items <= 0: continue
 		var total_value: int = available_items * mat.production_value
 		if total_value <= remaining:
-			MaterialManager.consume(mat, available_items)
+			MaterialManager.change_materials(mat, -available_items)
 			remaining -= total_value
 			consumed += total_value
 		else:
 			var items_needed: int = ceil(remaining / float(mat.production_value))
 			var consumed_value: int = items_needed * mat.production_value
-			MaterialManager.consume(mat, items_needed)
+			MaterialManager.change_materials(mat, -items_needed)
 			consumed += min(remaining, consumed_value)
 			remaining = 0
 	return consumed
