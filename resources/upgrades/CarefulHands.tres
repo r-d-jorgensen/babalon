@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://d18w7sjeuv4x5"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_al8fe"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_kqdb7"]
+[ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/Recordings.tres" id="3_kqdb7"]
+
+[resource]
+script = ExtResource("2_kqdb7")
+id = "careful_hands"
+display_name = "Careful Hands"
+description = "Increase gathering of food"
+category = 1
+required_upgrades = Dictionary[ExtResource("2_kqdb7"), int]({
+ExtResource("3_kqdb7"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"

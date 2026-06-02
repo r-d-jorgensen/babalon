@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dmniwjdt7c8ie"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_qveh5"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_7or24"]
+
+[resource]
+script = ExtResource("2_7or24")
+id = "human_species"
+display_name = "Humans"
+description = "Allow Human Workers"
+metadata/_custom_type_script = "uid://5oe453vttnbh"

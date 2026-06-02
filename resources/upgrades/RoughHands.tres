@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dgoogxkd72hvy"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_vxo7e"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_iobyt"]
+[ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/Recordings.tres" id="3_adrty"]
+
+[resource]
+script = ExtResource("2_iobyt")
+id = "rough_hands"
+display_name = "Rough Hands"
+description = "Increase gathering of materials"
+category = 1
+required_upgrades = Dictionary[ExtResource("2_iobyt"), int]({
+ExtResource("3_adrty"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"

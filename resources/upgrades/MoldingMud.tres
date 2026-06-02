@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cc3d38ig1vim7"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_cp260"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_m6pqb"]
+[ext_resource type="Resource" uid="uid://bp20nl4ant1kj" path="res://resources/upgrades/Empathy.tres" id="3_m6pqb"]
+
+[resource]
+script = ExtResource("2_m6pqb")
+id = "molding_mud "
+display_name = "Molding Mud "
+description = "Lower human creation cost"
+required_upgrades = Dictionary[ExtResource("2_m6pqb"), int]({
+ExtResource("3_m6pqb"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"

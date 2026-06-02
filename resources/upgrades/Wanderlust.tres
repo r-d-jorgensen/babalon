@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://3vpg3nxspiot"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_4tkei"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_wjo4g"]
+[ext_resource type="Resource" uid="uid://bs3gbdu00xi56" path="res://resources/upgrades/Community.tres" id="3_w5l7k"]
+[ext_resource type="Resource" uid="uid://dmfkahxn7v5iv" path="res://resources/upgrades/Expeditions.tres" id="4_wjo4g"]
+
+[resource]
+script = ExtResource("2_wjo4g")
+id = "wanderlust"
+display_name = "Wanderlust"
+description = "Increase culture gain"
+required_upgrades = Dictionary[ExtResource("2_wjo4g"), int]({
+ExtResource("3_w5l7k"): 1,
+ExtResource("4_wjo4g"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"
