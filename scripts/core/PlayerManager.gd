@@ -2,6 +2,7 @@ extends Node
 
 signal tick
 signal currencies_changed
+signal upgrades_changed
 
 var timer: Timer
 var tick_rate: float = 1.0
@@ -62,6 +63,7 @@ func _load_currencies() -> void:
 					currencies[currency] = 0
 		file_name = dir.get_next()
 	dir.list_dir_end()
+	currencies_changed.emit()
 
 func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
 	var currency: CountableObject = currency_lookup.get(currency_type)
@@ -101,7 +103,8 @@ func _load_upgrades(path: String) -> void:
 		elif file.ends_with(".tres"):
 			var res: UpgradeDefinition = load(full_path)
 			if res is UpgradeDefinition:
-				upgrades[res.id] = UpgradeState.new()
+				upgrades[res.id] = UpgradeState.new(res)
 				upgrade_lookup[res.id] = res
 		file = dir.get_next()
 	dir.list_dir_end()
+	upgrades_changed.emit()

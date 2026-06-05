@@ -3,14 +3,19 @@ extends VBoxContainer
 @onready var civics_label: Label = $CivilizationHeaders/CivicsLabel
 @onready var technology_label: Label = $CivilizationHeaders/TechnologyLabel
 @onready var exploration_label: Label = $CivilizationHeaders/ExplorationLabel
-@onready var truth_label: Label = $CivilizationHeaders/AscensionLabel
+@onready var truth_label: Label = $CivilizationHeaders/TruthLabel
 
 @onready var tabs: TabContainer = $CivilizationPages
-
 @onready var civics_button: Button = $CivilizationTabs/CivicsButton
 @onready var technology_button: Button = $CivilizationTabs/TechnologyButton
 @onready var exploration_button: Button = $CivilizationTabs/ExplorationButton
-@onready var truth_button: Button = $CivilizationTabs/AscensionButton
+@onready var truth_button: Button = $CivilizationTabs/TruthButton
+
+var upgrade_row_scene: PackedScene = preload("res://scenes/components/UpgradeRow.tscn")
+@onready var civics_list: VBoxContainer = $CivilizationPages/CivicsPage/CivicsList
+@onready var technology_list: VBoxContainer = $CivilizationPages/TechnologyPage/TechnologyList
+@onready var exploration_list: VBoxContainer = $CivilizationPages/ExplorationPage/ExplorationList
+@onready var truth_list: VBoxContainer = $CivilizationPages/TruthPage/TruthList
 
 func _ready() -> void:
 	tabs.tabs_visible = false
@@ -20,6 +25,7 @@ func _ready() -> void:
 	truth_button.pressed.connect(func() -> void: select_tab(3))
 	PlayerManager.currencies_changed.connect(update_display)
 	update_display()
+	build_upgrades_ui()
 	select_tab(0)
 
 func select_tab(tab: int) -> void:
@@ -34,3 +40,25 @@ func update_display(_unused: Variant = null) -> void:
 	technology_label.text = "Research: %s" % PlayerManager.get_currency(CountableObject.ObjectType.TECHNOLOGY)
 	exploration_label.text = "Discovery: %s" % PlayerManager.get_currency(CountableObject.ObjectType.EXPLORATION)
 	truth_label.text = "Truth: %s" % PlayerManager.get_currency(CountableObject.ObjectType.ASCENSION)
+
+func build_upgrades_ui() -> void:
+	_clear_container(civics_list)
+	_clear_container(technology_list)
+	_clear_container(exploration_list)
+	_clear_container(truth_list)
+	for state: UpgradeState in PlayerManager.upgrades.values():
+		var row: UpgradeRow = upgrade_row_scene.instantiate()
+		row.state = state
+		match state.definition.category:
+			UpgradeDefinition.UpgradeCategory.CULTURE:
+				civics_list.add_child(row)
+			UpgradeDefinition.UpgradeCategory.TECHNOLOGY:
+				technology_list.add_child(row)
+			UpgradeDefinition.UpgradeCategory.DISCOVERY:
+				exploration_list.add_child(row)
+			UpgradeDefinition.UpgradeCategory.ASCENSION:
+				truth_list.add_child(row)
+
+func _clear_container(container: Node) -> void:
+	for child: Node in container.get_children():
+		child.queue_free()

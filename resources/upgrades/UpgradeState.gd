@@ -4,6 +4,9 @@ class_name UpgradeState
 var definition: UpgradeDefinition
 var level: int = 0
 
+func _init(upgrade_definition: UpgradeDefinition = null) -> void:
+	definition = upgrade_definition
+
 func is_purchased() -> bool:
 	return level > 0
 
@@ -15,18 +18,24 @@ func can_purchase() -> bool:
 		return false
 	if is_maxed():
 		return false
+	# TODO - Multiple cost types
+	for currency: CountableObject in definition.costs:
+		var cost: int = definition.costs[currency]
+		if PlayerManager.get_currency(currency.object_type) < cost:
+			return false
 	return true
 
 func purchase() -> bool:
 	if not can_purchase():
 		return false
+	# TODO - Multiple cost types
 	for currency: CountableObject in definition.costs:
 		var cost: int = definition.costs[currency]
 		if not PlayerManager.change_currency(currency.object_type, -cost):
 			return false
 	level += 1
-	PlayerManager.player_click_power += definition.click_power_bonus
-	PlayerManager.currencies_changed.emit()
+	# TODO - Apply Effects
+	PlayerManager.upgrades_changed.emit()
 	return true
 
 func get_display_name() -> String:

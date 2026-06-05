@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c67hv4c2vk0oi"]
+
+[ext_resource type="Script" uid="uid://fu683ww2gg30" path="res://scripts/ui/UpgradeRow.gd" id="1_hb3uc"]
+
+[node name="UpgradeRow" type="HBoxContainer" unique_id=1568902900]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hb3uc")
+
+[node name="NameLabel" type="Label" parent="." unique_id=312823210]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelLabel" type="Label" parent="." unique_id=1137139279]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CostLabel" type="Label" parent="." unique_id=1801604208]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuyButton" type="Button" parent="." unique_id=1924124956]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -145,10 +145,10 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Discovery"
 
-[node name="AscensionButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=1995071546]
+[node name="TruthButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=1995071546]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Ascension"
+text = "Truth"
 
 [node name="CivilizationHeaders" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=845085847]
 layout_mode = 2
@@ -165,7 +165,7 @@ text = "#"
 layout_mode = 2
 text = "#"
 
-[node name="AscensionLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=327628776]
+[node name="TruthLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=327628776]
 layout_mode = 2
 text = "#"
 
@@ -173,11 +173,11 @@ text = "#"
 layout_mode = 2
 current_tab = 0
 
-[node name="CulturePage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1317778887]
+[node name="CivicsPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1317778887]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="CultureList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/CulturePage" unique_id=3146010]
+[node name="CivicsList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/CivicsPage" unique_id=3146010]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -190,20 +190,20 @@ metadata/_tab_index = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DiscoveryPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1728755062]
+[node name="ExplorationPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1728755062]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="DiscoveryList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/DiscoveryPage" unique_id=134289824]
+[node name="ExplorationList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/ExplorationPage" unique_id=134289824]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AscensionPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1581575227]
+[node name="TruthPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1581575227]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="AscensionList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/AscensionPage" unique_id=1365987948]
+[node name="TruthList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/TruthPage" unique_id=1365987948]
 layout_mode = 2
 size_flags_vertical = 3

@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 		save_game()
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST: save_game()
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_game()
 
 func save_game() -> void:
 	var save: SaveGameData = SaveGameData.new()
@@ -52,6 +53,16 @@ func _apply_save(save: SaveGameData) -> void:
 		if obj != null:
 			PlayerManager.currencies[obj] = save.player.currencies[id]
 	PlayerManager.currencies_changed.emit()
+
+	for state: UpgradeState in PlayerManager.upgrades.values():
+		state.level = 0
+	for id: String in save.player.upgrades.keys():
+		var state: UpgradeState = PlayerManager.upgrades.get(id)
+		if state == null:
+			push_warning("Unknown upgrade id: %s" % id)
+			continue
+		state.level = save.player.upgrades[id]
+	PlayerManager.upgrades_changed.emit()
 	
 	_unpack_materials(MaterialManager.materials, save.materials)
 	_unpack_materials(MaterialManager.created, save.created)
@@ -84,6 +95,12 @@ func _pack_player() -> PlayerSaveData:
 	for obj: CountableObject in PlayerManager.currencies.keys():
 		packed[obj.id] = PlayerManager.currencies[obj]
 	player.currencies = packed
+	
+	var packed_upgrades: Dictionary[String, int] = {}
+	for id: String in PlayerManager.upgrades.keys():
+		var state: UpgradeState = PlayerManager.upgrades[id]
+		packed_upgrades[id] = state.level
+	player.upgrades = packed_upgrades
 	return player
 
 func _pack_states() -> Array[SaveActionStateData]:

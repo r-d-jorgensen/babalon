@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://c1kfd6xies6rb"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_rad0v"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_l4532"]
+[ext_resource type="Resource" uid="uid://d18w7sjeuv4x5" path="res://resources/upgrades/technology/LifeRequierments.tres" id="3_nstsy"]
+
+[resource]
+script = ExtResource("2_l4532")
+id = "safe_berries"
+display_name = "Safe Berries"
+description = "reduce time to sort berries"
+category = 1
+required_upgrades = Dictionary[ExtResource("2_l4532"), int]({
+ExtResource("3_nstsy"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"

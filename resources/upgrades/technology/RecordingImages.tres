@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_01ixn"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_w4gnf"]
-[ext_resource type="Resource" uid="uid://c1kfd6xies6rb" path="res://resources/upgrades/BerrySorting.tres" id="3_4dkcy"]
+[ext_resource type="Resource" uid="uid://c1kfd6xies6rb" path="res://resources/upgrades/technology/SafeBerries.tres" id="3_4dkcy"]
 
 [resource]
 script = ExtResource("2_w4gnf")
 id = "recording_image"
 display_name = "Recording Image"
 description = "Allow Cave Paintings"
+category = 1
 required_upgrades = Dictionary[ExtResource("2_w4gnf"), int]({
 ExtResource("3_4dkcy"): 1
 })
