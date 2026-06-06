@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_2f52t"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_5sdxm"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/research.tres" id="2_bqkxx"]
 [ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/civic/Recordings.tres" id="3_bqkxx"]
 
 [resource]
@@ -10,6 +11,9 @@ id = "life_requierments"
 display_name = "Life Requierments"
 description = "Increase gathering of food"
 category = 1
+costs = Dictionary[ExtResource("1_2f52t"), int]({
+ExtResource("2_bqkxx"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_5sdxm"), int]({
 ExtResource("3_bqkxx"): 1
 })

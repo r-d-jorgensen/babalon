@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_6mgmu"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_gkvac"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/culture.tres" id="2_w8qpc"]
 [ext_resource type="Resource" uid="uid://dmniwjdt7c8ie" path="res://resources/upgrades/civic/HumansSpecies.tres" id="3_b4hot"]
 
 [resource]
@@ -9,6 +10,9 @@ script = ExtResource("2_gkvac")
 id = "communtiy"
 display_name = "Communtiy"
 description = "Increase Culture Gain"
+costs = Dictionary[ExtResource("1_6mgmu"), int]({
+ExtResource("2_w8qpc"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_gkvac"), int]({
 ExtResource("3_b4hot"): 1
 })

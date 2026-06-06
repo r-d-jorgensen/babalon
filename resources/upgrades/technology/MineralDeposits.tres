@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dgoogxkd72hvy"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_3h8lk"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/research.tres" id="2_tfh4w"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_wifls"]
 [ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/civic/Recordings.tres" id="3_tfh4w"]
 
@@ -10,6 +11,9 @@ id = "mineral_deposits"
 display_name = "Mineral Deposits"
 description = "Increase gathering of materials"
 category = 1
+costs = Dictionary[ExtResource("1_3h8lk"), int]({
+ExtResource("2_tfh4w"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_wifls"), int]({
 ExtResource("3_tfh4w"): 1
 })

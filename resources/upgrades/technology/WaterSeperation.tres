@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_8s61h"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_gajad"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/research.tres" id="2_yay2d"]
 [ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/FluidMovment.tres" id="3_yay2d"]
 
 [resource]
@@ -10,6 +11,9 @@ id = "water_seperation"
 display_name = "Water Seperation Collection"
 description = "Increase max population"
 category = 1
+costs = Dictionary[ExtResource("1_8s61h"), int]({
+ExtResource("2_yay2d"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_gajad"), int]({
 ExtResource("3_yay2d"): 1
 })

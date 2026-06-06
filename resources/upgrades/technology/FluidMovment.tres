@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://banpyasl1tyb3"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_0nggi"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/research.tres" id="2_mqiea"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_xh52j"]
 [ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/civic/Recordings.tres" id="3_mqiea"]
 
@@ -10,6 +11,9 @@ id = "fluid_movment"
 display_name = "Fluid Movment"
 description = "Increase gathering of water"
 category = 1
+costs = Dictionary[ExtResource("1_0nggi"), int]({
+ExtResource("2_mqiea"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_xh52j"), int]({
 ExtResource("3_mqiea"): 1
 })

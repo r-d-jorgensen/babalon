@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bvfsv47o4ngdf"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/CountableObject.gd" id="1_01ixn"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/research.tres" id="2_3qpni"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_w4gnf"]
 [ext_resource type="Resource" uid="uid://c1kfd6xies6rb" path="res://resources/upgrades/technology/SafeBerries.tres" id="3_4dkcy"]
 
@@ -10,6 +11,9 @@ id = "recording_image"
 display_name = "Recording Image"
 description = "Allow Cave Paintings"
 category = 1
+costs = Dictionary[ExtResource("1_01ixn"), int]({
+ExtResource("2_3qpni"): 1
+})
 required_upgrades = Dictionary[ExtResource("2_w4gnf"), int]({
 ExtResource("3_4dkcy"): 1
 })
