@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://cv2q3fmuu75w7"]
+
+[ext_resource type="Resource" uid="uid://bsf5quvloqhsn" path="res://resources/countable_objects/materials/source/Stone.tres" id="1_8kqbl"]
+[ext_resource type="Resource" uid="uid://bt00y4djnxa88" path="res://resources/countable_objects/materials/final/ThrowingRock.tres" id="2_tpmxi"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/countable_objects/actions/MaterialAction.gd" id="3_jmcke"]
+
+[resource]
+script = ExtResource("3_jmcke")
+id = "break_stone"
+display_name = "Break Stone"
+inputs = {
+ExtResource("1_8kqbl"): 1
+}
+outputs = {
+ExtResource("2_tpmxi"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

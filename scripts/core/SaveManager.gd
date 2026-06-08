@@ -31,7 +31,7 @@ func save_game() -> void:
 	save.created_all_time = _pack_materials(MaterialManager.created_all_time)
 	save.player = _pack_player()
 	save.states = _pack_states()
-	var err: Error = ResourceSaver.save(save, SAVE_PATH)
+	var err : Error = ResourceSaver.save(save, SAVE_PATH)
 	if err != OK:
 		push_error("Failed to save game")
 
@@ -46,29 +46,25 @@ func load_game() -> void:
 
 func _apply_save(save: SaveGameData) -> void:
 	var offline_time: int = max(0, floori(Time.get_unix_time_from_system()) - save.last_save_time)
-	PlayerManager.stored_ticks = save.stored_ticks + offline_time
+	var offline_ticks: int = floori(offline_time / PlayerManager.tick_rate)
+	PlayerManager.stored_ticks = save.stored_ticks + offline_ticks
 	PlayerManager.currencies.clear()
 	for id: String in save.player.currencies.keys():
-		var obj: CountableObject = PlayerManager._get_currency_by_id(id)
-		if obj != null:
-			PlayerManager.currencies[obj] = save.player.currencies[id]
+		PlayerManager.currencies[id] = save.player.currencies[id]
 	PlayerManager.currencies_changed.emit()
-
-	for state: UpgradeState in PlayerManager.upgrades.values():
-		state.level = 0
+	PlayerManager.upgrades.clear()
 	for id: String in save.player.upgrades.keys():
-		var state: UpgradeState = PlayerManager.upgrades.get(id)
-		if state == null:
+		var def: UpgradeDefinition = PlayerManager.upgrade_lookup.get(id)
+		if def == null:
 			push_warning("Unknown upgrade id: %s" % id)
 			continue
+		var state :UpgradeState = UpgradeState.new(def)
 		state.level = save.player.upgrades[id]
+		PlayerManager.upgrades[id] = state
 	PlayerManager.upgrades_changed.emit()
-	
 	_unpack_materials(MaterialManager.materials, save.materials)
 	_unpack_materials(MaterialManager.created, save.created)
 	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
-	MaterialManager._bump()
-	
 	ActionManager.total_workers = save.total_workers
 	ActionManager.states.clear()
 	for s: SaveActionStateData in save.states:
@@ -76,30 +72,33 @@ func _apply_save(save: SaveGameData) -> void:
 		if action == null:
 			push_warning("Unknown action id: %s" % s.action_id)
 			continue
-		var state: MaterialActionState = MaterialActionState.new()
+		var state :MaterialActionState = MaterialActionState.new(action)
 		state.action = action
 		state.workers_assigned = s.workers_assigned
+		state.progress = s.progress
 		ActionManager.states[s.action_id] = state
+	MaterialManager._bump()
+	MaterialManager.calculate_material_deltas()
 
 func _pack_materials(map: MaterialMap) -> MaterialSaveData:
 	var data: MaterialSaveData = MaterialSaveData.new()
-	data.data = map.data.duplicate()
+	data.data = map.data.duplicate(true)
 	return data
 
 func _unpack_materials(map: MaterialMap, data: MaterialSaveData) -> void:
-	map.data = data.data.duplicate()
+	map.data.clear()
+	for key:String in data.data:
+		map.data[key] = data.data[key]
 
 func _pack_player() -> PlayerSaveData:
 	var player: PlayerSaveData = PlayerSaveData.new()
 	var packed: Dictionary[String, int] = {}
-	for obj: CountableObject in PlayerManager.currencies.keys():
-		packed[obj.id] = PlayerManager.currencies[obj]
+	for id: String in PlayerManager.currencies.keys():
+		packed[id] = PlayerManager.currencies[id]
 	player.currencies = packed
-	
 	var packed_upgrades: Dictionary[String, int] = {}
 	for id: String in PlayerManager.upgrades.keys():
-		var state: UpgradeState = PlayerManager.upgrades[id]
-		packed_upgrades[id] = state.level
+		packed_upgrades[id] = PlayerManager.upgrades[id].level
 	player.upgrades = packed_upgrades
 	return player
 
@@ -109,5 +108,6 @@ func _pack_states() -> Array[SaveActionStateData]:
 		var s: SaveActionStateData = SaveActionStateData.new()
 		s.action_id = state.action.id
 		s.workers_assigned = state.workers_assigned
+		s.progress = state.progress
 		out.append(s)
 	return out

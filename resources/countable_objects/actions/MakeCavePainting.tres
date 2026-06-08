@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://dct1be5qaftqr"]
+
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/countable_objects/actions/MaterialAction.gd" id="1_ew556"]
+[ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/countable_objects/materials/source/Berry.tres" id="1_jmrpw"]
+[ext_resource type="Resource" uid="uid://bsf5quvloqhsn" path="res://resources/countable_objects/materials/source/Stone.tres" id="2_iklag"]
+[ext_resource type="Resource" uid="uid://bir58fbksu4he" path="res://resources/countable_objects/materials/final/CavePainting.tres" id="3_plbf2"]
+
+[resource]
+script = ExtResource("1_ew556")
+id = "make_cave_painting"
+display_name = "Make Cave Painting"
+inputs = {
+ExtResource("1_jmrpw"): 1,
+ExtResource("2_iklag"): 1
+}
+outputs = {
+ExtResource("3_plbf2"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

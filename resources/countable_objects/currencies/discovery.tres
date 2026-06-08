@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CountableObject" format=3 uid="uid://u6pe83k3mruv"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_u2hjo"]
+
+[resource]
+script = ExtResource("1_u2hjo")
+id = "discovery"
+display_name = "Discovery"
+object_type = 4
+metadata/_custom_type_script = "uid://61pwnlqks4g6"

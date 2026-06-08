@@ -9,15 +9,15 @@ var tick_rate: float = 1.0
 var stored_ticks: int = 0
 var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
-var currencies: Dictionary[CountableObject, int] = {}
+var currencies: Dictionary[String, int] = {}
 var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
 var currency_id_lookup: Dictionary[String, CountableObject] = {}
 var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
-	_load_currencies()
-	_load_upgrades("res://resources/upgrades/")
+	load_currencies()
+	load_upgrades()
 	_setup_timer()
 
 func _setup_timer() -> void:
@@ -47,22 +47,27 @@ func set_timer_speed(multiplier: int) -> void:
 	else:
 		catchup_speed_multiplier = 1
 
-func _load_currencies() -> void:
-	var dir: DirAccess = DirAccess.open("res://resources/currencies/")
-	if dir == null:
-		return
-	dir.list_dir_begin()
-	var file_name: String = dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".tres"):
-			var currency: CountableObject = load("res://resources/currencies/" + file_name)
-			if currency:
+func load_currencies() -> void:
+	currency_lookup.clear()
+	currency_id_lookup.clear()
+	GlobalResourceLoader.recursive_load(
+		"res://resources/countable_objects/currencies/",
+		func(res: Resource, path: String) -> void:
+			var currency: CountableObject = res
+
+			if currency.id.is_empty():
+				push_error("Currency missing id: %s" % path)
+			elif currency_id_lookup.has(currency.id):
+				push_error("Duplicate currency id: %s" % currency.id)
+			else:
 				currency_lookup[currency.object_type] = currency
 				currency_id_lookup[currency.id] = currency
-				if not currencies.has(currency):
-					currencies[currency] = 0
-		file_name = dir.get_next()
-	dir.list_dir_end()
+
+				if not currencies.has(currency.id):
+					currencies[currency.id] = 0,
+		[".tres"],
+		CountableObject
+	)
 	currencies_changed.emit()
 
 func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
@@ -70,41 +75,40 @@ func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> 
 	if currency == null:
 		push_warning("Invalid currency type: ", currency_type)
 		return false
-	var current: int = currencies.get(currency, 0)
+	var key: String = currency.id
+	var current: int = currencies.get(key, 0)
 	var next: int = current + amount
 	if next < 0:
 		return false
-	currencies[currency] = next
+	currencies[key] = next
 	currencies_changed.emit()
 	return true
 
-func _get_currency_by_id(id: String) -> CountableObject:
-	return currency_id_lookup.get(id)
+func get_currency_by_id(id: String) -> int:
+	return currencies.get(id, 0)
 
 func get_currency(currency_type: CountableObject.ObjectType) -> int:
 	var currency: CountableObject = currency_lookup.get(currency_type)
 	if currency == null:
 		return 0
-	return currencies.get(currency, 0)
+	return currencies.get(currency.id, 0)
 
-func _load_upgrades(path: String) -> void:
-	var dir: DirAccess = DirAccess.open(path)
-	if dir == null:
-		return
-	dir.list_dir_begin()
-	var file: String = dir.get_next()
-	while file != "":
-		if file == "." or file == "..":
-			file = dir.get_next()
-			continue
-		var full_path: String = path + "/" + file
-		if dir.current_is_dir():
-			_load_upgrades(full_path)
-		elif file.ends_with(".tres"):
-			var res: UpgradeDefinition = load(full_path)
-			if res is UpgradeDefinition:
-				upgrades[res.id] = UpgradeState.new(res)
-				upgrade_lookup[res.id] = res
-		file = dir.get_next()
-	dir.list_dir_end()
+func load_upgrades() -> void:
+	upgrades.clear()
+	upgrade_lookup.clear()
+	GlobalResourceLoader.recursive_load(
+		"res://resources/upgrades/",
+		func(res: Resource, path: String) -> void:
+			var upgrade: UpgradeDefinition = res
+
+			if upgrade.id.is_empty():
+				push_error("Upgrade missing id: %s" % path)
+			elif upgrade_lookup.has(upgrade.id):
+				push_error("Duplicate upgrade id: %s" % upgrade.id)
+			else:
+				upgrades[upgrade.id] = UpgradeState.new(upgrade)
+				upgrade_lookup[upgrade.id] = upgrade,
+		[".tres"],
+		UpgradeDefinition
+	)
 	upgrades_changed.emit()

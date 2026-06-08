@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://daxnes3sf1ffo"]
+
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/countable_objects/materials/MaterialDefinition.gd" id="1_hdfes"]
+
+[resource]
+script = ExtResource("1_hdfes")
+tags = Array[int]([1, 2])
+id = "water"
+display_name = "Water"
+metadata/_custom_type_script = "uid://dviak2555ty3u"

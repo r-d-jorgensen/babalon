@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://blj2dujb6ckk5"]
+
+[ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/countable_objects/materials/source/Berry.tres" id="1_k4f0s"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/countable_objects/actions/MaterialAction.gd" id="1_wkgwm"]
+[ext_resource type="Resource" uid="uid://ckig3dtets12" path="res://resources/countable_objects/materials/final/EdibleBerry.tres" id="2_4jbn2"]
+
+[resource]
+script = ExtResource("1_wkgwm")
+id = "check_berry"
+display_name = "Check Berry"
+inputs = {
+ExtResource("1_k4f0s"): 1
+}
+outputs = {
+ExtResource("2_4jbn2"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

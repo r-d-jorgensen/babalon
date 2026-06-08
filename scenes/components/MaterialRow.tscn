@@ -18,3 +18,7 @@ text = "Material"
 [node name="AmountLabel" type="Label" parent="." unique_id=103870703]
 layout_mode = 2
 text = "0"
+
+[node name="ChangeLabel" type="Label" parent="." unique_id=1509759633]
+layout_mode = 2
+text = "0"

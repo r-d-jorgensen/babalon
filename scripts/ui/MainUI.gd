@@ -2,6 +2,7 @@ extends VBoxContainer
 
 @onready var economy_button: Button = $TopTabs/EconomyButton
 @onready var civilization_button: Button = $TopTabs/CivilizationButton
+@onready var exploration_button: Button = $TopTabs/ExplorationButton
 @onready var pages: TabContainer = $MainViews
 @onready var stored_ticks_label: Label = $TopTabs/StoredTicksLabel
 @onready var normal_speed_button: Button = $TopTabs/NormalSpeedButton
@@ -11,7 +12,8 @@ extends VBoxContainer
 func _ready() -> void:
 	pages.tabs_visible = false
 	economy_button.pressed.connect(func()->void: select_tab(0))
-	civilization_button.pressed.connect(func()->void: select_tab(1))
+	exploration_button.pressed.connect(func()->void: select_tab(1))
+	civilization_button.pressed.connect(func()->void: select_tab(2))
 	normal_speed_button.pressed.connect(func() -> void:
 		PlayerManager.set_timer_speed(1)
 		update_speed_buttons(1)
@@ -33,7 +35,8 @@ func _ready() -> void:
 func select_tab(tab: int) -> void:
 	pages.current_tab = tab
 	economy_button.disabled = tab == 0
-	civilization_button.disabled = tab == 1
+	exploration_button.disabled = tab == 1
+	civilization_button.disabled = tab == 2
 
 func update_speed_buttons(speed: int) -> void:
 	normal_speed_button.disabled = speed == 1

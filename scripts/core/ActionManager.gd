@@ -7,7 +7,7 @@ signal workers_changed(action: MaterialAction)
 var actions: Array[MaterialAction] = []
 var total_workers: int = 0
 var optimal_worker_limit: int = 30
-var worker_race: WorkerDefinition = preload("res://resources/workers/Human.tres")
+var worker_race: WorkerDefinition = preload("res://resources/countable_objects/workers/Human.tres")
 var states: Dictionary[String, MaterialActionState] = {}
 var actions_by_id: Dictionary[String, MaterialAction] = {}
 var _consumption_tick: int = 0
@@ -20,24 +20,31 @@ func _ready() -> void:
 func load_actions() -> void:
 	actions.clear()
 	actions_by_id.clear()
-	var dir: DirAccess = DirAccess.open("res://resources/actions/")
-	if dir == null:
-		return
-	dir.list_dir_begin()
-	var file: String = dir.get_next()
-	while file != "":
-		if file.ends_with(".tres"):
-			var action: MaterialAction = load("res://resources/actions/" + file)
+	GlobalResourceLoader.recursive_load(
+		"res://resources/countable_objects/actions/",
+		func(res: Resource, path: String) -> void:
+			var action: MaterialAction = res
 			if action.id.is_empty():
-				push_error("Action missing id: %s" % file)
+				push_error("Action missing id: %s" % path)
 			elif actions_by_id.has(action.id):
 				push_error("Duplicate action id: %s" % action.id)
 			else:
 				actions.append(action)
-				actions_by_id[action.id] = action
-		file = dir.get_next()
-	dir.list_dir_end()
+				actions_by_id[action.id] = action,
+		[".tres"],
+		MaterialAction
+	)
 	actions_loaded.emit()
+
+func _register_action(res: Resource, path: String) -> void:
+	var action: MaterialAction = res
+	if action.id.is_empty():
+		push_error("Action missing id: %s" % path)
+	elif actions_by_id.has(action.id):
+		push_error("Duplicate action id: %s" % action.id)
+	else:
+		actions.append(action)
+		actions_by_id[action.id] = action
 
 func _on_tick() -> void:
 	for state: MaterialActionState in states.values():
@@ -70,7 +77,7 @@ func get_action_by_id(id: String) -> MaterialAction:
 func get_state(action: MaterialAction) -> MaterialActionState:
 	var key: String = action.id
 	if not states.has(key):
-		var state: MaterialActionState = MaterialActionState.new()
+		var state: MaterialActionState = MaterialActionState.new(action)
 		state.action = action
 		states[key] = state
 	return states[key]
@@ -79,12 +86,12 @@ func assign_worker(action: MaterialAction, amount: int = 1) -> void:
 	if get_available_workers() < amount: return
 	var state: MaterialActionState = get_state(action)
 	state.workers_assigned += amount
-	workers_changed.emit(state.action)
+	workers_changed.emit(action)
 
 func unassign_worker(action: MaterialAction, amount: int = 1) -> void:
 	var state: MaterialActionState = get_state(action)
 	state.workers_assigned -= min(amount, state.workers_assigned)
-	workers_changed.emit(state.action)
+	workers_changed.emit(action)
 
 func get_total_demand() -> Dictionary[int, int]:
 	var total: Dictionary[int, int] = {}
@@ -109,18 +116,53 @@ func get_worker_efficiency() -> float:
 		capacity_efficiency = float(optimal_worker_limit) / float(total_workers)
 	return need_efficiency * capacity_efficiency
 
+func calculate_worker_consumption() -> Dictionary[String, int]:
+	var consumption: Dictionary[String, int] = {}
+	var active_workers: int = get_total_assigned()
+	if active_workers <= 0:
+		return consumption
+	for tag: MaterialDefinition.MaterialTag in worker_race.consumption_requirements:
+		var total_required: int = worker_race.get_required_amount(tag) * active_workers
+		_accumulate_tag_consumption(consumption, tag, total_required)
+	return consumption
+
 func _consume_worker_resources() -> void:
 	need_fulfillment.clear()
 	var active_workers: int = get_total_assigned()
-	if active_workers <= 0: return
+	if active_workers <= 0:
+		return
 	for tag: MaterialDefinition.MaterialTag in worker_race.consumption_requirements:
 		var total_required: int = worker_race.get_required_amount(tag) * active_workers
 		var consumed: int = _consume_tag_resources(tag, total_required)
 		var fulfillment: float = 1.0
 		if total_required > 0:
 			fulfillment = float(consumed) / float(total_required)
-		need_fulfillment[tag] = clamp(fulfillment, 0.0, 1.0)
+		need_fulfillment[tag] = clamp(fulfillment, 0.01, 1.0)
 	MaterialManager._bump()
+
+func _accumulate_tag_consumption(consumption: Dictionary[String, int], tag: int, amount: int) -> void:
+	var remaining: int = amount
+	var valid_materials: Array[MaterialDefinition] = []
+	for mat: MaterialDefinition in MaterialManager.materials_list:
+		if mat.craft_stage == MaterialDefinition.CraftingStage.FINISH and mat.has_tag(tag):
+			valid_materials.append(mat)
+	valid_materials.sort_custom(func(a: MaterialDefinition, b: MaterialDefinition) -> bool:
+		return a.production_value < b.production_value
+	)
+	for mat: MaterialDefinition in valid_materials:
+		if remaining <= 0:
+			break
+		var available_items: int = MaterialManager.get_amount(mat)
+		if available_items <= 0:
+			continue
+		var total_value: int = available_items * mat.production_value
+		if total_value <= remaining:
+			consumption[mat.id] = consumption.get(mat.id, 0) + available_items
+			remaining -= total_value
+		else:
+			var items_needed: int = ceili(remaining / float(mat.production_value))
+			consumption[mat.id] = consumption.get(mat.id, 0) + items_needed
+			remaining = 0
 
 func _consume_tag_resources(tag: int, amount: int) -> int:
 	var remaining: int = amount

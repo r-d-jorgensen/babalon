@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://dv8v5ccq8raxw"]
+
+[ext_resource type="Resource" uid="uid://b8f31hatudx41" path="res://resources/countable_objects/materials/source/Mushroom.tres" id="1_wntet"]
+[ext_resource type="Resource" uid="uid://deirr12u278pd" path="res://resources/countable_objects/materials/final/EdibleMushroom.tres" id="2_dtrvw"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/countable_objects/actions/MaterialAction.gd" id="3_scp2n"]
+
+[resource]
+script = ExtResource("3_scp2n")
+id = "check_mushrooms"
+display_name = "Check Mushrooms"
+inputs = {
+ExtResource("1_wntet"): 1
+}
+outputs = {
+ExtResource("2_dtrvw"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"
