@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapData" format=3 uid="uid://dt1himvfj6ngq"]
+
+[ext_resource type="Script" uid="uid://d30eyn6u4unos" path="res://resources/exploration_map/MapData.gd" id="1_2h2d8"]
+[ext_resource type="Script" uid="uid://sabblbceeuhn" path="res://resources/exploration_map/TileData.gd" id="2_iq40t"]
+
+[resource]
+script = ExtResource("1_2h2d8")
+map_name = "Cave"
+metadata/_custom_type_script = "uid://d30eyn6u4unos"

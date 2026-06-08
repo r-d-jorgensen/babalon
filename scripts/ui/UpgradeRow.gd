@@ -15,12 +15,12 @@ func _ready() -> void:
 	refresh()
 
 func refresh() -> void:
-	if state == null or state.definition == null:
+	if state == null or state.upgrade == null:
 		return
 	name_label.text = state.get_display_name()
 	level_label.text = "%d/%d" % [
 		state.level,
-		state.definition.max_level
+		state.upgrade.max_level
 	]
 	cost_label.text = _get_cost_text()
 	if state.is_maxed():
@@ -32,9 +32,9 @@ func refresh() -> void:
 
 func _get_cost_text() -> String:
 	var parts: Array[String] = []
-	for currency: CountableObject in state.definition.costs:
+	for currency: CountableObject in state.upgrade.costs:
 		parts.append("%d %s" % [
-			state.definition.costs[currency],
+			state.upgrade.costs[currency],
 			currency.display_name
 		])
 	return ", ".join(parts)

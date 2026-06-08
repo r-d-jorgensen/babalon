@@ -42,7 +42,7 @@ func build_upgrades_ui() -> void:
 	for state: UpgradeState in PlayerManager.upgrades.values():
 		var row: UpgradeRow = upgrade_row_scene.instantiate()
 		row.state = state
-		match state.definition.category:
+		match state.upgrade.category:
 			UpgradeDefinition.UpgradeCategory.CULTURE:
 				civics_list.add_child(row)
 			UpgradeDefinition.UpgradeCategory.TECHNOLOGY:

@@ -54,7 +54,6 @@ func load_currencies() -> void:
 		"res://resources/countable_objects/currencies/",
 		func(res: Resource, path: String) -> void:
 			var currency: CountableObject = res
-
 			if currency.id.is_empty():
 				push_error("Currency missing id: %s" % path)
 			elif currency_id_lookup.has(currency.id):
@@ -62,7 +61,6 @@ func load_currencies() -> void:
 			else:
 				currency_lookup[currency.object_type] = currency
 				currency_id_lookup[currency.id] = currency
-
 				if not currencies.has(currency.id):
 					currencies[currency.id] = 0,
 		[".tres"],
