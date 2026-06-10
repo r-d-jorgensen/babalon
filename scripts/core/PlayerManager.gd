@@ -47,26 +47,15 @@ func set_timer_speed(multiplier: int) -> void:
 	else:
 		catchup_speed_multiplier = 1
 
-func load_currencies() -> void:
-	currency_lookup.clear()
-	currency_id_lookup.clear()
-	GlobalResourceLoader.recursive_load(
-		"res://resources/countable_objects/currencies/",
-		func(res: Resource, path: String) -> void:
-			var currency: CountableObject = res
-			if currency.id.is_empty():
-				push_error("Currency missing id: %s" % path)
-			elif currency_id_lookup.has(currency.id):
-				push_error("Duplicate currency id: %s" % currency.id)
-			else:
-				currency_lookup[currency.object_type] = currency
-				currency_id_lookup[currency.id] = currency
-				if not currencies.has(currency.id):
-					currencies[currency.id] = 0,
-		[".tres"],
-		CountableObject
-	)
-	currencies_changed.emit()
+func get_upgrade(id: String) -> UpgradeState:
+	return upgrades.get(id)
+
+func get_upgrade_level(id: String) -> int:
+	var upgrade: UpgradeState = upgrades.get(id)
+	return upgrade.level if upgrade else 0
+
+func has_upgrade(id: String) -> bool:
+	return get_upgrade_level(id) > 0
 
 func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
 	var currency: CountableObject = currency_lookup.get(currency_type)
@@ -91,14 +80,34 @@ func get_currency(currency_type: CountableObject.ObjectType) -> int:
 		return 0
 	return currencies.get(currency.id, 0)
 
+func load_currencies() -> void:
+	currency_lookup.clear()
+	currency_id_lookup.clear()
+	GlobalResourceLoader.recursive_load(
+		"res://resources/countable_objects/currencies/",
+		func(res: Resource, path: String) -> void:
+			var currency: CountableObject = res
+			if currency.id.is_empty():
+				push_error("Currency missing id: %s" % path)
+			elif currency_id_lookup.has(currency.id):
+				push_error("Duplicate currency id: %s" % currency.id)
+			else:
+				currency_lookup[currency.object_type] = currency
+				currency_id_lookup[currency.id] = currency
+				if not currencies.has(currency.id):
+					currencies[currency.id] = 0,
+		[".tres"],
+		CountableObject
+	)
+	currencies_changed.emit()
+
 func load_upgrades() -> void:
 	upgrades.clear()
 	upgrade_lookup.clear()
 	GlobalResourceLoader.recursive_load(
-		"res://resources/upgrades/",
+		"res://resources/countable_objects/upgrades/",
 		func(res: Resource, path: String) -> void:
 			var upgrade: UpgradeDefinition = res
-
 			if upgrade.id.is_empty():
 				push_error("Upgrade missing id: %s" % path)
 			elif upgrade_lookup.has(upgrade.id):

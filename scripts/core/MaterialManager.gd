@@ -61,8 +61,8 @@ func _process_tick_effects() -> void:
 
 func calculate_material_deltas() -> void:
 	material_delta_per_tick.clear()
-	var worker_efficiency: float = ActionManager.get_worker_efficiency()
-	for state: MaterialActionState in ActionManager.states.values():
+	var worker_efficiency: float = WorkerManager.get_worker_efficiency()
+	for state: MaterialActionState in WorkerManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
 		var action: MaterialAction = state.action
@@ -89,23 +89,23 @@ func calculate_material_deltas() -> void:
 	_add_worker_consumption_deltas()
 
 func _add_worker_consumption_deltas() -> void:
-	var consumption: Dictionary[String, int] = ActionManager.calculate_worker_consumption()
+	var consumption: Dictionary[String, int] = WorkerManager.calculate_worker_consumption()
 	for id: String in consumption:
 		material_delta_per_tick[id] = (
 			material_delta_per_tick.get(id, 0.0)
-			- float(consumption[id]) / float(ActionManager.worker_race.consumption_time)
+			- float(consumption[id]) / float(WorkerManager.worker_race.consumption_time)
 		)
 
 func change_materials(object: CountableObject, amount: int) -> bool:
 	if object is WorkerDefinition:
 		if amount > 0:
-			ActionManager.change_workers(amount)
+			WorkerManager.change_workers(amount)
 			_bump()
 			return true
 		if amount < 0:
-			if ActionManager.get_available_workers() < -amount:
+			if WorkerManager.get_available_workers() < -amount:
 				return false
-			ActionManager.change_workers(amount)
+			WorkerManager.change_workers(amount)
 			_bump()
 			return true
 		return false

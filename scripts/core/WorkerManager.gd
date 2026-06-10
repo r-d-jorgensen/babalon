@@ -53,6 +53,16 @@ func _on_tick() -> void:
 	if _consumption_tick >= worker_race.consumption_time:
 		_consumption_tick = 0
 		_consume_worker_resources()
+	var currency_generated: int = get_currency_per_tick()
+	if currency_generated > 0:
+		PlayerManager.change_currency(worker_race.object_type, currency_generated)
+
+func get_currency_per_tick() -> int:
+	return ceili(
+		get_total_assigned()
+		* worker_race.worker_currency_per_tick
+		* get_worker_efficiency()
+	)
 
 func change_workers(amount: int) -> bool:
 	if amount < 0:

@@ -18,6 +18,11 @@ func can_purchase() -> bool:
 		return false
 	if is_maxed():
 		return false
+	for required_upgrade: UpgradeDefinition in upgrade.required_upgrades:
+		var required_level: int = upgrade.required_upgrades[required_upgrade]
+		var state: UpgradeState = PlayerManager.get_upgrade(required_upgrade.id)
+		if state == null or state.level < required_level:
+			return false
 	for object: CountableObject in upgrade.costs:
 		var cost:int = upgrade.costs[object]
 		if get_countable_amount(object) < cost:
@@ -28,9 +33,7 @@ func purchase() -> bool:
 	if not can_purchase():
 		return false
 	for object: CountableObject in upgrade.costs:
-		var cost: int = upgrade.costs[object]
-		if not change_countable_amount(object, -cost):
-			return false
+		change_countable_amount(object, -upgrade.costs[object])
 	level += 1
 	for effect: UpgradeEffect in upgrade.upgrade_effects:
 		effect.apply_effect()
@@ -41,14 +44,14 @@ func get_countable_amount(object: CountableObject) -> int:
 	if object is MaterialDefinition:
 		return MaterialManager.get_amount(object)
 	if object is WorkerDefinition:
-		return ActionManager.get_available_workers()
+		return WorkerManager.get_available_workers()
 	return PlayerManager.get_currency(object.object_type)
 
 func change_countable_amount(object: CountableObject, amount: int) -> bool:
 	if object is MaterialDefinition:
 		return MaterialManager.change_materials(object, amount)
 	if object is WorkerDefinition:
-		return ActionManager.get_available_workers()
+		return WorkerManager.get_available_workers()
 	return PlayerManager.change_currency(object.object_type, amount)
 
 func get_display_name() -> String:

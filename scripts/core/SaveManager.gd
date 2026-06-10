@@ -25,7 +25,7 @@ func save_game() -> void:
 	save.version = SAVE_VERSION
 	save.last_save_time = floori(Time.get_unix_time_from_system())
 	save.stored_ticks = PlayerManager.stored_ticks
-	save.total_workers = ActionManager.total_workers
+	save.total_workers = WorkerManager.total_workers
 	save.materials = _pack_materials(MaterialManager.materials)
 	save.created = _pack_materials(MaterialManager.created)
 	save.created_all_time = _pack_materials(MaterialManager.created_all_time)
@@ -65,10 +65,10 @@ func _apply_save(save: SaveGameData) -> void:
 	_unpack_materials(MaterialManager.materials, save.materials)
 	_unpack_materials(MaterialManager.created, save.created)
 	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
-	ActionManager.total_workers = save.total_workers
-	ActionManager.states.clear()
+	WorkerManager.total_workers = save.total_workers
+	WorkerManager.states.clear()
 	for s: SaveActionStateData in save.states:
-		var action: MaterialAction = ActionManager.get_action_by_id(s.action_id)
+		var action: MaterialAction = WorkerManager.get_action_by_id(s.action_id)
 		if action == null:
 			push_warning("Unknown action id: %s" % s.action_id)
 			continue
@@ -76,7 +76,7 @@ func _apply_save(save: SaveGameData) -> void:
 		state.action = action
 		state.workers_assigned = s.workers_assigned
 		state.progress = s.progress
-		ActionManager.states[s.action_id] = state
+		WorkerManager.states[s.action_id] = state
 	MaterialManager._bump()
 	MaterialManager.calculate_material_deltas()
 
@@ -104,7 +104,7 @@ func _pack_player() -> PlayerSaveData:
 
 func _pack_states() -> Array[SaveActionStateData]:
 	var out: Array[SaveActionStateData] = []
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: MaterialActionState in WorkerManager.states.values():
 		var s: SaveActionStateData = SaveActionStateData.new()
 		s.action_id = state.action.id
 		s.workers_assigned = state.workers_assigned

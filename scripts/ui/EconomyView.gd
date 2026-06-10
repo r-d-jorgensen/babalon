@@ -22,8 +22,8 @@ func _ready() -> void:
 	update_worker_label()
 	update_consumption_labels()
 	MaterialManager.inventory_changed.connect(_on_worker_update)
-	ActionManager.workers_changed.connect(_on_worker_update)
-	ActionManager.total_workers_changed.connect(_on_worker_update)
+	WorkerManager.workers_changed.connect(_on_worker_update)
+	WorkerManager.total_workers_changed.connect(_on_worker_update)
 	select_tab(0)
 
 func select_tab(tab: int) -> void:
@@ -39,7 +39,7 @@ func _on_worker_update(_action: MaterialAction = null) -> void:
 func build_actions_ui() -> void:
 	for child: Node in action_list.get_children():
 		child.queue_free()
-	for action_data: MaterialAction in ActionManager.actions:
+	for action_data: MaterialAction in WorkerManager.actions:
 		var row: ActionRow = action_row_scene.instantiate()
 		row.node = action_data
 		action_list.add_child(row)
@@ -53,17 +53,17 @@ func build_materials_ui() -> void:
 		materials_list.add_child(row)
 
 func update_worker_label(_action: Variant = null) -> void:
-	var available: int = ActionManager.get_available_workers()
-	var total: int = ActionManager.total_workers
-	var optimal: int = ActionManager.optimal_worker_limit
-	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [ActionManager.worker_race.display_name, available, total, optimal]
+	var available: int = WorkerManager.get_available_workers()
+	var total: int = WorkerManager.total_workers
+	var optimal: int = WorkerManager.optimal_worker_limit
+	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [WorkerManager.worker_race.display_name, available, total, optimal]
 
 func update_consumption_labels() -> void:
 	var supply: Dictionary[int, int] = MaterialManager.get_total_supply()
-	var demand: Dictionary[int, int] = ActionManager.get_total_demand()
-	var race: WorkerDefinition = ActionManager.worker_race
+	var demand: Dictionary[int, int] = WorkerManager.get_total_demand()
+	var race: WorkerDefinition = WorkerManager.worker_race
 	var production: Dictionary[int, float] = {}
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: MaterialActionState in WorkerManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
 		var action: MaterialAction = state.action
@@ -73,7 +73,7 @@ func update_consumption_labels() -> void:
 				float(action.outputs[mat])
 				* action.base_conversion_rate
 				* state.workers_assigned
-				* ActionManager.get_worker_efficiency()
+				* WorkerManager.get_worker_efficiency()
 				/ float(action.duration)
 			)
 			for tag: MaterialDefinition.MaterialTag in mat.tags:

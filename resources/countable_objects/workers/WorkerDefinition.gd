@@ -1,6 +1,7 @@
 extends CountableObject
 class_name WorkerDefinition
 
+@export var worker_currency_per_tick: int = 1
 @export var consumption_time: int = 10
 @export var consumption_requirements: Dictionary[MaterialDefinition.MaterialTag, int] = {}
 

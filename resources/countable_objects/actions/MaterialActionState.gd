@@ -13,7 +13,7 @@ func _init(base_action: MaterialAction = MaterialAction.new()) -> void:
 func tick() -> void:
 	if action == null or workers_assigned <= 0 or not _can_consume_inputs():
 		return
-	progress += workers_assigned * total_conversion_rate * ActionManager.get_worker_efficiency()
+	progress += workers_assigned * total_conversion_rate * WorkerManager.get_worker_efficiency()
 	while progress >= action.duration:
 		progress -= action.duration
 		_complete_cycle()

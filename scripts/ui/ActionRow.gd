@@ -17,7 +17,7 @@ func _ready() -> void:
 	action_button.pressed.connect(_on_action_pressed)
 	minus_button.pressed.connect(_on_minus_pressed)
 	plus_button.pressed.connect(_on_plus_pressed)
-	ActionManager.workers_changed.connect(_on_workers_changed)
+	WorkerManager.workers_changed.connect(_on_workers_changed)
 	PlayerManager.tick.connect(update_ui)
 	MaterialManager.inventory_changed.connect(update_ui)
 	update_ui()
@@ -25,10 +25,10 @@ func _ready() -> void:
 func _on_workers_changed(action: MaterialAction) -> void:
 	if action != node:
 		return
-	worker_label.text = str(ActionManager.get_state(node).workers_assigned)
+	worker_label.text = str(WorkerManager.get_state(node).workers_assigned)
 
 func update_ui() -> void:
-	var state: MaterialActionState = ActionManager.get_state(node)
+	var state: MaterialActionState = WorkerManager.get_state(node)
 	action_button.text = node.display_name
 	action_button.disabled = not can_run()
 	input_label.text = format_io(node.inputs, true)
@@ -52,10 +52,10 @@ func format_io(dict: Dictionary[CountableObject, int], is_input: bool) -> String
 	return ", ".join(parts)
 
 func format_rate() -> String:
-	var state: MaterialActionState = ActionManager.get_state(node)
+	var state: MaterialActionState = WorkerManager.get_state(node)
 	if state.workers_assigned <= 0:
 		return ""
-	var efficiency: float = ActionManager.get_worker_efficiency()
+	var efficiency: float = WorkerManager.get_worker_efficiency()
 	var per_tick: Dictionary[CountableObject, float] = {}
 	for mat:CountableObject in node.outputs:
 		var amount: float = (
@@ -99,7 +99,7 @@ func can_run() -> bool:
 	return true
 
 func _on_action_pressed() -> void:
-	var state: MaterialActionState = ActionManager.get_state(node)
+	var state: MaterialActionState = WorkerManager.get_state(node)
 	if not can_run():
 		return
 	state.progress += PlayerManager.player_click_power * node.base_conversion_rate
@@ -115,7 +115,7 @@ func _on_action_pressed() -> void:
 	update_ui()
 
 func _on_minus_pressed() -> void:
-	ActionManager.unassign_worker(node)
+	WorkerManager.unassign_worker(node)
 
 func _on_plus_pressed() -> void:
-	ActionManager.assign_worker(node)
+	WorkerManager.assign_worker(node)
