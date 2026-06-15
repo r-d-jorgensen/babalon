@@ -55,7 +55,7 @@ func build_materials_ui() -> void:
 func update_worker_label(_action: Variant = null) -> void:
 	var available: int = WorkerManager.get_available_workers()
 	var total: int = WorkerManager.total_workers
-	var optimal: int = WorkerManager.optimal_worker_limit
+	var optimal: int = WorkerManager.total_optimal_worker_limit
 	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [WorkerManager.worker_race.display_name, available, total, optimal]
 
 func update_consumption_labels() -> void:

@@ -20,6 +20,7 @@ func _ready() -> void:
 	technology_button.pressed.connect(func() -> void: select_tab(1))
 	truth_button.pressed.connect(func() -> void: select_tab(2))
 	PlayerManager.currencies_changed.connect(update_display)
+	UpgradeManager.upgrades_changed.connect(build_upgrades_ui)
 	update_display()
 	build_upgrades_ui()
 	select_tab(0)
@@ -39,7 +40,7 @@ func build_upgrades_ui() -> void:
 	_clear_container(civics_list)
 	_clear_container(technology_list)
 	_clear_container(truth_list)
-	for state: UpgradeState in PlayerManager.upgrades.values():
+	for state: UpgradeState in UpgradeManager.upgrades.values():
 		var row: UpgradeRow = upgrade_row_scene.instantiate()
 		row.state = state
 		match state.upgrade.category:

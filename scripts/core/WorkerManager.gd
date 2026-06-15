@@ -1,4 +1,4 @@
-extends Node
+extends Manager
 
 signal actions_loaded
 signal total_workers_changed
@@ -6,7 +6,8 @@ signal workers_changed(action: MaterialAction)
 
 var actions: Array[MaterialAction] = []
 var total_workers: int = 0
-var optimal_worker_limit: int = 30
+var base_optimal_worker_limit: int = 30
+var total_optimal_worker_limit: int = 30
 var worker_race: WorkerDefinition = preload("res://resources/countable_objects/workers/Human.tres")
 var states: Dictionary[String, MaterialActionState] = {}
 var actions_by_id: Dictionary[String, MaterialAction] = {}
@@ -16,12 +17,21 @@ var need_fulfillment: Dictionary[int, float] = {}
 func _ready() -> void:
 	load_actions()
 	PlayerManager.tick.connect(_on_tick)
+	effects_changed.connect(_recalculate_worker_formula)
+	_recalculate_worker_formula()
+
+func _recalculate_worker_formula() -> void:
+	total_optimal_worker_limit = (
+		base_optimal_worker_limit +
+		UpgradeManager.effects.get("worker_limit_flat", 0)
+	)
+	total_workers_changed.emit()
 
 func load_actions() -> void:
 	actions.clear()
 	actions_by_id.clear()
 	GlobalResourceLoader.recursive_load(
-		"res://resources/countable_objects/actions/",
+		"res://resources/actions/",
 		func(res: Resource, path: String) -> void:
 			var action: MaterialAction = res
 			if action.id.is_empty():
@@ -93,7 +103,10 @@ func get_state(action: MaterialAction) -> MaterialActionState:
 	return states[key]
 
 func assign_worker(action: MaterialAction, amount: int = 1) -> void:
-	if get_available_workers() < amount: return
+	if amount <= 0:
+		return
+	if get_available_workers() < amount:
+		return
 	var state: MaterialActionState = get_state(action)
 	state.workers_assigned += amount
 	workers_changed.emit(action)
@@ -122,8 +135,8 @@ func get_worker_efficiency() -> float:
 				need_efficiency += ratio * contribution
 	need_efficiency = clamp(need_efficiency, 0.01, 1.0)
 	var capacity_efficiency: float = 1.0
-	if total_workers > optimal_worker_limit:
-		capacity_efficiency = float(optimal_worker_limit) / float(total_workers)
+	if total_workers > total_optimal_worker_limit:
+		capacity_efficiency = float(total_optimal_worker_limit) / float(total_workers)
 	return need_efficiency * capacity_efficiency
 
 func calculate_worker_consumption() -> Dictionary[String, int]:

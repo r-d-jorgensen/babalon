@@ -7,8 +7,7 @@ enum ObjectType {
 	CIVIC,
 	TECHNOLOGY,
 	EXPLORATION,
-	ASCENSION,
-	PREMIUM
+	ASCENSION
 }
 
 @export var id: String:

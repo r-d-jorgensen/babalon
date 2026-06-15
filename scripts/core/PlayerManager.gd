@@ -1,8 +1,7 @@
-extends Node
+extends Manager
 
 signal tick
 signal currencies_changed
-signal upgrades_changed
 
 var timer: Timer
 var tick_rate: float = 1.0
@@ -12,12 +11,9 @@ var player_click_power: int = 1
 var currencies: Dictionary[String, int] = {}
 var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
 var currency_id_lookup: Dictionary[String, CountableObject] = {}
-var upgrades: Dictionary[String, UpgradeState] = {}
-var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
 	load_currencies()
-	load_upgrades()
 	_setup_timer()
 
 func _setup_timer() -> void:
@@ -46,16 +42,6 @@ func set_timer_speed(multiplier: int) -> void:
 		catchup_speed_multiplier = max(1, multiplier)
 	else:
 		catchup_speed_multiplier = 1
-
-func get_upgrade(id: String) -> UpgradeState:
-	return upgrades.get(id)
-
-func get_upgrade_level(id: String) -> int:
-	var upgrade: UpgradeState = upgrades.get(id)
-	return upgrade.level if upgrade else 0
-
-func has_upgrade(id: String) -> bool:
-	return get_upgrade_level(id) > 0
 
 func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
 	var currency: CountableObject = currency_lookup.get(currency_type)
@@ -100,22 +86,3 @@ func load_currencies() -> void:
 		CountableObject
 	)
 	currencies_changed.emit()
-
-func load_upgrades() -> void:
-	upgrades.clear()
-	upgrade_lookup.clear()
-	GlobalResourceLoader.recursive_load(
-		"res://resources/countable_objects/upgrades/",
-		func(res: Resource, path: String) -> void:
-			var upgrade: UpgradeDefinition = res
-			if upgrade.id.is_empty():
-				push_error("Upgrade missing id: %s" % path)
-			elif upgrade_lookup.has(upgrade.id):
-				push_error("Duplicate upgrade id: %s" % upgrade.id)
-			else:
-				upgrades[upgrade.id] = UpgradeState.new(upgrade)
-				upgrade_lookup[upgrade.id] = upgrade,
-		[".tres"],
-		UpgradeDefinition
-	)
-	upgrades_changed.emit()

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WorkerLimitFlat" format=3 uid="uid://c051kpbbah2q2"]
+
+[ext_resource type="Script" uid="uid://bj2k7r1uyl4ad" path="res://resources/effects/WorkerLimitFlat.gd" id="1_fj4g0"]
+
+[resource]
+script = ExtResource("1_fj4g0")
+id = "worker_limit_flat"
+display_name = "Worker Limit Flat"
+default_value = 0
+metadata/_custom_type_script = "uid://bj2k7r1uyl4ad"

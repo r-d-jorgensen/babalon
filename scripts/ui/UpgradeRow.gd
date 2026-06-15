@@ -10,7 +10,7 @@ var state: UpgradeState
 
 func _ready() -> void:
 	PlayerManager.currencies_changed.connect(refresh)
-	PlayerManager.upgrades_changed.connect(refresh)
+	UpgradeManager.upgrades_changed.connect(refresh)
 	buy_button.pressed.connect(_on_buy_pressed)
 	refresh()
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://dc8v1qlian1xd"]
+
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/MaterialAction.gd" id="1_jtrh3"]
+[ext_resource type="Resource" uid="uid://bsf5quvloqhsn" path="res://resources/countable_objects/materials/source/Stone.tres" id="1_sqi2t"]
+[ext_resource type="Resource" uid="uid://dk4kmjud86ly5" path="res://resources/countable_objects/materials/intermediate/SharpRock.tres" id="2_k424v"]
+
+[resource]
+script = ExtResource("1_jtrh3")
+id = "sharpen_stone"
+display_name = "Sharpen Stone"
+inputs = {
+ExtResource("1_sqi2t"): 1
+}
+outputs = {
+ExtResource("2_k424v"): 1
+}
+metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

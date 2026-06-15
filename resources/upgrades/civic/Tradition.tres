@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bh3dv3mn815kd"]
+
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_kmcob"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_rhxgg"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_y084q"]
+[ext_resource type="Resource" uid="uid://bs3gbdu00xi56" path="res://resources/upgrades/civic/Community.tres" id="3_5t06v"]
+[ext_resource type="Resource" uid="uid://ddyx6hx3yvgbh" path="res://resources/upgrades/civic/FoodSharing.tres" id="4_qw0yb"]
+
+[resource]
+script = ExtResource("2_y084q")
+id = "tradition"
+display_name = "Tradition"
+description = "Allow for tradions
+Open Law Interface"
+costs = Dictionary[ExtResource("1_kmcob"), int]({
+ExtResource("2_rhxgg"): 1
+})
+required_upgrades = Dictionary[ExtResource("2_y084q"), int]({
+ExtResource("3_5t06v"): 1,
+ExtResource("4_qw0yb"): 1
+})
+metadata/_custom_type_script = "uid://5oe453vttnbh"

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WorkerConsumptionFlat" format=3 uid="uid://dwc8p0wx3dag6"]
+
+[ext_resource type="Script" uid="uid://cajebamjrd0gy" path="res://resources/effects/WorkerConsumptionFlat.gd" id="1_2pvep"]
+
+[resource]
+script = ExtResource("1_2pvep")
+id = "worker_consumptio_flat"
+display_name = "Worker Consumption Flat"
+metadata/_custom_type_script = "uid://cajebamjrd0gy"

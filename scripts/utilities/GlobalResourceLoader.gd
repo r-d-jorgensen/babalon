@@ -32,7 +32,7 @@ static func recursive_load(
 			if res == null:
 				file = dir.get_next()
 				continue
-			if type_ref != null and not res.get_script() == type_ref:
+			if type_ref != null and not is_instance_of(res, type_ref):
 				file = dir.get_next()
 				continue
 			on_load.call(res, full_path)
