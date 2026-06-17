@@ -1,63 +1,29 @@
 extends Manager
 
-signal actions_loaded
 signal total_workers_changed
 signal workers_changed(action: MaterialAction)
 
-var actions: Array[MaterialAction] = []
 var total_workers: int = 0
 var base_optimal_worker_limit: int = 30
 var total_optimal_worker_limit: int = 30
 var worker_race: WorkerDefinition = preload("res://resources/countable_objects/workers/Human.tres")
-var states: Dictionary[String, MaterialActionState] = {}
-var actions_by_id: Dictionary[String, MaterialAction] = {}
 var _consumption_tick: int = 0
 var need_fulfillment: Dictionary[int, float] = {}
 
 func _ready() -> void:
-	load_actions()
+	register_manager(FormulaController.WORKER, self)
 	PlayerManager.tick.connect(_on_tick)
-	effects_changed.connect(_recalculate_worker_formula)
-	_recalculate_worker_formula()
+	formula_changed()
 
-func _recalculate_worker_formula() -> void:
+func formula_changed() -> void:
 	total_optimal_worker_limit = (
 		base_optimal_worker_limit +
 		UpgradeManager.effects.get("worker_limit_flat", 0)
 	)
 	total_workers_changed.emit()
 
-func load_actions() -> void:
-	actions.clear()
-	actions_by_id.clear()
-	GlobalResourceLoader.recursive_load(
-		"res://resources/actions/",
-		func(res: Resource, path: String) -> void:
-			var action: MaterialAction = res
-			if action.id.is_empty():
-				push_error("Action missing id: %s" % path)
-			elif actions_by_id.has(action.id):
-				push_error("Duplicate action id: %s" % action.id)
-			else:
-				actions.append(action)
-				actions_by_id[action.id] = action,
-		[".tres"],
-		MaterialAction
-	)
-	actions_loaded.emit()
-
-func _register_action(res: Resource, path: String) -> void:
-	var action: MaterialAction = res
-	if action.id.is_empty():
-		push_error("Action missing id: %s" % path)
-	elif actions_by_id.has(action.id):
-		push_error("Duplicate action id: %s" % action.id)
-	else:
-		actions.append(action)
-		actions_by_id[action.id] = action
-
 func _on_tick() -> void:
-	for state: MaterialActionState in states.values():
+	for state: MaterialActionState in ActionManager.states.values():
 		state.tick()
 	_consumption_tick += 1
 	if _consumption_tick >= worker_race.consumption_time:
@@ -84,35 +50,24 @@ func change_workers(amount: int) -> bool:
 
 func get_total_assigned() -> int:
 	var total: int = 0
-	for state: MaterialActionState in states.values():
+	for state: MaterialActionState in ActionManager.states.values():
 		total += state.workers_assigned
 	return total
 
 func get_available_workers() -> int:
 	return total_workers - get_total_assigned()
 
-func get_action_by_id(id: String) -> MaterialAction:
-	return actions_by_id.get(id)
-
-func get_state(action: MaterialAction) -> MaterialActionState:
-	var key: String = action.id
-	if not states.has(key):
-		var state: MaterialActionState = MaterialActionState.new(action)
-		state.action = action
-		states[key] = state
-	return states[key]
-
 func assign_worker(action: MaterialAction, amount: int = 1) -> void:
 	if amount <= 0:
 		return
 	if get_available_workers() < amount:
 		return
-	var state: MaterialActionState = get_state(action)
+	var state: MaterialActionState = ActionManager.get_state(action)
 	state.workers_assigned += amount
 	workers_changed.emit(action)
 
 func unassign_worker(action: MaterialAction, amount: int = 1) -> void:
-	var state: MaterialActionState = get_state(action)
+	var state: MaterialActionState = ActionManager.get_state(action)
 	state.workers_assigned -= min(amount, state.workers_assigned)
 	workers_changed.emit(action)
 

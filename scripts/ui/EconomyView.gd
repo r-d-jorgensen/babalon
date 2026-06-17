@@ -39,7 +39,7 @@ func _on_worker_update(_action: MaterialAction = null) -> void:
 func build_actions_ui() -> void:
 	for child: Node in action_list.get_children():
 		child.queue_free()
-	for action_data: MaterialAction in WorkerManager.actions:
+	for action_data: MaterialAction in ActionManager.actions:
 		var row: ActionRow = action_row_scene.instantiate()
 		row.node = action_data
 		action_list.add_child(row)
@@ -63,7 +63,7 @@ func update_consumption_labels() -> void:
 	var demand: Dictionary[int, int] = WorkerManager.get_total_demand()
 	var race: WorkerDefinition = WorkerManager.worker_race
 	var production: Dictionary[int, float] = {}
-	for state: MaterialActionState in WorkerManager.states.values():
+	for state: MaterialActionState in ActionManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
 		var action: MaterialAction = state.action

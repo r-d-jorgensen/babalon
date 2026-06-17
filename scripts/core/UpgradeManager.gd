@@ -6,8 +6,13 @@ var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
+	register_manager(FormulaController.UPGRADE, self)
 	load_effects()
 	load_upgrades()
+	formula_changed()
+
+func formula_changed() -> void:
+	return
 
 func get_upgrade(id: String) -> UpgradeState:
 	return upgrades.get(id)

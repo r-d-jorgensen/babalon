@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 
 PlayerManager="*uid://rq1x8rcf4sg6"
 MaterialManager="*uid://dfaxoimps0dd2"
+ActionManager="*uid://bj47lqu2v4egf"
 WorkerManager="*uid://c30ewd5tr5fc5"
 UpgradeManager="*uid://bmca6vdyiqjjj"
 SaveManager="*uid://c1isbd5qv5yaf"

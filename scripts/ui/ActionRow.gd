@@ -25,10 +25,10 @@ func _ready() -> void:
 func _on_workers_changed(action: MaterialAction) -> void:
 	if action != node:
 		return
-	worker_label.text = str(WorkerManager.get_state(node).workers_assigned)
+	worker_label.text = str(ActionManager.get_state(node).workers_assigned)
 
 func update_ui() -> void:
-	var state: MaterialActionState = WorkerManager.get_state(node)
+	var state: MaterialActionState = ActionManager.get_state(node)
 	action_button.text = node.display_name
 	action_button.disabled = not can_run()
 	input_label.text = format_io(node.inputs, true)
@@ -52,7 +52,7 @@ func format_io(dict: Dictionary[CountableObject, int], is_input: bool) -> String
 	return ", ".join(parts)
 
 func format_rate() -> String:
-	var state: MaterialActionState = WorkerManager.get_state(node)
+	var state: MaterialActionState = ActionManager.get_state(node)
 	if state.workers_assigned <= 0:
 		return ""
 	var efficiency: float = WorkerManager.get_worker_efficiency()
@@ -99,7 +99,7 @@ func can_run() -> bool:
 	return true
 
 func _on_action_pressed() -> void:
-	var state: MaterialActionState = WorkerManager.get_state(node)
+	var state: MaterialActionState = ActionManager.get_state(node)
 	if not can_run():
 		return
 	state.progress += PlayerManager.player_click_power * node.base_conversion_rate

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="WorkerLimitFlat" format=3 uid="uid://c051kpbbah2q2"]
+[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://c051kpbbah2q2"]
 
-[ext_resource type="Script" uid="uid://bj2k7r1uyl4ad" path="res://resources/effects/WorkerLimitFlat.gd" id="1_fj4g0"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="1_m8ama"]
 
 [resource]
-script = ExtResource("1_fj4g0")
+script = ExtResource("1_m8ama")
 id = "worker_limit_flat"
 display_name = "Worker Limit Flat"
-default_value = 0
-metadata/_custom_type_script = "uid://bj2k7r1uyl4ad"
+default_value = 10.0
+formula_controller = 2
+metadata/_custom_type_script = "uid://bhvkr00kx3k05"

@@ -1,4 +1,4 @@
-extends Manager
+extends Node
 
 const SAVE_PATH: String = "user://savegame.tres"
 const AUTOSAVE_INTERVAL: float = 300.0
@@ -74,9 +74,9 @@ func _apply_core_state(save: SaveGameData) -> void:
 	_unpack_materials(MaterialManager.created_all_time, save.created_all_time)
 	WorkerManager.total_workers = save.total_workers
 
-	WorkerManager.states.clear()
+	ActionManager.states.clear()
 	for s: SaveActionStateData in save.states:
-		var action: MaterialAction = WorkerManager.get_action_by_id(s.action_id)
+		var action: MaterialAction = ActionManager.get_action_by_id(s.action_id)
 		if action == null:
 			push_warning("Unknown action id: %s" % s.action_id)
 			continue
@@ -84,7 +84,7 @@ func _apply_core_state(save: SaveGameData) -> void:
 		state.action = action
 		state.workers_assigned = s.workers_assigned
 		state.progress = s.progress
-		WorkerManager.states[s.action_id] = state
+		ActionManager.states[s.action_id] = state
 
 func _rebuild_all_effects() -> void:
 	UpgradeManager.effects.clear()
@@ -97,7 +97,7 @@ func _rebuild_all_effects() -> void:
 
 func _emit_all_update_signals() -> void:
 	UpgradeManager.upgrades_changed.emit()
-	WorkerManager.effects_changed.emit()
+	WorkerManager.total_workers_changed.emit()
 	MaterialManager.inventory_changed.emit()
 	PlayerManager.currencies_changed.emit()
 
@@ -129,7 +129,7 @@ func _pack_upgrades() -> UpgradeSaveData:
 
 func _pack_states() -> Array[SaveActionStateData]:
 	var out: Array[SaveActionStateData] = []
-	for state: MaterialActionState in WorkerManager.states.values():
+	for state: MaterialActionState in ActionManager.states.values():
 		var s: SaveActionStateData = SaveActionStateData.new()
 		s.action_id = state.action.id
 		s.workers_assigned = state.workers_assigned

@@ -11,8 +11,13 @@ var materials_by_id: Dictionary[String, MaterialDefinition] = {}
 var material_delta_per_tick: Dictionary[String, float] = {}
 
 func _ready() -> void:
+	register_manager(FormulaController.MATERIAL, self)
 	load_materials() 
 	PlayerManager.tick.connect(_on_tick)
+	formula_changed()
+
+func formula_changed() -> void:
+	return
 
 func load_materials() -> void:
 	materials_list.clear()
@@ -62,7 +67,7 @@ func _process_tick_effects() -> void:
 func calculate_material_deltas() -> void:
 	material_delta_per_tick.clear()
 	var worker_efficiency: float = WorkerManager.get_worker_efficiency()
-	for state: MaterialActionState in WorkerManager.states.values():
+	for state: MaterialActionState in ActionManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
 		var action: MaterialAction = state.action
