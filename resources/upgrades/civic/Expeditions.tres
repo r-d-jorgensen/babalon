@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_istbs"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_777nb"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_ed3ld"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="4_upbws"]
+[ext_resource type="Resource" uid="uid://crtlv0asot3ay" path="res://resources/effects/UnlockExploration.tres" id="5_daay7"]
 
 [resource]
 script = ExtResource("2_ed3ld")
@@ -11,5 +13,8 @@ display_name = "Expeditions "
 description = "Allow Expenditions"
 costs = Dictionary[ExtResource("1_istbs"), int]({
 ExtResource("2_777nb"): 1
+})
+upgrade_effects = Dictionary[ExtResource("4_upbws"), float]({
+ExtResource("5_daay7"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

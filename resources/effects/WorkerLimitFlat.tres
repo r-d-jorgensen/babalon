@@ -6,6 +6,5 @@
 script = ExtResource("1_m8ama")
 id = "worker_limit_flat"
 display_name = "Worker Limit Flat"
-default_value = 10.0
 formula_controller = 2
 metadata/_custom_type_script = "uid://bhvkr00kx3k05"

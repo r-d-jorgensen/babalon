@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_a1doe"]
 [ext_resource type="Resource" uid="uid://bs3gbdu00xi56" path="res://resources/upgrades/civic/Community.tres" id="4_juoc4"]
 [ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_gjcxl"]
+[ext_resource type="Resource" uid="uid://c2uhfjx8jdpii" path="res://resources/effects/WorkerCultureGainFlat.tres" id="6_tfiyq"]
 
 [resource]
 script = ExtResource("3_a1doe")
@@ -16,5 +17,8 @@ ExtResource("2_tfiyq"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_a1doe"), int]({
 ExtResource("4_juoc4"): 1
+})
+upgrade_effects = Dictionary[ExtResource("5_gjcxl"), float]({
+ExtResource("6_tfiyq"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

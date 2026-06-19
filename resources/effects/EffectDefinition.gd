@@ -2,6 +2,7 @@ extends Resource
 class_name EffectDefinition
 
 enum EffectCompound {
+	BOOL,
 	FLAT,
 	MULTIPLY,
 	PERCENT_ADD
@@ -18,6 +19,8 @@ func apply_effect(manager: EffectManager, effect_value: float, level_increase: i
 		push_warning("Effect not loaded correctly: %s" % id)
 		return
 	match effect_compound:
+		EffectCompound.FLAT:
+			manager.effects[id] = effect_value
 		EffectCompound.FLAT:
 			manager.effects[id] += effect_value * level_increase
 		EffectCompound.MULTIPLY:

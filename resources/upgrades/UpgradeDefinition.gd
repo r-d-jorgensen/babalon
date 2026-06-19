@@ -28,4 +28,5 @@ enum UpgradeSource {
 @export var required_upgrades: Dictionary[UpgradeDefinition, int] = {} # Requirements: UpgradeDefinition -> required level
 
 @export var max_level: int = 1
+@export var upgrade_growth: float = 10.0
 @export var upgrade_effects: Dictionary[EffectDefinition, float] = {}
