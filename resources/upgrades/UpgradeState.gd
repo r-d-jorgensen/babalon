@@ -13,7 +13,7 @@ func is_purchased() -> bool:
 func is_maxed() -> bool:
 	return upgrade == null or level >= upgrade.max_level
 
-func can_purchase() -> bool:
+func can_purchase(levels: int = 1) -> bool:
 	if upgrade == null:
 		return false
 	if is_maxed():
@@ -25,20 +25,20 @@ func can_purchase() -> bool:
 			return false
 	for object: CountableObject in upgrade.costs:
 		var cost:int = upgrade.costs[object]
-		if get_countable_amount(object) < cost:
+		if get_countable_amount(object) < cost * levels: # TODO costs should scale
 			return false
 	return true
 
-func purchase() -> bool:
-	if not can_purchase():
+func purchase(levels: int = 1) -> bool:
+	if not can_purchase(levels):
 		return false
 	for object: CountableObject in upgrade.costs:
-		if not change_countable_amount(object, -upgrade.costs[object]):
+		if not change_countable_amount(object, -upgrade.costs[object] * levels): # TODO costs should scale
 			push_error("Failed to consume cost for upgrade: %s" % upgrade.id)
 			return false
-	level += 1
+	level += levels
 	for effect: EffectDefinition in upgrade.upgrade_effects:
-		effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect])
+		effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect], levels)
 	UpgradeManager.upgrades_changed.emit()
 	return true
 

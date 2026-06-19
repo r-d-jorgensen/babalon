@@ -93,7 +93,8 @@ func _rebuild_all_effects() -> void:
 		var def: UpgradeDefinition = state.upgrade
 		for effect: EffectDefinition in def.upgrade_effects:
 			var value: float = def.upgrade_effects[effect]
-			effect.apply_effect(UpgradeManager, value * state.level)
+			effect.apply_effect(UpgradeManager, value, state.level, false)
+	Manager.notify_manager(Manager.FormulaController.ALL)
 
 func _emit_all_update_signals() -> void:
 	UpgradeManager.upgrades_changed.emit()

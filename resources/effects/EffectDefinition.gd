@@ -13,18 +13,19 @@ enum EffectCompound {
 @export var formula_controller: Manager.FormulaController = Manager.FormulaController.ALL
 @export var effect_compound: EffectCompound = EffectCompound.FLAT
 
-func apply_effect(manager: EffectManager, effect_value: float) -> void:
+func apply_effect(manager: EffectManager, effect_value: float, level_increase: int, notify: bool = true) -> void:
 	if not manager.effects.has(id):
-		manager.effects[id] = default_value
+		push_warning("Effect not loaded correctly: %s" % id)
+		return
 	match effect_compound:
 		EffectCompound.FLAT:
-			manager.effects[id] += effect_value
+			manager.effects[id] += effect_value * level_increase
 		EffectCompound.MULTIPLY:
-			manager.effects[id] *= effect_value
+			manager.effects[id] *= pow(effect_value, level_increase)
 		EffectCompound.PERCENT_ADD:
-			manager.effects[id] *= (1.0 + effect_value)
+			manager.effects[id] *= pow((1.0 + effect_value), level_increase)
 		_:
 			push_warning("Unknown EffectCompound: %s" % effect_compound)
-	manager.effects_changed.emit()
-	Manager.notify_manager(formula_controller)
+	if notify:
+		Manager.notify_manager(formula_controller)
 	

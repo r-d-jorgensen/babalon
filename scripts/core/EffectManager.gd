@@ -2,8 +2,6 @@
 extends Manager
 class_name EffectManager
 
-signal effects_changed
-
 var effects: Dictionary[String, float] = {}
 var effects_lookup: Dictionary[String, EffectDefinition] = {}
 
