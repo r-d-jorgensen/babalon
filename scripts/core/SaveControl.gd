@@ -76,11 +76,11 @@ func _apply_core_state(save: SaveGameData) -> void:
 
 	ActionManager.states.clear()
 	for s: SaveActionStateData in save.states:
-		var action: MaterialAction = ActionManager.get_action_by_id(s.action_id)
+		var action: ActionDefinition = ActionManager.get_action_by_id(s.action_id)
 		if action == null:
 			push_warning("Unknown action id: %s" % s.action_id)
 			continue
-		var state: MaterialActionState = MaterialActionState.new(action)
+		var state: ActionState = ActionState.new(action)
 		state.action = action
 		state.workers_assigned = s.workers_assigned
 		state.progress = s.progress
@@ -130,7 +130,7 @@ func _pack_upgrades() -> UpgradeSaveData:
 
 func _pack_states() -> Array[SaveActionStateData]:
 	var out: Array[SaveActionStateData] = []
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: ActionState in ActionManager.states.values():
 		var s: SaveActionStateData = SaveActionStateData.new()
 		s.action_id = state.action.id
 		s.workers_assigned = state.workers_assigned

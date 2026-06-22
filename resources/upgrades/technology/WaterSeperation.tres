@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_8s61h"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_gajad"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_yay2d"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_m756w"]
 [ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/FluidMovment.tres" id="3_yay2d"]
+[ext_resource type="Resource" uid="uid://c051kpbbah2q2" path="res://resources/effects/WorkerLimitFlat.tres" id="6_o4vex"]
 
 [resource]
 script = ExtResource("2_gajad")
@@ -16,5 +18,8 @@ ExtResource("2_yay2d"): 1
 })
 required_upgrades = Dictionary[ExtResource("2_gajad"), int]({
 ExtResource("3_yay2d"): 1
+})
+upgrade_effects = Dictionary[ExtResource("3_m756w"), float]({
+ExtResource("6_o4vex"): 10.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b8f31hatudx41" path="res://resources/countable_objects/materials/source/Mushroom.tres" id="1_wntet"]
 [ext_resource type="Resource" uid="uid://deirr12u278pd" path="res://resources/countable_objects/materials/final/EdibleMushroom.tres" id="2_dtrvw"]
-[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/MaterialAction.gd" id="3_scp2n"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="3_scp2n"]
 
 [resource]
 script = ExtResource("3_scp2n")

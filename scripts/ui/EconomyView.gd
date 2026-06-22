@@ -32,14 +32,14 @@ func select_tab(tab: int) -> void:
 	production_button.disabled = tab == 1
 	materials_button.disabled = tab == 2
 
-func _on_worker_update(_action: MaterialAction = null) -> void:
+func _on_worker_update(_action: ActionDefinition = null) -> void:
 	update_worker_label()
 	update_consumption_labels()
 
 func build_actions_ui() -> void:
 	for child: Node in action_list.get_children():
 		child.queue_free()
-	for action_data: MaterialAction in ActionManager.actions:
+	for action_data: ActionDefinition in ActionManager.actions:
 		var row: ActionRow = action_row_scene.instantiate()
 		row.node = action_data
 		action_list.add_child(row)
@@ -63,10 +63,10 @@ func update_consumption_labels() -> void:
 	var demand: Dictionary[int, int] = WorkerManager.get_total_demand()
 	var race: WorkerDefinition = WorkerManager.worker_race
 	var production: Dictionary[int, float] = {}
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: ActionState in ActionManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
-		var action: MaterialAction = state.action
+		var action: ActionDefinition = state.action
 		for mat_obj:CountableObject in action.outputs:
 			var mat: MaterialDefinition = mat_obj as MaterialDefinition
 			var amount: float = (

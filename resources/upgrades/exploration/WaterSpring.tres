@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://o3juppt4by4b"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_vuyp8"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="2_12vcq"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_aj3ij"]
+[ext_resource type="Resource" uid="uid://bn5topyfqrb1w" path="res://resources/effects/MaterialPassiveGenerate.tres" id="4_o5fld"]
 
 [resource]
 script = ExtResource("2_aj3ij")
@@ -9,4 +11,7 @@ id = "water_spring"
 display_name = "Water Spring"
 description = "Give passive drinking water"
 category = 2
+upgrade_effects = Dictionary[ExtResource("2_12vcq"), float]({
+ExtResource("4_o5fld"): 0.0
+})
 metadata/_custom_type_script = "uid://5oe453vttnbh"

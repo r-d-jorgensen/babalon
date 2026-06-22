@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://byv23krhttqap"]
+
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="1_rrvch"]
+
+[resource]
+script = ExtResource("1_rrvch")
+id = "unlock_traditions"
+display_name = "Unlock Traditions"
+effect_compound = 0
+metadata/_custom_type_script = "uid://bhvkr00kx3k05"

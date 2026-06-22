@@ -1,12 +1,12 @@
 extends RefCounted
-class_name MaterialActionState
+class_name ActionState
 
-var action: MaterialAction
+var action: ActionDefinition
 var workers_assigned: int = 0
 var progress: float = 0.0
 var total_conversion_rate: float = 0
 
-func _init(base_action: MaterialAction = MaterialAction.new()) -> void:
+func _init(base_action: ActionDefinition = ActionDefinition.new()) -> void:
 	action = base_action
 	total_conversion_rate = action.base_conversion_rate
 

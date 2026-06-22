@@ -1,11 +1,11 @@
 class_name ActionStateMap
 extends RefCounted
 
-var data: Dictionary[String, MaterialActionState] = {}
+var data: Dictionary[String, ActionState] = {}
 
-func get_state(key: String) -> MaterialActionState:
+func get_state(key: String) -> ActionState:
 	if not data.has(key):
-		var state: MaterialActionState = MaterialActionState.new()
+		var state: ActionState = ActionState.new()
 		data[key] = state
 	return data[key]
 

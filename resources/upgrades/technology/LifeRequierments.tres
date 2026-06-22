@@ -4,17 +4,22 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_5sdxm"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_bqkxx"]
 [ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/civic/Recordings.tres" id="3_bqkxx"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_j4x1y"]
+[ext_resource type="Resource" uid="uid://d1qqtycw01sci" path="res://resources/effects/ActionTickReductionTagFlat.tres" id="6_n5vrh"]
 
 [resource]
 script = ExtResource("2_5sdxm")
 id = "life_requierments"
 display_name = "Life Requierments"
-description = "Increase gathering of food"
+description = "Decrease gathering speed of food"
 category = 1
 costs = Dictionary[ExtResource("1_2f52t"), int]({
 ExtResource("2_bqkxx"): 1
 })
 required_upgrades = Dictionary[ExtResource("2_5sdxm"), int]({
 ExtResource("3_bqkxx"): 1
+})
+upgrade_effects = Dictionary[ExtResource("3_j4x1y"), float]({
+ExtResource("6_n5vrh"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

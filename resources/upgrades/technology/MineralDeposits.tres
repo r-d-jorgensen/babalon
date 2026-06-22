@@ -4,17 +4,22 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_tfh4w"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_wifls"]
 [ext_resource type="Resource" uid="uid://bamq51i4meu10" path="res://resources/upgrades/civic/Recordings.tres" id="3_tfh4w"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_ti8cb"]
+[ext_resource type="Resource" uid="uid://d1qqtycw01sci" path="res://resources/effects/ActionTickReductionTagFlat.tres" id="6_bv1c7"]
 
 [resource]
 script = ExtResource("2_wifls")
 id = "mineral_deposits"
 display_name = "Mineral Deposits"
-description = "Increase gathering of materials"
+description = "Decrease gathering speed of materials"
 category = 1
 costs = Dictionary[ExtResource("1_3h8lk"), int]({
 ExtResource("2_tfh4w"): 1
 })
 required_upgrades = Dictionary[ExtResource("2_wifls"), int]({
 ExtResource("3_tfh4w"): 1
+})
+upgrade_effects = Dictionary[ExtResource("3_ti8cb"), float]({
+ExtResource("6_bv1c7"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

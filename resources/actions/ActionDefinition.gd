@@ -1,5 +1,5 @@
 extends Resource
-class_name MaterialAction
+class_name ActionDefinition
 
 @export var id: String = ""
 @export var display_name: String = ""

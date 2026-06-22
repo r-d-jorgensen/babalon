@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_4a641"]
 [ext_resource type="Resource" uid="uid://c8ujvd5won4my" path="res://resources/countable_objects/materials/intermediate/Mud.tres" id="1_5vy8c"]
-[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/MaterialAction.gd" id="1_holt2"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="1_holt2"]
 [ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/countable_objects/materials/source/Berry.tres" id="2_4a641"]
 [ext_resource type="Resource" uid="uid://b1acf2ma6kaf7" path="res://resources/countable_objects/workers/Human.tres" id="3_dbh4g"]
 

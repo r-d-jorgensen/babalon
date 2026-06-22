@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_nstsy"]
 [ext_resource type="Resource" uid="uid://d18w7sjeuv4x5" path="res://resources/upgrades/technology/LifeRequierments.tres" id="3_nstsy"]
 [ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_uqlcq"]
+[ext_resource type="Resource" uid="uid://bfdvkimj7xmn3" path="res://resources/effects/ActionTickReductionFlat.tres" id="6_rc6yf"]
 
 [resource]
 script = ExtResource("2_l4532")
@@ -15,7 +16,10 @@ category = 1
 costs = Dictionary[ExtResource("1_rad0v"), int]({
 ExtResource("2_nstsy"): 1
 })
-required_upgrades = Dictionary[Variant, int]({
+required_upgrades = Dictionary[ExtResource("2_l4532"), int]({
 ExtResource("3_nstsy"): 1
+})
+upgrade_effects = Dictionary[ExtResource("5_uqlcq"), float]({
+ExtResource("6_rc6yf"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

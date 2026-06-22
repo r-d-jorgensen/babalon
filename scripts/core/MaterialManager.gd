@@ -67,10 +67,10 @@ func _process_tick_effects() -> void:
 func calculate_material_deltas() -> void:
 	material_delta_per_tick.clear()
 	var worker_efficiency: float = WorkerManager.get_worker_efficiency()
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: ActionState in ActionManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
-		var action: MaterialAction = state.action
+		var action: ActionDefinition = state.action
 		var cycles_per_tick: float = (
 			float(state.workers_assigned)
 			* action.base_conversion_rate

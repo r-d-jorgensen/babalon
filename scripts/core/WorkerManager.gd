@@ -1,7 +1,7 @@
 extends Manager
 
 signal total_workers_changed
-signal workers_changed(action: MaterialAction)
+signal workers_changed(action: ActionDefinition)
 
 var total_workers: int = 0
 var base_optimal_worker_limit: int = 30
@@ -23,7 +23,7 @@ func formula_changed() -> void:
 	total_workers_changed.emit()
 
 func _on_tick() -> void:
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: ActionState in ActionManager.states.values():
 		state.tick()
 	_consumption_tick += 1
 	if _consumption_tick >= worker_race.consumption_time:
@@ -50,24 +50,24 @@ func change_workers(amount: int) -> bool:
 
 func get_total_assigned() -> int:
 	var total: int = 0
-	for state: MaterialActionState in ActionManager.states.values():
+	for state: ActionState in ActionManager.states.values():
 		total += state.workers_assigned
 	return total
 
 func get_available_workers() -> int:
 	return total_workers - get_total_assigned()
 
-func assign_worker(action: MaterialAction, amount: int = 1) -> void:
+func assign_worker(action: ActionDefinition, amount: int = 1) -> void:
 	if amount <= 0:
 		return
 	if get_available_workers() < amount:
 		return
-	var state: MaterialActionState = ActionManager.get_state(action)
+	var state: ActionState = ActionManager.get_state(action)
 	state.workers_assigned += amount
 	workers_changed.emit(action)
 
-func unassign_worker(action: MaterialAction, amount: int = 1) -> void:
-	var state: MaterialActionState = ActionManager.get_state(action)
+func unassign_worker(action: ActionDefinition, amount: int = 1) -> void:
+	var state: ActionState = ActionManager.get_state(action)
 	state.workers_assigned -= min(amount, state.workers_assigned)
 	workers_changed.emit(action)
 

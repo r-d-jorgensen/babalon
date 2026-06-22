@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://bfdvkimj7xmn3"]
-
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="1_837r1"]
-
-[resource]
-script = ExtResource("1_837r1")
-metadata/_custom_type_script = "uid://bhvkr00kx3k05"

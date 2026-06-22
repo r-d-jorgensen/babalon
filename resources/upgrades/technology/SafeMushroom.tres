@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_swqrj"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_7g8mx"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_leyy7"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_7vdpn"]
 [ext_resource type="Resource" uid="uid://d18w7sjeuv4x5" path="res://resources/upgrades/technology/LifeRequierments.tres" id="3_leyy7"]
 [ext_resource type="Resource" uid="uid://f80e6q74aqen" path="res://resources/upgrades/exploration/MushroomSource.tres" id="4_7vdpn"]
+[ext_resource type="Resource" uid="uid://bfdvkimj7xmn3" path="res://resources/effects/ActionTickReductionFlat.tres" id="7_cks8j"]
 
 [resource]
 script = ExtResource("2_7g8mx")
@@ -18,5 +20,8 @@ ExtResource("2_leyy7"): 1
 required_upgrades = Dictionary[ExtResource("2_7g8mx"), int]({
 ExtResource("3_leyy7"): 1,
 ExtResource("4_7vdpn"): 1
+})
+upgrade_effects = Dictionary[ExtResource("3_7vdpn"), float]({
+ExtResource("7_cks8j"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"
