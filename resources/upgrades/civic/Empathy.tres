@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_pb77k"]
 [ext_resource type="Resource" uid="uid://dmniwjdt7c8ie" path="res://resources/upgrades/civic/HumansSpecies.tres" id="3_pb77k"]
 [ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_hwuek"]
-[ext_resource type="Resource" uid="uid://c051kpbbah2q2" path="res://resources/effects/WorkerLimitFlat.tres" id="6_n7ifn"]
+[ext_resource type="Resource" uid="uid://c051kpbbah2q2" path="res://resources/effects/WorkerLimit.tres" id="6_n7ifn"]
 
 [resource]
 script = ExtResource("2_pb77k")

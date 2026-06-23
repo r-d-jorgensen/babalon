@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_w8qpc"]
 [ext_resource type="Resource" uid="uid://dmniwjdt7c8ie" path="res://resources/upgrades/civic/HumansSpecies.tres" id="3_b4hot"]
 [ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_jx3yt"]
-[ext_resource type="Resource" uid="uid://c2uhfjx8jdpii" path="res://resources/effects/WorkerCultureGainFlat.tres" id="6_8xf85"]
+[ext_resource type="Resource" uid="uid://c2uhfjx8jdpii" path="res://resources/effects/WorkerCultureGain.tres" id="6_8xf85"]
 
 [resource]
 script = ExtResource("2_gkvac")

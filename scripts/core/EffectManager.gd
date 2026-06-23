@@ -4,8 +4,8 @@ class_name EffectManager
 
 var effects: Dictionary[String, float] = {}
 var effects_lookup: Dictionary[String, EffectDefinition] = {}
-var worker_effects: Dictionary[WorkerDefinition, String] = {}
-var action_effects: Dictionary[ActionDefinition, String] = {}
+#var worker_effects: Dictionary[WorkerDefinition, String] = {}
+#var action_effects: Dictionary[ActionDefinition, String] = {}
 
 func get_effect_value(id: String) -> Variant:
 	return effects.get(id)

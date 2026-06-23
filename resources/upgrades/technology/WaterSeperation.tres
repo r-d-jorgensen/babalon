@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_yay2d"]
 [ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_m756w"]
 [ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/FluidMovment.tres" id="3_yay2d"]
-[ext_resource type="Resource" uid="uid://c051kpbbah2q2" path="res://resources/effects/WorkerLimitFlat.tres" id="6_o4vex"]
+[ext_resource type="Resource" uid="uid://c051kpbbah2q2" path="res://resources/effects/WorkerLimit.tres" id="6_o4vex"]
 
 [resource]
 script = ExtResource("2_gajad")

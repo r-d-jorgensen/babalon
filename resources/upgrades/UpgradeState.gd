@@ -38,7 +38,7 @@ func purchase(levels: int = 1) -> bool:
 			return false
 	level += levels
 	for effect: EffectDefinition in upgrade.upgrade_effects:
-		effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect], levels)
+		effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect], upgrade.effect_compounds[effect], levels)
 	UpgradeManager.upgrades_changed.emit()
 	return true
 
