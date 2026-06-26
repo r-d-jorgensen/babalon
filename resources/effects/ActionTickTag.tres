@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://bdcfox14b1wik"]
+
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="1_isxtd"]
+
+[resource]
+script = ExtResource("1_isxtd")
+id = "action_tick_tag"
+display_name = "Action Tick Tag"
+metadata/_custom_type_script = "uid://bhvkr00kx3k05"

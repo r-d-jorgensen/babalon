@@ -23,7 +23,7 @@ func can_purchase(levels: int = 1) -> bool:
 		var state: UpgradeState = UpgradeManager.get_upgrade(required_upgrade.id)
 		if state == null or state.level < required_level:
 			return false
-	for object: CountableObject in upgrade.costs:
+	for object: CountableDefinition in upgrade.costs:
 		var cost:int = upgrade.costs[object]
 		if get_countable_amount(object) < cost * levels: # TODO costs should scale
 			return false
@@ -32,7 +32,7 @@ func can_purchase(levels: int = 1) -> bool:
 func purchase(levels: int = 1) -> bool:
 	if not can_purchase(levels):
 		return false
-	for object: CountableObject in upgrade.costs:
+	for object: CountableDefinition in upgrade.costs:
 		if not change_countable_amount(object, -upgrade.costs[object] * levels): # TODO costs should scale
 			push_error("Failed to consume cost for upgrade: %s" % upgrade.id)
 			return false
@@ -42,14 +42,14 @@ func purchase(levels: int = 1) -> bool:
 	UpgradeManager.upgrades_changed.emit()
 	return true
 
-func get_countable_amount(object: CountableObject) -> int:
+func get_countable_amount(object: CountableDefinition) -> int:
 	if object is MaterialDefinition:
 		return MaterialManager.get_amount(object)
 	if object is WorkerDefinition:
 		return WorkerManager.get_available_workers()
 	return PlayerManager.get_currency(object.object_type)
 
-func change_countable_amount(object: CountableObject, amount: int) -> bool:
+func change_countable_amount(object: CountableDefinition, amount: int) -> bool:
 	if object is MaterialDefinition:
 		return MaterialManager.change_materials(object, amount)
 	if object is WorkerDefinition:

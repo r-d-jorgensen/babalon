@@ -1,4 +1,4 @@
-extends Resource
+extends Definition
 class_name EffectDefinition
 
 enum EffectCompound {
@@ -8,8 +8,6 @@ enum EffectCompound {
 	PERCENT_ADD
 }
 
-@export var id: String
-@export var display_name: String
 @export var default_value: float = 0.0
 @export var formula_controller: Manager.FormulaController = Manager.FormulaController.ALL
 

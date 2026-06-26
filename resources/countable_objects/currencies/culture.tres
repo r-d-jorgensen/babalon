@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CountableObject" format=3 uid="uid://bgun06gxelnff"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_ft2d8"]
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_ft2d8"]
 
 [resource]
 script = ExtResource("1_ft2d8")

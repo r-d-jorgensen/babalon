@@ -1,4 +1,4 @@
-extends Resource
+extends Definition
 class_name UpgradeDefinition
 
 enum UpgradeCategory {
@@ -17,17 +17,17 @@ enum UpgradeSource {
 	DEBUG
 }
 
-@export var id: String
-@export var display_name: String
 @export_multiline var description: String
 
 @export var category: UpgradeCategory
 @export var upgrade_source: UpgradeSource
 
-@export var costs: Dictionary[CountableObject, int] = {}
+@export var costs: Dictionary[CountableDefinition, int] = {}
 @export var required_upgrades: Dictionary[UpgradeDefinition, int] = {}
 
 @export var max_level: int = 1
 @export var upgrade_growth: float = 10.0
 @export var upgrade_effects: Dictionary[EffectDefinition, float] = {}
 @export var effect_compounds: Dictionary[EffectDefinition, EffectDefinition.EffectCompound] = {}
+@export var effect_definition_target: Dictionary[EffectDefinition, Definition] = {}
+@export var effect_tag_target: Dictionary[EffectDefinition, ActionDefinition] = {}

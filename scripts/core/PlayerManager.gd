@@ -9,8 +9,8 @@ var stored_ticks: int = 0
 var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
 var currencies: Dictionary[String, int] = {}
-var currency_lookup: Dictionary[CountableObject.ObjectType, CountableObject] = {}
-var currency_id_lookup: Dictionary[String, CountableObject] = {}
+var currency_lookup: Dictionary[CountableDefinition.ObjectType, CountableDefinition] = {}
+var currency_id_lookup: Dictionary[String, CountableDefinition] = {}
 
 func _ready() -> void:
 	register_manager(FormulaController.PLAYER, self)
@@ -48,8 +48,8 @@ func set_timer_speed(multiplier: int) -> void:
 	else:
 		catchup_speed_multiplier = 1
 
-func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> bool:
-	var currency: CountableObject = currency_lookup.get(currency_type)
+func change_currency(currency_type: CountableDefinition.ObjectType, amount: int) -> bool:
+	var currency: CountableDefinition = currency_lookup.get(currency_type)
 	if currency == null:
 		push_warning("Invalid currency type: ", currency_type)
 		return false
@@ -65,8 +65,8 @@ func change_currency(currency_type: CountableObject.ObjectType, amount: int) -> 
 func get_currency_by_id(id: String) -> int:
 	return currencies.get(id, 0)
 
-func get_currency(currency_type: CountableObject.ObjectType) -> int:
-	var currency: CountableObject = currency_lookup.get(currency_type)
+func get_currency(currency_type: CountableDefinition.ObjectType) -> int:
+	var currency: CountableDefinition = currency_lookup.get(currency_type)
 	if currency == null:
 		return 0
 	return currencies.get(currency.id, 0)
@@ -77,7 +77,7 @@ func load_currencies() -> void:
 	GlobalResourceLoader.recursive_load(
 		"res://resources/countable_objects/currencies/",
 		func(res: Resource, path: String) -> void:
-			var currency: CountableObject = res
+			var currency: CountableDefinition = res
 			if currency.id.is_empty():
 				push_error("Currency missing id: %s" % path)
 			elif currency_id_lookup.has(currency.id):
@@ -88,6 +88,6 @@ func load_currencies() -> void:
 				if not currencies.has(currency.id):
 					currencies[currency.id] = 0,
 		[".tres"],
-		CountableObject
+		CountableDefinition
 	)
 	currencies_changed.emit()

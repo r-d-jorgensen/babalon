@@ -32,9 +32,9 @@ func select_tab(tab: int) -> void:
 	truth_button.disabled = tab == 2
 
 func update_display(_unused: Variant = null) -> void:
-	civics_label.text = "Culture: %s" % PlayerManager.get_currency(CountableObject.ObjectType.CIVIC)
-	technology_label.text = "Research: %s" % PlayerManager.get_currency(CountableObject.ObjectType.TECHNOLOGY)
-	truth_label.text = "Truth: %s" % PlayerManager.get_currency(CountableObject.ObjectType.ASCENSION)
+	civics_label.text = "Culture: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.CIVIC)
+	technology_label.text = "Research: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.TECHNOLOGY)
+	truth_label.text = "Truth: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.ASCENSION)
 
 func build_upgrades_ui() -> void:
 	_clear_container(civics_list)

@@ -40,9 +40,9 @@ func update_ui() -> void:
 	worker_label.text = str(state.workers_assigned)
 	progress_label.text = "%d ticks remaining" % max(0, node.duration - int(state.progress))
 
-func format_io(dict: Dictionary[CountableObject, int], is_input: bool) -> String:
+func format_io(dict: Dictionary[CountableDefinition, int], is_input: bool) -> String:
 	var parts: Array[String] = []
-	for mat:CountableObject in dict:
+	for mat:CountableDefinition in dict:
 		var value: int = dict[mat]
 		var current: int = MaterialManager.get_amount(mat)
 		if is_input:
@@ -56,8 +56,8 @@ func format_rate() -> String:
 	if state.workers_assigned <= 0:
 		return ""
 	var efficiency: float = WorkerManager.get_worker_efficiency()
-	var per_tick: Dictionary[CountableObject, float] = {}
-	for mat:CountableObject in node.outputs:
+	var per_tick: Dictionary[CountableDefinition, float] = {}
+	for mat:CountableDefinition in node.outputs:
 		var amount: float = (
 			float(node.outputs[mat])
 			* node.base_conversion_rate
@@ -66,7 +66,7 @@ func format_rate() -> String:
 			/ float(node.duration)
 		)
 		per_tick[mat] = per_tick.get(mat, 0.0) + amount
-	for mat:CountableObject in node.inputs:
+	for mat:CountableDefinition in node.inputs:
 		var amount: float = (
 			float(node.inputs[mat])
 			* node.base_conversion_rate
@@ -76,7 +76,7 @@ func format_rate() -> String:
 		)
 		per_tick[mat] = per_tick.get(mat, 0.0) - amount
 	var parts: Array[String] = []
-	for mat:CountableObject in per_tick:
+	for mat:CountableDefinition in per_tick:
 		var rate: float = per_tick[mat]
 		if abs(rate) < 0.001:
 			continue
@@ -93,7 +93,7 @@ func format_rate() -> String:
 	return "[" + ", ".join(parts) + "]"
 
 func can_run() -> bool:
-	for mat:CountableObject in node.inputs:
+	for mat:CountableDefinition in node.inputs:
 		if MaterialManager.get_amount(mat) < node.inputs[mat]:
 			return false
 	return true
@@ -105,12 +105,12 @@ func _on_action_pressed() -> void:
 	state.progress += PlayerManager.player_click_power * node.base_conversion_rate
 	while state.progress >= node.duration:
 		state.progress -= node.duration
-		for mat:CountableObject in node.inputs:
+		for mat:CountableDefinition in node.inputs:
 			if MaterialManager.get_amount(mat) < node.inputs[mat]:
 				state.progress = 0
 				break
 			MaterialManager.change_materials(mat, -node.inputs[mat])
-		for mat:CountableObject in node.outputs:
+		for mat:CountableDefinition in node.outputs:
 			MaterialManager.change_materials(mat, node.outputs[mat])
 	update_ui()
 

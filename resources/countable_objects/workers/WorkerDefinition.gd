@@ -1,4 +1,4 @@
-extends CountableObject
+extends CountableDefinition
 class_name WorkerDefinition
 
 @export var worker_currency_per_tick: int = 1

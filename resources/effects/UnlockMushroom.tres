@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_mjxm3")
-id = "unlock_traditions"
-display_name = "Unlock Traditions"
-effect_compound = 0
+id = "unlock_mushroom"
+display_name = "Unlock Mushroom"
 metadata/_custom_type_script = "uid://bhvkr00kx3k05"

@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_yp21j")
+id = "material_passive_generate"
+display_name = "Material Passive Generate"
 metadata/_custom_type_script = "uid://bhvkr00kx3k05"

@@ -32,7 +32,7 @@ func refresh() -> void:
 
 func _get_cost_text() -> String:
 	var parts: Array[String] = []
-	for currency: CountableObject in state.upgrade.costs:
+	for currency: CountableDefinition in state.upgrade.costs:
 		parts.append("%d %s" % [
 			state.upgrade.costs[currency],
 			currency.display_name

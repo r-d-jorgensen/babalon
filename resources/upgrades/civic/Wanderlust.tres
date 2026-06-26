@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://3vpg3nxspiot"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_4tkei"]
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_4tkei"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_a8dap"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_wjo4g"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_nigiq"]
 [ext_resource type="Resource" uid="uid://bs3gbdu00xi56" path="res://resources/upgrades/civic/Community.tres" id="3_w5l7k"]
 [ext_resource type="Resource" uid="uid://dmfkahxn7v5iv" path="res://resources/upgrades/civic/Expeditions.tres" id="4_wjo4g"]
+[ext_resource type="Resource" uid="uid://b77ppxxu6nov0" path="res://resources/effects/PlayerCultureGain.tres" id="7_w4p1t"]
 
 [resource]
 script = ExtResource("2_wjo4g")
@@ -17,5 +19,8 @@ ExtResource("2_a8dap"): 1
 required_upgrades = Dictionary[ExtResource("2_wjo4g"), int]({
 ExtResource("3_w5l7k"): 1,
 ExtResource("4_wjo4g"): 1
+})
+upgrade_effects = Dictionary[ExtResource("3_nigiq"), float]({
+ExtResource("7_w4p1t"): 1.0
 })
 metadata/_custom_type_script = "uid://5oe453vttnbh"

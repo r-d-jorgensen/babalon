@@ -1,14 +1,5 @@
 extends Resource
-class_name CountableObject
-
-enum ObjectType {
-	GENERAL,
-	CONSUMABLE,
-	CIVIC,
-	TECHNOLOGY,
-	EXPLORATION,
-	ASCENSION
-}
+class_name Definition
 
 @export var id: String:
 	set(value):
@@ -17,4 +8,3 @@ enum ObjectType {
 			return
 		id = value
 @export var display_name: String
-@export var object_type: ObjectType = ObjectType.GENERAL

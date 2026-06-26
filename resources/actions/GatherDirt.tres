@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://boy1omvwuaeut"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableObject.gd" id="1_aqxub"]
+[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_aqxub"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="1_c16by"]
 [ext_resource type="Resource" uid="uid://b7fxunu3h7ohq" path="res://resources/countable_objects/materials/source/Dirt.tres" id="1_spic3"]
 

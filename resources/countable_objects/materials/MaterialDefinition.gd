@@ -1,4 +1,4 @@
-extends CountableObject
+extends CountableDefinition
 class_name MaterialDefinition
 
 enum MaterialTag {
