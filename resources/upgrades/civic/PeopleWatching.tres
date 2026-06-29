@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://du1ywtqt8c6gc"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bi1pqv2dyje5c"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_qb4yt"]
-[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_7ga1c"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_hjxkb"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_84d8u"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_np1fu"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_hjxkb"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_dqhij"]
+[ext_resource type="Resource" uid="uid://c500js36egjnc" path="res://resources/upgrades/civic/HumanSpecies.tres" id="4_hjxkb"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_px2g6"]
 
 [resource]
-script = ExtResource("2_7ga1c")
-description = "Lower human creation cost"
-costs = Dictionary[ExtResource("1_qb4yt"), int]({
+script = ExtResource("3_dqhij")
+costs = Dictionary[ExtResource("1_np1fu"), int]({
 ExtResource("2_hjxkb"): 1
 })
+required_upgrades = Dictionary[ExtResource("3_dqhij"), int]({
+ExtResource("4_hjxkb"): 1
+})
 id = "people_watching"
-display_name = "PeopleWatching"
+display_name = "People Watching"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"

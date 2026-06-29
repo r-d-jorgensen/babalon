@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Definition" format=3 uid="uid://c3e5y8ouqji8f"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_lts2y"]
+
+[resource]
+script = ExtResource("1_lts2y")
+id = "favor"
+display_name = "Favor"
+metadata/_custom_type_script = "uid://bivf1htgw4u0o"

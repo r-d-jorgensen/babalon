@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Definition" format=3 uid="uid://t3s0kqqlgnhd"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_sjq42"]
+
+[resource]
+script = ExtResource("1_sjq42")
+id = "research"
+display_name = "Research"
+object_type = 3
+metadata/_custom_type_script = "uid://bivf1htgw4u0o"

@@ -15,11 +15,11 @@ var cached_value: float = 0.0
 func apply(value: float, op: int, level_delta: int) -> void:
 	dirty = true
 	match op:
-		EffectTypeDefinition.Operation.FLAT:
+		EffectTarget.Operation.FLAT:
 			flat += value * level_delta
-		EffectTypeDefinition.Operation.MULTIPLY:
+		EffectTarget.Operation.MULTIPLY:
 			mult *= pow(value, level_delta)
-		EffectTypeDefinition.Operation.PERCENT_ADD:
+		EffectTarget.Operation.PERCENT_ADD:
 			percent += value * level_delta
 
 func compute() -> float:

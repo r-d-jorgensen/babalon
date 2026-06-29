@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Definition" format=3 uid="uid://bgun06gxelnff"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_trhaw"]
+
+[resource]
+script = ExtResource("1_trhaw")
+id = "culture"
+display_name = "Culture"
+object_type = 2
+metadata/_custom_type_script = "uid://bivf1htgw4u0o"

@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://f80e6q74aqen"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://vef0kpdj8k80"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_gtx3c"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_jh7iu"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_l3ye5"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_type_definitions/EffectTypeDefinition.gd" id="3_2y1e3"]
-[ext_resource type="Resource" uid="uid://d27mqhjl88qe6" path="res://resources/effects/unlocks/UnlockMushroom.tres" id="4_2y1e3"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_2y1e3"]
+[ext_resource type="Resource" uid="uid://bwge8nwmu01tl" path="res://resources/effects/effect_targets/Unlocks/UnlockMushroom.tres" id="4_2y1e3"]
 
 [resource]
 script = ExtResource("2_l3ye5")
-id = "mushroom_source"
-display_name = "Mushroom Source"
 description = "Allow for mushroom gathering and sorting"
-category = 2
 upgrade_effects = Dictionary[ExtResource("3_2y1e3"), float]({
 ExtResource("4_2y1e3"): 1.0
 })
+id = "mushroom_Source"
+display_name = "Mushroom Source"
+object_type = 4
 metadata/_custom_type_script = "uid://5oe453vttnbh"

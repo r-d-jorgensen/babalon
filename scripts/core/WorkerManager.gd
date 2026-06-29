@@ -6,7 +6,7 @@ signal workers_changed(action: ActionDefinition)
 var total_workers: int = 0
 var base_optimal_worker_limit: int = 30
 var total_optimal_worker_limit: int = 30
-var worker_race: WorkerDefinition = preload("res://resources/countable_objects/workers/Human.tres")
+var worker_race: WorkerDefinition = preload("res://resources/workers/Human.tres")
 var _consumption_tick: int = 0
 var need_fulfillment: Dictionary[int, float] = {}
 

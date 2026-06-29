@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://c4wywm74iv5qb"]
+
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_xi5wh"]
+
+[resource]
+script = ExtResource("1_xi5wh")
+id = "organic_action_tick"
+display_name = "Organic Action Tick"
+metadata/_custom_type_script = "uid://bg1eh85vb18ii"

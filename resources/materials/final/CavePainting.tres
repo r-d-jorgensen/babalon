@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bir58fbksu4he"]
+
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="2_ylmb3"]
+
+[resource]
+script = ExtResource("2_ylmb3")
+craft_stage = 6
+tick_effect_value = 1
+tick_effect_interval = 10
+tags = Array[int]([0])
+id = "cave_painting"
+display_name = "Cave Painting"
+object_type = 2
+metadata/_custom_type_script = "uid://dviak2555ty3u"

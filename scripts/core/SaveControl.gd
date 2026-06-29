@@ -32,6 +32,7 @@ func save_game() -> void:
 	save.player = _pack_player()
 	save.upgrades = _pack_upgrades()
 	save.states = _pack_states()
+	print(SAVE_PATH)
 	var err : Error = ResourceSaver.save(save, SAVE_PATH)
 	if err != OK:
 		push_error("Failed to save game")

@@ -67,7 +67,7 @@ func update_consumption_labels() -> void:
 		if state.workers_assigned <= 0:
 			continue
 		var action: ActionDefinition = state.action
-		for mat_obj:CountableDefinition in action.outputs:
+		for mat_obj:Definition in action.outputs:
 			var mat: MaterialDefinition = mat_obj as MaterialDefinition
 			var amount: float = (
 				float(action.outputs[mat])

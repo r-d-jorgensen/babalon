@@ -1,13 +1,13 @@
 class_name EffectState
 
-var definition: EffectTypeDefinition
+var definition: EffectDefinition
 
 var player_targets: Dictionary[int, EffectTargetState] = {}
 var worker_targets: Dictionary[int, EffectTargetState] = {}
 var material_targets: Dictionary[int, EffectTargetState] = {}
 var action_targets: Dictionary[int, EffectTargetState] = {}
 
-func _init(def: EffectTypeDefinition) -> void:
+func _init(def: EffectDefinition) -> void:
 	definition = def
 
 func _get_target(map: Dictionary, key: int) -> EffectTargetState:
@@ -15,6 +15,7 @@ func _get_target(map: Dictionary, key: int) -> EffectTargetState:
 		var state: EffectTargetState = EffectTargetState.new()
 		state.base_value = definition.default_value
 		map[key] = state
+		push_warning("EffectTargetState did not exist, %s, %s before requested", map, key)
 	return map[key]
 
 func apply(domain: int, key: int, value: float, op: int, level_delta: int) -> void:

@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://qfqriiv5gy4r"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://jdy028nltny2"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_4tkei"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_a8dap"]
-[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_wjo4g"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_uswhj"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_ynson"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_a8dap"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_vxo4t"]
+[ext_resource type="Resource" uid="uid://cet0e3taoj8i0" path="res://resources/upgrades/civic/Expeditions.tres" id="4_a8dap"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_nigiq"]
 
 [resource]
-script = ExtResource("2_wjo4g")
-description = "Increase culture gain"
-costs = Dictionary[ExtResource("1_4tkei"), int]({
+script = ExtResource("3_vxo4t")
+costs = Dictionary[ExtResource("1_ynson"), int]({
 ExtResource("2_a8dap"): 1
+})
+required_upgrades = Dictionary[ExtResource("3_vxo4t"), int]({
+ExtResource("4_a8dap"): 1
 })
 id = "wanderlust"
 display_name = "Wanderlust"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"

@@ -30,15 +30,15 @@ func _complete_cycle() -> void:
 	_produce_outputs()
 
 func _can_consume_inputs() -> bool:
-	for mat:CountableDefinition in action.inputs:
+	for mat:Definition in action.inputs:
 		if MaterialManager.get_amount(mat) < action.inputs[mat]:
 			return false
 	return true
 
 func _consume_inputs() -> void:
-	for mat:CountableDefinition in action.inputs:
+	for mat:Definition in action.inputs:
 		MaterialManager.change_materials(mat, -action.inputs[mat])
 
 func _produce_outputs() -> void:
-	for mat:CountableDefinition in action.outputs:
+	for mat:Definition in action.outputs:
 		MaterialManager.change_materials(mat, action.outputs[mat])

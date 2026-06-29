@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dy6fanjyrtax"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_l4532"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_nstsy"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_rc6yf"]
+[ext_resource type="Resource" uid="uid://by7jrko8y1uy6" path="res://resources/upgrades/technology/LifeRequierments.tres" id="4_nstsy"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_rc6yf"]
+
+[resource]
+script = ExtResource("3_rc6yf")
+costs = Dictionary[ExtResource("1_l4532"), int]({
+ExtResource("2_nstsy"): 1
+})
+required_upgrades = Dictionary[ExtResource("3_rc6yf"), int]({
+ExtResource("4_nstsy"): 1
+})
+id = "safe_berries"
+display_name = "Safe Berries"
+object_type = 3
+metadata/_custom_type_script = "uid://5oe453vttnbh"

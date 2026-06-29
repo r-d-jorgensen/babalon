@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cyhnlyciq4ba5"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_gajad"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_yay2d"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_m756w"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_m756w"]
+[ext_resource type="Resource" uid="uid://che3x0eobhw1" path="res://resources/upgrades/technology/FluidMovement.tres" id="4_yay2d"]
+
+[resource]
+script = ExtResource("3_m756w")
+costs = Dictionary[ExtResource("1_gajad"), int]({
+ExtResource("2_yay2d"): 1
+})
+required_upgrades = Dictionary[ExtResource("3_m756w"), int]({
+ExtResource("4_yay2d"): 1
+})
+id = "water_seperation"
+display_name = "Water Seperation"
+object_type = 3
+metadata/_custom_type_script = "uid://5oe453vttnbh"

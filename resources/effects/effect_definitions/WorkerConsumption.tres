@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://by31td4vm014a"]
+
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="1_upjko"]
+
+[resource]
+script = ExtResource("1_upjko")
+id = "worker_consumption"
+display_name = "Worker Consumption"
+formula_controller = 2
+metadata/_custom_type_script = "uid://bhvkr00kx3k05"

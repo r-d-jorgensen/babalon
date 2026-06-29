@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bsf5quvloqhsn"]
+
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_cuute"]
+
+[resource]
+script = ExtResource("1_cuute")
+tags = Array[int]([11])
+id = "stone"
+display_name = "Stone"
+metadata/_custom_type_script = "uid://dviak2555ty3u"

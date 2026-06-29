@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://c3r2qdilpippr"]
+
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_14sm8"]
+
+[resource]
+script = ExtResource("1_14sm8")
+id = "liquid_action_tick"
+display_name = "Liquid Action Tick"
+metadata/_custom_type_script = "uid://bg1eh85vb18ii"

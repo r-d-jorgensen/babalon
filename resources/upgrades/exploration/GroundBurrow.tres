@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cjitpft238wb"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dk17pg8w7nlya"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_1pfbe"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_liud4"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_liud4"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_liud4"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_antuy"]
+[ext_resource type="Resource" uid="uid://41t8reoytp5" path="res://resources/effects/effect_targets/WorkerLimitFlat.tres" id="4_antuy"]
 
 [resource]
 script = ExtResource("2_liud4")
 description = "Add to population limit"
-category = 2
+upgrade_effects = Dictionary[ExtResource("3_antuy"), float]({
+ExtResource("4_antuy"): 10.0
+})
 id = "ground_burrow"
 display_name = "Ground Burrow"
+object_type = 4
 metadata/_custom_type_script = "uid://5oe453vttnbh"

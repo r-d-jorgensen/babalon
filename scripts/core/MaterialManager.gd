@@ -77,14 +77,14 @@ func calculate_material_deltas() -> void:
 			* worker_efficiency
 			/ float(action.duration)
 		)
-		for object: CountableDefinition in action.inputs:
+		for object: Definition in action.inputs:
 			if object is MaterialDefinition:
 				var material: MaterialDefinition = object
 				material_delta_per_tick[material.id] = (
 					material_delta_per_tick.get(material.id, 0.0)
 					- action.inputs[object] * cycles_per_tick
 				)
-		for object: CountableDefinition in action.outputs:
+		for object: Definition in action.outputs:
 			if object is MaterialDefinition:
 				var material: MaterialDefinition = object
 				material_delta_per_tick[material.id] = (
@@ -101,7 +101,7 @@ func _add_worker_consumption_deltas() -> void:
 			- float(consumption[id]) / float(WorkerManager.worker_race.consumption_time)
 		)
 
-func change_materials(object: CountableDefinition, amount: int) -> bool:
+func change_materials(object: Definition, amount: int) -> bool:
 	if object is WorkerDefinition:
 		if amount > 0:
 			WorkerManager.change_workers(amount)
@@ -132,7 +132,7 @@ func change_materials(object: CountableDefinition, amount: int) -> bool:
 		return true
 	return false
 
-func get_amount(object: CountableDefinition) -> int:
+func get_amount(object: Definition) -> int:
 	return materials.get_value(_key(object))
 
 func get_material_by_id(id: String) -> MaterialDefinition:

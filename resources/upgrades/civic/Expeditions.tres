@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://ckqskmykwvps0"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cet0e3taoj8i0"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_istbs"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_777nb"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_v1kjs"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_ed3ld"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_777nb"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_upbws"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_daay7"]
+[ext_resource type="Resource" uid="uid://dv1ylbeuxurv8" path="res://resources/effects/effect_targets/Unlocks/UnlockExploration.tres" id="5_upbws"]
 
 [resource]
 script = ExtResource("2_ed3ld")
-description = "Allow Expenditions"
-costs = Dictionary[ExtResource("1_istbs"), int]({
-ExtResource("2_777nb"): 1
+costs = Dictionary[ExtResource("1_v1kjs"), int]({
+ExtResource("2_upbws"): 1
+})
+upgrade_effects = Dictionary[ExtResource("4_daay7"), float]({
+ExtResource("5_upbws"): 1.0
 })
 id = "expeditions"
 display_name = "Expeditions"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"

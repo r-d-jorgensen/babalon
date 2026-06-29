@@ -1,17 +1,26 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cv1p1h0llqgy8"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bhi7hcurdfncx"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_kmcob"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_rhxgg"]
-[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_y084q"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_174no"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_j0a3m"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_rhxgg"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_6kikd"]
+[ext_resource type="Resource" uid="uid://dkhjk1n35bkn8" path="res://resources/upgrades/civic/Community.tres" id="4_4bdpf"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_xse77"]
+[ext_resource type="Resource" uid="uid://ba7y0v3dhg6la" path="res://resources/upgrades/civic/FoodSharing.tres" id="5_1a5bh"]
+[ext_resource type="Resource" uid="uid://u6o4wlo0hbnk" path="res://resources/effects/effect_targets/Unlocks/UnlockTraditions.tres" id="5_rhxgg"]
 
 [resource]
-script = ExtResource("2_y084q")
-description = "Allow for tradions
-Open Law Interface"
-costs = Dictionary[ExtResource("1_kmcob"), int]({
+script = ExtResource("3_6kikd")
+costs = Dictionary[ExtResource("1_j0a3m"), int]({
 ExtResource("2_rhxgg"): 1
+})
+required_upgrades = Dictionary[ExtResource("3_6kikd"), int]({
+ExtResource("4_4bdpf"): 1,
+ExtResource("5_1a5bh"): 1
+})
+upgrade_effects = Dictionary[ExtResource("4_xse77"), float]({
+ExtResource("5_rhxgg"): 1.0
 })
 id = "tradition"
 display_name = "Tradition"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"

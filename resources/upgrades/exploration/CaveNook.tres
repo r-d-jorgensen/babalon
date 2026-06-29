@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://ca121r1e56o5u"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dfcxug1hoe0cq"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_gc83e"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_mukn6"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_mukn6"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_type_definitions/EffectTypeDefinition.gd" id="3_n8alr"]
-[ext_resource type="Resource" uid="uid://cxnmv1ch2cswx" path="res://resources/effects/effect_type_definitions/WorkerLimit.tres" id="4_n8alr"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_n8alr"]
+[ext_resource type="Resource" uid="uid://41t8reoytp5" path="res://resources/effects/effect_targets/WorkerLimitFlat.tres" id="4_n8alr"]
 
 [resource]
 script = ExtResource("2_mukn6")
+description = "Add to population limit"
+upgrade_effects = Dictionary[ExtResource("3_n8alr"), float]({
+ExtResource("4_n8alr"): 10.0
+})
 id = "cave_nook"
 display_name = "Cave Nook"
-description = "Add to population limit"
-category = 2
-upgrade_effects = Dictionary[ExtResource("3_n8alr"), float]({
-ExtResource("4_n8alr"): 1.0
-})
+object_type = 4
 metadata/_custom_type_script = "uid://5oe453vttnbh"

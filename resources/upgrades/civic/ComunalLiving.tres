@@ -1,20 +1,24 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://mcotockenbb2"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://ckwfo1cqfg63r"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_ooa6n"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_tfiyq"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_g22xc"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_ooa6n"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_a1doe"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_drox3"]
-[ext_resource type="Resource" uid="uid://dx8yl40xk3ml7" path="res://resources/upgrades/civic/Community.tres" id="4_juoc4"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_ooa6n"]
+[ext_resource type="Resource" uid="uid://dkhjk1n35bkn8" path="res://resources/upgrades/civic/Community.tres" id="4_tfiyq"]
+[ext_resource type="Resource" uid="uid://41t8reoytp5" path="res://resources/effects/effect_targets/WorkerLimitFlat.tres" id="5_tfiyq"]
 
 [resource]
 script = ExtResource("3_a1doe")
-description = "Increase culture gain per tick from Humans working"
-costs = Dictionary[ExtResource("1_ooa6n"), int]({
-ExtResource("2_tfiyq"): 1
+costs = Dictionary[ExtResource("1_g22xc"), int]({
+ExtResource("2_ooa6n"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_a1doe"), int]({
-ExtResource("4_juoc4"): 1
+ExtResource("4_tfiyq"): 1
+})
+upgrade_effects = Dictionary[ExtResource("4_ooa6n"), float]({
+ExtResource("5_tfiyq"): 10.0
 })
 id = "comunal_living"
-display_name = "ComunalLiving"
+display_name = "Comunal Living"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"

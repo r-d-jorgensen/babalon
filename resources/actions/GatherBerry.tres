@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://delovh1q5tbq1"]
 
-[ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/countable_objects/materials/source/Berry.tres" id="1_f6yjg"]
+[ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/materials/source/Berry.tres" id="1_f6yjg"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="1_r8qxx"]
 
 [resource]

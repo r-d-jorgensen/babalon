@@ -1,7 +1,5 @@
-class_name EffectDefinition
 extends Definition
+class_name EffectDefinition
 
-@export var effect: EffectTypeDefinition
-@export var target: int
-@export var operation: int
-@export var value: float
+@export var default_value: float = 0.0
+@export var system: Manager.System = Manager.System.ALL

@@ -1,6 +1,15 @@
 extends Resource
 class_name Definition
 
+enum ObjectType {
+	GENERAL,
+	CONSUMABLE,
+	CIVIC,
+	TECHNOLOGY,
+	EXPLORATION,
+	ASCENSION
+}
+
 @export var id: String:
 	set(value):
 		if not id.is_empty():
@@ -8,3 +17,4 @@ class_name Definition
 			return
 		id = value
 @export var display_name: String
+@export var object_type: ObjectType = ObjectType.GENERAL

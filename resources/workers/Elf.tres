@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WorkerDefinition" format=3 uid="uid://coyalmau778ii"]
+
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="1_e0wpg"]
+
+[resource]
+script = ExtResource("1_e0wpg")
+consumption_requirements = Dictionary[int, int]({
+2: 3,
+5: 1
+})
+id = "elf"
+display_name = "Elf"
+object_type = 2
+metadata/_custom_type_script = "uid://cfxrb7j87l7t1"

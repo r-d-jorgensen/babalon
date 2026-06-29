@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Definition" format=3 uid="uid://brirwfydy38f0"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_ba1f4"]
+
+[resource]
+script = ExtResource("1_ba1f4")
+id = "truth"
+display_name = "Truth"
+object_type = 5
+metadata/_custom_type_script = "uid://bivf1htgw4u0o"

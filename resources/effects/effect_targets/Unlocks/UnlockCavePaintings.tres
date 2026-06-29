@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://cqsheq68ckgl3"]
+
+[ext_resource type="Resource" uid="uid://b4mvioftq00wl" path="res://resources/effects/effect_definitions/Unlock.tres" id="1_hjxnb"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_xrvya"]
+
+[resource]
+script = ExtResource("1_xrvya")
+effect = ExtResource("1_hjxnb")
+operation = 0
+id = "unlock_cave_paintings"
+display_name = "Unlock Cave Paintings"
+metadata/_custom_type_script = "uid://bg1eh85vb18ii"

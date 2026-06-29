@@ -32,9 +32,9 @@ func select_tab(tab: int) -> void:
 	truth_button.disabled = tab == 2
 
 func update_display(_unused: Variant = null) -> void:
-	civics_label.text = "Culture: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.CIVIC)
-	technology_label.text = "Research: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.TECHNOLOGY)
-	truth_label.text = "Truth: %s" % PlayerManager.get_currency(CountableDefinition.ObjectType.ASCENSION)
+	civics_label.text = "Culture: %s" % PlayerManager.get_currency(Definition.ObjectType.CIVIC)
+	technology_label.text = "Research: %s" % PlayerManager.get_currency(Definition.ObjectType.TECHNOLOGY)
+	truth_label.text = "Truth: %s" % PlayerManager.get_currency(Definition.ObjectType.ASCENSION)
 
 func build_upgrades_ui() -> void:
 	_clear_container(civics_list)
@@ -43,12 +43,12 @@ func build_upgrades_ui() -> void:
 	for state: UpgradeState in UpgradeManager.upgrades.values():
 		var row: UpgradeRow = upgrade_row_scene.instantiate()
 		row.state = state
-		match state.upgrade.category:
-			UpgradeDefinition.UpgradeCategory.CULTURE:
+		match state.upgrade.object_type:
+			UpgradeDefinition.ObjectType.CIVIC:
 				civics_list.add_child(row)
-			UpgradeDefinition.UpgradeCategory.TECHNOLOGY:
+			UpgradeDefinition.ObjectType.TECHNOLOGY:
 				technology_list.add_child(row)
-			UpgradeDefinition.UpgradeCategory.ASCENSION:
+			UpgradeDefinition.ObjectType.ASCENSION:
 				truth_list.add_child(row)
 
 func _clear_container(container: Node) -> void:

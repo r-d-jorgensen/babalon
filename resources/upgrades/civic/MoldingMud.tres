@@ -1,19 +1,20 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://caiukmqea4u5r"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://lsjht2n4b0en"]
 
-[ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_cp260"]
-[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_m6pqb"]
-[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_ux7be"]
-[ext_resource type="Resource" uid="uid://ckn42x5lhkj7m" path="res://resources/upgrades/civic/Empathy.tres" id="3_m6pqb"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_yw407"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_ux7be"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_omha7"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_qncd8"]
+[ext_resource type="Resource" uid="uid://bi1pqv2dyje5c" path="res://resources/upgrades/civic/PeopleWatching.tres" id="4_omha7"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_re3e2"]
 
 [resource]
-script = ExtResource("2_m6pqb")
-costs = Dictionary[ExtResource("1_cp260"), int]({
-ExtResource("2_ux7be"): 1
+script = ExtResource("3_qncd8")
+costs = Dictionary[ExtResource("1_ux7be"), int]({
+ExtResource("2_omha7"): 1
 })
-required_upgrades = Dictionary[ExtResource("2_m6pqb"), int]({
-ExtResource("3_m6pqb"): 1
+required_upgrades = Dictionary[ExtResource("3_qncd8"), int]({
+ExtResource("4_omha7"): 1
 })
 id = "molding_mud"
 display_name = "Molding Mud"
+object_type = 2
 metadata/_custom_type_script = "uid://5oe453vttnbh"
