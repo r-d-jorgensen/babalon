@@ -1,16 +1,13 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://chehkds85ys12"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://mcotockenbb2"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_ooa6n"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_tfiyq"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_a1doe"]
-[ext_resource type="Resource" uid="uid://bs3gbdu00xi56" path="res://resources/upgrades/civic/Community.tres" id="4_juoc4"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_gjcxl"]
-[ext_resource type="Resource" uid="uid://birpv7i86lonj" path="res://resources/effects/WorkerCultureGain.tres" id="6_tfiyq"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_drox3"]
+[ext_resource type="Resource" uid="uid://dx8yl40xk3ml7" path="res://resources/upgrades/civic/Community.tres" id="4_juoc4"]
 
 [resource]
 script = ExtResource("3_a1doe")
-id = "comunal_living"
-display_name = "Comunal Living"
 description = "Increase culture gain per tick from Humans working"
 costs = Dictionary[ExtResource("1_ooa6n"), int]({
 ExtResource("2_tfiyq"): 1
@@ -18,7 +15,6 @@ ExtResource("2_tfiyq"): 1
 required_upgrades = Dictionary[ExtResource("3_a1doe"), int]({
 ExtResource("4_juoc4"): 1
 })
-upgrade_effects = Dictionary[ExtResource("5_gjcxl"), float]({
-ExtResource("6_tfiyq"): 1.0
-})
+id = "comunal_living"
+display_name = "ComunalLiving"
 metadata/_custom_type_script = "uid://5oe453vttnbh"

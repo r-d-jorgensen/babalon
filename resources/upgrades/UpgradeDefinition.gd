@@ -27,7 +27,4 @@ enum UpgradeSource {
 
 @export var max_level: int = 1
 @export var upgrade_growth: float = 10.0
-@export var upgrade_effects: Dictionary[EffectDefinition, float] = {}
-@export var effect_compounds: Dictionary[EffectDefinition, EffectDefinition.EffectCompound] = {}
-@export var effect_definition_target: Dictionary[EffectDefinition, Definition] = {}
-@export var effect_tag_target: Dictionary[EffectDefinition, ActionDefinition] = {}
+@export var upgrade_effects: Array[EffectDefinition] = []

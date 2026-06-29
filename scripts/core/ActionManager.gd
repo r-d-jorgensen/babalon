@@ -7,7 +7,7 @@ var states: Dictionary[String, ActionState] = {}
 var actions_by_id: Dictionary[String, ActionDefinition] = {}
 
 func _ready() -> void:
-	register_manager(FormulaController.ACTION, self)
+	register_manager(System.ACTION, self)
 	load_actions()
 	formula_changed()
 

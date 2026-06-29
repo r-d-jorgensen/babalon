@@ -11,7 +11,7 @@ var materials_by_id: Dictionary[String, MaterialDefinition] = {}
 var material_delta_per_tick: Dictionary[String, float] = {}
 
 func _ready() -> void:
-	register_manager(FormulaController.MATERIAL, self)
+	register_manager(System.MATERIAL, self)
 	load_materials() 
 	PlayerManager.tick.connect(_on_tick)
 	formula_changed()

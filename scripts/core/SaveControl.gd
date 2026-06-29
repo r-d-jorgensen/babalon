@@ -87,14 +87,19 @@ func _apply_core_state(save: SaveGameData) -> void:
 		ActionManager.states[s.action_id] = state
 
 func _rebuild_all_effects() -> void:
-	UpgradeManager.effects.clear()
-	UpgradeManager.load_effects()
-	for state: UpgradeState in UpgradeManager.upgrades.values():
-		var def: UpgradeDefinition = state.upgrade
-		for effect: EffectDefinition in def.upgrade_effects:
-			var value: float = def.upgrade_effects[effect]
-			effect.apply_effect(UpgradeManager, value, state.level, false)
-	Manager.notify_manager(Manager.FormulaController.ALL)
+	EffectManager.effects.clear()
+	EffectManager.load_effects()
+	#for state: UpgradeState in UpgradeManager.upgrades.values():
+		#for effect_def: EffectDefinition in state.upgrade.upgrade_effects:
+			#var type: EffectTypeDefinition = effect_def.type
+			#type.apply(
+				#type.formula_controller,
+				#effect_def.target,
+				#effect_def.value,
+				#effect_def.operation,
+				#state.level
+			#)
+	Manager.notify_manager(Manager.System.ALL)
 
 func _emit_all_update_signals() -> void:
 	UpgradeManager.upgrades_changed.emit()

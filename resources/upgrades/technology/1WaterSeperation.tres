@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_8s61h"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_gajad"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_yay2d"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_m756w"]
-[ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/FluidMovement.tres" id="3_yay2d"]
-[ext_resource type="Resource" uid="uid://cxnmv1ch2cswx" path="res://resources/effects/WorkerLimit.tres" id="6_o4vex"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_type_definitions/EffectTypeDefinition.gd" id="3_m756w"]
+[ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/1FluidMovement.tres" id="3_yay2d"]
+[ext_resource type="Resource" uid="uid://cxnmv1ch2cswx" path="res://resources/effects/effect_type_definitions/WorkerLimit.tres" id="6_o4vex"]
 
 [resource]
 script = ExtResource("2_gajad")

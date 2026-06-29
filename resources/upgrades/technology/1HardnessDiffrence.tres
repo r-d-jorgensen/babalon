@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_htpku"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_7q0t0"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_5bajk"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_type_definitions/EffectTypeDefinition.gd" id="3_5bajk"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="4_ylvi7"]
-[ext_resource type="Resource" uid="uid://bjytvc2c76rhk" path="res://resources/effects/ActionTick.tres" id="5_7q0t0"]
+[ext_resource type="Resource" uid="uid://bjytvc2c76rhk" path="res://resources/effects/effect_type_definitions/ActionTick.tres" id="5_7q0t0"]
 
 [resource]
 script = ExtResource("4_ylvi7")

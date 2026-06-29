@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://cdxac7sxalv8m"]
-
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="1_yu8mt"]
-
-[resource]
-script = ExtResource("1_yu8mt")
-id = "player_reaserch_gain"
-display_name = "Player Reaserch Gain"
-metadata/_custom_type_script = "uid://bhvkr00kx3k05"

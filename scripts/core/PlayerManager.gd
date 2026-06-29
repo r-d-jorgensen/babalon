@@ -13,7 +13,7 @@ var currency_lookup: Dictionary[CountableDefinition.ObjectType, CountableDefinit
 var currency_id_lookup: Dictionary[String, CountableDefinition] = {}
 
 func _ready() -> void:
-	register_manager(FormulaController.PLAYER, self)
+	register_manager(System.PLAYER, self)
 	load_currencies()
 	_setup_timer()
 	formula_changed()

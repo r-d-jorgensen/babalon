@@ -1,20 +1,16 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dmfkahxn7v5iv"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://ckqskmykwvps0"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_istbs"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_777nb"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_ed3ld"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="4_upbws"]
-[ext_resource type="Resource" uid="uid://crtlv0asot3ay" path="res://resources/effects/UnlockExploration.tres" id="5_daay7"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_777nb"]
 
 [resource]
 script = ExtResource("2_ed3ld")
-id = "expeditions "
-display_name = "Expeditions "
 description = "Allow Expenditions"
 costs = Dictionary[ExtResource("1_istbs"), int]({
 ExtResource("2_777nb"): 1
 })
-upgrade_effects = Dictionary[ExtResource("4_upbws"), float]({
-ExtResource("5_daay7"): 1.0
-})
+id = "expeditions"
+display_name = "Expeditions"
 metadata/_custom_type_script = "uid://5oe453vttnbh"

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_embpu"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_qugct"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/countable_objects/currencies/research.tres" id="2_uy3yy"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="3_ok56x"]
-[ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/FluidMovement.tres" id="3_qugct"]
-[ext_resource type="Resource" uid="uid://bn5topyfqrb1w" path="res://resources/effects/MaterialPassiveGenerate.tres" id="6_7wigv"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_type_definitions/EffectTypeDefinition.gd" id="3_ok56x"]
+[ext_resource type="Resource" uid="uid://banpyasl1tyb3" path="res://resources/upgrades/technology/1FluidMovement.tres" id="3_qugct"]
+[ext_resource type="Resource" uid="uid://bn5topyfqrb1w" path="res://resources/effects/effect_type_definitions/MaterialPassiveGenerate.tres" id="6_7wigv"]
 
 [resource]
 script = ExtResource("2_qugct")

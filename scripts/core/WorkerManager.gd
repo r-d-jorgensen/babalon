@@ -11,15 +11,15 @@ var _consumption_tick: int = 0
 var need_fulfillment: Dictionary[int, float] = {}
 
 func _ready() -> void:
-	register_manager(FormulaController.WORKER, self)
+	register_manager(System.WORKER, self)
 	PlayerManager.tick.connect(_on_tick)
 	formula_changed()
 
 func formula_changed() -> void:
-	total_optimal_worker_limit = (
-		base_optimal_worker_limit +
-		UpgradeManager.effects.get("worker_limit_flat", 0)
-	)
+	#total_optimal_worker_limit = (
+		#base_optimal_worker_limit +
+		#UpgradeManager.effects.get("worker_limit_flat", 0)
+	#)
 	total_workers_changed.emit()
 
 func _on_tick() -> void:

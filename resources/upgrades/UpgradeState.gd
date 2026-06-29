@@ -37,8 +37,8 @@ func purchase(levels: int = 1) -> bool:
 			push_error("Failed to consume cost for upgrade: %s" % upgrade.id)
 			return false
 	level += levels
-	for effect: EffectDefinition in upgrade.upgrade_effects:
-		effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect], upgrade.effect_compounds[effect], levels)
+	#for effect: EffectDefinition in upgrade.upgrade_effects:
+		#effect.apply_effect(UpgradeManager, upgrade.upgrade_effects[effect], upgrade.effect_compounds[effect], levels)
 	UpgradeManager.upgrades_changed.emit()
 	return true
 

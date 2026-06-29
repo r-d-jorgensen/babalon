@@ -1,4 +1,4 @@
-extends EffectManager
+extends Manager
 
 signal upgrades_changed
 
@@ -6,8 +6,7 @@ var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
-	register_manager(FormulaController.UPGRADE, self)
-	load_effects()
+	register_manager(System.UPGRADE, self)
 	load_upgrades()
 	formula_changed()
 

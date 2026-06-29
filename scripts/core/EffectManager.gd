@@ -1,27 +1,27 @@
-@abstract
 extends Manager
-class_name EffectManager
 
-var effects: Dictionary[String, float] = {}
-var effects_lookup: Dictionary[String, EffectDefinition] = {}
-#var worker_effects: Dictionary[WorkerDefinition, String] = {}
-#var action_effects: Dictionary[ActionDefinition, String] = {}
+var effects: Dictionary = {}
 
-func get_effect_value(id: String) -> Variant:
-	return effects.get(id)
+func formula_changed() -> void:
+	pass
+
+#func get_effect_value(id: String) -> Variant:
+	#var state: EffectState = effects.get(id)
+	#if state == null:
+		#return null
+	#return state.get_total_value()
 
 func load_effects() -> void:
 	effects.clear()
-	effects_lookup.clear()
 	GlobalResourceLoader.recursive_load(
 		"res://resources/effects/",
 		func(res: Resource, path: String) -> void:
-			var effect: EffectDefinition = res
+			var effect: EffectTypeDefinition = res
 			if effect.id.is_empty():
 				push_error("Effect missing id: %s" % path)
-			else:
-				effects_lookup[effect.id] = effect
-				effects[effect.id] = effect.default_value,
+				return
+			var state: EffectState = EffectState.new(effect)
+			effects[effect.id] = state,
 		[".tres"],
-		EffectDefinition
+		EffectTypeDefinition
 	)

@@ -5,8 +5,7 @@ var data: Dictionary[String, ActionState] = {}
 
 func get_state(key: String) -> ActionState:
 	if not data.has(key):
-		var state: ActionState = ActionState.new()
-		data[key] = state
+		push_error("No action id: %s" % key)
 	return data[key]
 
 func keys() -> Array:

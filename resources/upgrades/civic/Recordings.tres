@@ -1,21 +1,17 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bamq51i4meu10"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bo6cjhnib208d"]
 
 [ext_resource type="Script" uid="uid://61pwnlqks4g6" path="res://resources/countable_objects/CountableDefinition.gd" id="1_cokr6"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/countable_objects/currencies/culture.tres" id="2_83m4j"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_cpxlh"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="4_4xrfp"]
-[ext_resource type="Resource" uid="uid://co0idkpkn4y4e" path="res://resources/effects/UnlockResearch.tres" id="5_jlo2c"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="3_83m4j"]
 
 [resource]
 script = ExtResource("2_cpxlh")
-id = "recordings"
-display_name = "Recordings"
 description = "Allow Reaserch
 Open access to "
 costs = Dictionary[ExtResource("1_cokr6"), int]({
 ExtResource("2_83m4j"): 1
 })
-upgrade_effects = Dictionary[ExtResource("4_4xrfp"), float]({
-ExtResource("5_jlo2c"): 1.0
-})
+id = "recordings"
+display_name = "Recordings"
 metadata/_custom_type_script = "uid://5oe453vttnbh"
