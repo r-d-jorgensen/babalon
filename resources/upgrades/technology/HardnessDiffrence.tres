@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_7q0t0"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_5bajk"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_5bajk"]
-[ext_resource type="Resource" uid="uid://boung07bl3mex" path="res://resources/upgrades/technology/MineralDeposits.tres" id="4_7q0t0"]
+[ext_resource type="Resource" uid="uid://c2gdmcsbiaoqx" path="res://resources/upgrades/technology/MineralDeposits.tres" id="4_7q0t0"]
 
 [resource]
 script = ExtResource("3_5bajk")

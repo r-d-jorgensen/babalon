@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_wjgp8"]
 [ext_resource type="Resource" uid="uid://vef0kpdj8k80" path="res://resources/upgrades/exploration/MushroomSource.tres" id="4_ehrw5"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_wjgp8"]
-[ext_resource type="Resource" uid="uid://by7jrko8y1uy6" path="res://resources/upgrades/technology/LifeRequierments.tres" id="5_ntddm"]
+[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/LifeRequierments.tres" id="5_ntddm"]
 
 [resource]
 script = ExtResource("3_wjgp8")
@@ -13,8 +13,8 @@ costs = Dictionary[ExtResource("1_ajx4f"), int]({
 ExtResource("2_lr7ur"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_wjgp8"), int]({
-ExtResource("4_ehrw5"): 1,
-ExtResource("5_ntddm"): 1
+ExtResource("5_ntddm"): 1,
+ExtResource("4_ehrw5"): 1
 })
 id = "safe_mushrooms"
 display_name = "Safe Mushrooms"

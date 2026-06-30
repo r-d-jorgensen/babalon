@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://c2gdmcsbiaoqx"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_tfh4w"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_ti8cb"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_bv1c7"]
+[ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_au26w"]
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="5_rj8va"]
+[ext_resource type="Resource" uid="uid://dh6gyx8xmoj8" path="res://resources/effects/effect_targets/MineralActionTick.tres" id="6_ti8cb"]
+
+[resource]
+script = ExtResource("3_bv1c7")
+costs = Dictionary[ExtResource("1_tfh4w"), int]({
+ExtResource("2_ti8cb"): 1
+})
+required_upgrades = Dictionary[ExtResource("3_bv1c7"), int]({
+ExtResource("4_au26w"): 1
+})
+upgrade_effects = Dictionary[ExtResource("5_rj8va"), float]({
+ExtResource("6_ti8cb"): 1.0
+})
+id = "mineral_deposits"
+display_name = "Mineral Deposits"
+metadata/_custom_type_script = "uid://5oe453vttnbh"

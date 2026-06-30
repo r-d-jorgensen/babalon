@@ -20,7 +20,7 @@ func apply(value: float, op: int, level_delta: int) -> void:
 		EffectTarget.Operation.MULTIPLY:
 			mult *= pow(value, level_delta)
 		EffectTarget.Operation.PERCENT_ADD:
-			percent += value * level_delta
+			percent *= 1 + value * level_delta
 
 func compute() -> float:
 	if !dirty:

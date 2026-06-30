@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_l4532"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_nstsy"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_rc6yf"]
-[ext_resource type="Resource" uid="uid://by7jrko8y1uy6" path="res://resources/upgrades/technology/LifeRequierments.tres" id="4_nstsy"]
+[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/LifeRequierments.tres" id="4_nstsy"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_rc6yf"]
 
 [resource]
