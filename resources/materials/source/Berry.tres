@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://br4uf1ijmn7vp"]
+[gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://durxat10coym2"]
 
-[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_n8k0w"]
+[ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_n238g"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_ikydg"]
+[ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_8jrm6"]
+[ext_resource type="Resource" uid="uid://dx74j0qigv17d" path="res://resources/tags/material_tag/Fruit.tres" id="4_acrsn"]
 
 [resource]
-script = ExtResource("1_n8k0w")
-tags = Array[int]([5, 8])
+script = ExtResource("1_n238g")
+tags = Array[ExtResource("2_ikydg")]([ExtResource("3_8jrm6"), ExtResource("4_acrsn")])
 id = "berry"
 display_name = "Berry"
 metadata/_custom_type_script = "uid://dviak2555ty3u"

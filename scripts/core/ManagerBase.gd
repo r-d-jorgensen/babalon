@@ -12,6 +12,12 @@ enum System {
 }
 static var manager_lookup: Dictionary[System, Manager] = {}
 
+enum TopLevelVariable {
+	NA,
+	TICK_RATE,
+	CONSUMPTION_TICK_SPEED
+}
+
 @abstract
 func formula_changed() -> void
 

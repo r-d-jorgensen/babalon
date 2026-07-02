@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://b8f31hatudx41"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_y12uk"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_p8uoc"]
+[ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_plr76"]
+[ext_resource type="Resource" uid="uid://1x0snhlvr14m" path="res://resources/tags/material_tag/Fungus.tres" id="4_8ddfl"]
 
 [resource]
 script = ExtResource("1_y12uk")
-tags = Array[int]([5, 7])
+tags = Array[ExtResource("2_p8uoc")]([ExtResource("3_plr76"), ExtResource("4_8ddfl")])
 id = "mushroom"
 display_name = "Mushroom"
 metadata/_custom_type_script = "uid://dviak2555ty3u"

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://cntoh6ipkn8jb"]
-
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_easey"]
-
-[resource]
-script = ExtResource("1_easey")
-id = "water_action_output"
-display_name = "Water Action Output"
-metadata/_custom_type_script = "uid://bg1eh85vb18ii"

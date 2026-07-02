@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://c3r2qdilpippr"]
+
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_dtwsa"]
+
+[resource]
+script = ExtResource("1_dtwsa")
+target_kind = 2
+id = "liquid_flat"
+display_name = "Liquid Flat"
+metadata/_custom_type_script = "uid://bg1eh85vb18ii"

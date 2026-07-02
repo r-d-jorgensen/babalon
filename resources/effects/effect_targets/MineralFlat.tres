@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://dh6gyx8xmoj8"]
+
+[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="1_3kk6m"]
+
+[resource]
+script = ExtResource("1_3kk6m")
+target_kind = 2
+id = "mineral_flat"
+display_name = "Mineral Flat"
+metadata/_custom_type_script = "uid://bg1eh85vb18ii"

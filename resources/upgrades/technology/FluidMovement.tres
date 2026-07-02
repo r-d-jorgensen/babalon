@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_hlra7"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_hiefl"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_tfig5"]
-[ext_resource type="Resource" uid="uid://c3r2qdilpippr" path="res://resources/effects/effect_targets/LiquidActionTick.tres" id="6_tfig5"]
+[ext_resource type="Resource" uid="uid://c3r2qdilpippr" path="res://resources/effects/effect_targets/LiquidFlat.tres" id="6_tfig5"]
 
 [resource]
 script = ExtResource("2_hlra7")

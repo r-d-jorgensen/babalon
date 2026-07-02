@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TagDefinition" format=3 uid="uid://x8dvmbwpmdtv"]
+
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_k4wv8"]
+
+[resource]
+script = ExtResource("1_k4wv8")
+display_name = "Metal"
+metadata/_custom_type_script = "uid://dejms3jn3cx4n"

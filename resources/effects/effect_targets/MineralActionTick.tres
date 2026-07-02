@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EffectTarget" format=3 uid="uid://dh6gyx8xmoj8"]
-
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="2_iqfnd"]
-
-[resource]
-script = ExtResource("2_iqfnd")
-id = "mineral_action_tick"
-display_name = "Mineral Action Tick"
-metadata/_custom_type_script = "uid://bg1eh85vb18ii"

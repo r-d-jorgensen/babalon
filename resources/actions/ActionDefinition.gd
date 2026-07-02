@@ -1,6 +1,16 @@
 extends Definition
 class_name ActionDefinition
 
+enum ActionTag {
+	SOURCE,
+	SORT,
+	COMBINE,
+	PROCESS,
+	REFINE,
+	CHECK,
+	FINISH
+}
+
 @export var duration: int = 2
 @export var base_conversion_rate: float = 1.0
 @export var inputs: Dictionary[Definition, int] = {}

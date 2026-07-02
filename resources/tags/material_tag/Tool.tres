@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TagDefinition" format=3 uid="uid://cunfnmwak0e24"]
+
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_vmt3d"]
+
+[resource]
+script = ExtResource("1_vmt3d")
+display_name = "Tool"
+metadata/_custom_type_script = "uid://dejms3jn3cx4n"

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_4kby3")
+base_optimal_worker_limit = 20
 consumption_requirements = Dictionary[int, int]({
 2: 3,
 5: 1

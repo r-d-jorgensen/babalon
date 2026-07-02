@@ -3,12 +3,12 @@ extends Manager
 signal total_workers_changed
 signal workers_changed(action: ActionDefinition)
 
-var total_workers: int = 0
-var base_optimal_worker_limit: int = 30
-var total_optimal_worker_limit: int = 30
 var worker_race: WorkerDefinition = preload("res://resources/workers/Human.tres")
-var _consumption_tick: int = 0
-var need_fulfillment: Dictionary[int, float] = {}
+var total_workers: int = 0
+var total_optimal_worker_limit: int = 30
+var _consumption_tick: float = 0
+var _consumption_tick_speed: float = 1
+var need_fulfillment: Dictionary[TagDefinition, float] = {}
 
 func _ready() -> void:
 	register_manager(System.WORKER, self)
@@ -16,16 +16,17 @@ func _ready() -> void:
 	formula_changed()
 
 func formula_changed() -> void:
-	#total_optimal_worker_limit = (
-		#base_optimal_worker_limit +
-		#UpgradeManager.effects.get("worker_limit_flat", 0)
-	#)
+	var increase_value: int = 10 # should pull fron Effect manager and get increase for "human" targeted workers
+	total_optimal_worker_limit = (
+		worker_race.base_optimal_worker_limit +
+		increase_value
+	)
 	total_workers_changed.emit()
 
 func _on_tick() -> void:
 	for state: ActionState in ActionManager.states.values():
 		state.tick()
-	_consumption_tick += 1
+	_consumption_tick += _consumption_tick_speed
 	if _consumption_tick >= worker_race.consumption_time:
 		_consumption_tick = 0
 		_consume_worker_resources()
@@ -71,10 +72,10 @@ func unassign_worker(action: ActionDefinition, amount: int = 1) -> void:
 	state.workers_assigned -= min(amount, state.workers_assigned)
 	workers_changed.emit(action)
 
-func get_total_demand() -> Dictionary[int, int]:
-	var total: Dictionary[int, int] = {}
+func get_total_demand() -> Dictionary[TagDefinition, int]:
+	var total: Dictionary[TagDefinition, int] = {}
 	var active_workers: int = get_total_assigned()
-	for tag: MaterialDefinition.MaterialTag in worker_race.consumption_requirements:
+	for tag: TagDefinition in worker_race.consumption_requirements:
 		var amount: int = worker_race.consumption_requirements[tag]
 		total[tag] = amount * active_workers
 	return total
@@ -99,7 +100,7 @@ func calculate_worker_consumption() -> Dictionary[String, int]:
 	var active_workers: int = get_total_assigned()
 	if active_workers <= 0:
 		return consumption
-	for tag: MaterialDefinition.MaterialTag in worker_race.consumption_requirements:
+	for tag: TagDefinition in worker_race.consumption_requirements:
 		var total_required: int = worker_race.get_required_amount(tag) * active_workers
 		_accumulate_tag_consumption(consumption, tag, total_required)
 	return consumption
@@ -109,7 +110,7 @@ func _consume_worker_resources() -> void:
 	var active_workers: int = get_total_assigned()
 	if active_workers <= 0:
 		return
-	for tag: MaterialDefinition.MaterialTag in worker_race.consumption_requirements:
+	for tag: TagDefinition in worker_race.consumption_requirements:
 		var total_required: int = worker_race.get_required_amount(tag) * active_workers
 		var consumed: int = _consume_tag_resources(tag, total_required)
 		var fulfillment: float = 1.0
@@ -118,11 +119,11 @@ func _consume_worker_resources() -> void:
 		need_fulfillment[tag] = clamp(fulfillment, 0.01, 1.0)
 	MaterialManager._bump()
 
-func _accumulate_tag_consumption(consumption: Dictionary[String, int], tag: int, amount: int) -> void:
+func _accumulate_tag_consumption(consumption: Dictionary[String, int], tag: TagDefinition, amount: int) -> void:
 	var remaining: int = amount
 	var valid_materials: Array[MaterialDefinition] = []
 	for mat: MaterialDefinition in MaterialManager.materials_list:
-		if mat.craft_stage == MaterialDefinition.CraftingStage.FINISH and mat.has_tag(tag):
+		if mat.has_tag(tag):
 			valid_materials.append(mat)
 	valid_materials.sort_custom(func(a: MaterialDefinition, b: MaterialDefinition) -> bool:
 		return a.production_value < b.production_value
@@ -142,12 +143,12 @@ func _accumulate_tag_consumption(consumption: Dictionary[String, int], tag: int,
 			consumption[mat.id] = consumption.get(mat.id, 0) + items_needed
 			remaining = 0
 
-func _consume_tag_resources(tag: int, amount: int) -> int:
+func _consume_tag_resources(tag: TagDefinition, amount: int) -> int:
 	var remaining: int = amount
 	var consumed: int = 0
 	var valid_materials: Array[MaterialDefinition] = []
 	for mat: MaterialDefinition in MaterialManager.materials_list:
-		if mat.craft_stage == MaterialDefinition.CraftingStage.FINISH and mat.has_tag(tag):
+		if mat.has_tag(tag):
 			valid_materials.append(mat)
 	valid_materials.sort_custom(func(a: MaterialDefinition, b: MaterialDefinition) -> bool:
 		return a.production_value < b.production_value

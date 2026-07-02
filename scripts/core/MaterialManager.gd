@@ -145,8 +145,8 @@ func _key(object: Variant) -> String:
 		return object.id
 	return str(object)
 
-func get_total_supply() -> Dictionary[int, int]:
-	var supply: Dictionary[int, int] = {}
+func get_total_supply() -> Dictionary[TagDefinition, int]:
+	var supply: Dictionary[TagDefinition, int] = {}
 	for id:String in materials.data:
 		var amount: int = materials.get_value(id)
 		var material: MaterialDefinition = materials_by_id.get(id)
@@ -154,10 +154,8 @@ func get_total_supply() -> Dictionary[int, int]:
 			continue
 		if amount <= 0:
 			continue
-		if material.craft_stage != MaterialDefinition.CraftingStage.FINISH:
-			continue
 		var production: int = amount * material.production_value
-		for tag: MaterialDefinition.MaterialTag in material.tags:
+		for tag: TagDefinition in material.tags:
 			supply[tag] = supply.get(tag, 0) + production
 	return supply
 

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TagDefinition" format=3 uid="uid://bqj2vwkkm1rdk"]
+
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_u3l76"]
+
+[resource]
+script = ExtResource("1_u3l76")
+display_name = "Gem"
+metadata/_custom_type_script = "uid://dejms3jn3cx4n"

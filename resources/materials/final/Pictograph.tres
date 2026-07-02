@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bnjdon5ah1how"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_ij0kp"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_i0d1r"]
+[ext_resource type="Resource" uid="uid://bwav2dpy4ntyk" path="res://resources/tags/material_tag/Writing.tres" id="3_30oo7"]
 
 [resource]
 script = ExtResource("1_ij0kp")
-craft_stage = 6
-build_effect_value = 1
-tags = Array[int]([0, 11])
+tags = Array[ExtResource("2_i0d1r")]([ExtResource("3_30oo7")])
 id = "pictograph"
 display_name = "Pictograph"
 object_type = 3

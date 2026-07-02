@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://d14f5nr0q67pm"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_bdwg1"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_j147v"]
+[ext_resource type="Resource" uid="uid://b777k2lc6tob7" path="res://resources/tags/material_tag/Water.tres" id="3_e5itq"]
+[ext_resource type="Resource" uid="uid://bs5s8x37p2d6g" path="res://resources/tags/material_tag/Liquid.tres" id="4_p0htl"]
 
 [resource]
 script = ExtResource("1_bdwg1")
-craft_stage = 6
-tags = Array[int]([1, 2])
+tags = Array[ExtResource("2_j147v")]([ExtResource("3_e5itq"), ExtResource("4_p0htl")])
 id = "drinkable_water"
 display_name = "Drinkable Water"
 object_type = 1

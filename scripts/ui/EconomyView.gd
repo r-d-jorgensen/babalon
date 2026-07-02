@@ -59,10 +59,10 @@ func update_worker_label(_action: Variant = null) -> void:
 	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [WorkerManager.worker_race.display_name, available, total, optimal]
 
 func update_consumption_labels() -> void:
-	var supply: Dictionary[int, int] = MaterialManager.get_total_supply()
-	var demand: Dictionary[int, int] = WorkerManager.get_total_demand()
+	var supply: Dictionary[TagDefinition, int] = MaterialManager.get_total_supply()
+	var demand: Dictionary[TagDefinition, int] = WorkerManager.get_total_demand()
 	var race: WorkerDefinition = WorkerManager.worker_race
-	var production: Dictionary[int, float] = {}
+	var production: Dictionary[TagDefinition, float] = {}
 	for state: ActionState in ActionManager.states.values():
 		if state.workers_assigned <= 0:
 			continue
@@ -76,10 +76,10 @@ func update_consumption_labels() -> void:
 				* WorkerManager.get_worker_efficiency()
 				/ float(action.duration)
 			)
-			for tag: MaterialDefinition.MaterialTag in mat.tags:
+			for tag: TagDefinition in mat.tags:
 				production[tag] = production.get(tag, 0.0) + (amount * mat.production_value)
 	var parts: Array[String] = []
-	for tag: MaterialDefinition.MaterialTag in race.consumption_requirements:
+	for tag: TagDefinition in race.consumption_requirements:
 		var total_demand: int = demand.get(tag, 0)
 		var consumption_per_tick: float = float(total_demand) / float(race.consumption_time)
 		var production_per_tick: float = production.get(tag, 0.0)
@@ -88,5 +88,5 @@ func update_consumption_labels() -> void:
 		var sign_value: String = "+"
 		if net < 0:
 			sign_value = ""
-		parts.append("%s %d %s%.2f/s" % [MaterialDefinition.tag_to_display(tag), supply_amount, sign_value, net])
+		parts.append("%s %d %s%.2f/s" % [tag.display_name, supply_amount, sign_value, net])
 	consumption_label.text = " | ".join(parts)

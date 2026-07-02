@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://codeq8mqb30eh"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_pfbl4"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_gyy2j"]
+[ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="3_quwgk"]
+[ext_resource type="Resource" uid="uid://bwav2dpy4ntyk" path="res://resources/tags/material_tag/Writing.tres" id="4_by2lw"]
 
 [resource]
 script = ExtResource("1_pfbl4")
-tags = Array[int]([0, 11])
+tags = Array[ExtResource("2_gyy2j")]([ExtResource("3_quwgk"), ExtResource("4_by2lw")])
 id = "mud_tablet"
 display_name = "Mud Tablet"
 metadata/_custom_type_script = "uid://dviak2555ty3u"

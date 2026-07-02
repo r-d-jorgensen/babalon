@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bir58fbksu4he"]
 
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_gbp2c"]
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="2_ylmb3"]
+[ext_resource type="Resource" uid="uid://bwav2dpy4ntyk" path="res://resources/tags/material_tag/Writing.tres" id="3_yvtjs"]
 
 [resource]
 script = ExtResource("2_ylmb3")
-craft_stage = 6
-tick_effect_value = 1
 tick_effect_interval = 10
-tags = Array[int]([0])
+tags = Array[ExtResource("2_gbp2c")]([ExtResource("3_yvtjs")])
 id = "cave_painting"
 display_name = "Cave Painting"
 object_type = 2

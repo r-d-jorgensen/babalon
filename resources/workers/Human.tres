@@ -1,12 +1,15 @@
 [gd_resource type="Resource" script_class="WorkerDefinition" format=3 uid="uid://dj5j5fdfiglod"]
 
 [ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="1_lvwcu"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_p2mje"]
+[ext_resource type="Resource" uid="uid://b777k2lc6tob7" path="res://resources/tags/material_tag/Water.tres" id="2_vkfp0"]
+[ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_vkfp0"]
 
 [resource]
 script = ExtResource("1_lvwcu")
-consumption_requirements = Dictionary[int, int]({
-2: 3,
-5: 1
+consumption_requirements = Dictionary[ExtResource("1_p2mje"), int]({
+ExtResource("2_vkfp0"): 4,
+ExtResource("3_vkfp0"): 2
 })
 id = "human"
 display_name = "Human"

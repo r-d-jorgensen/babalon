@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://b7fxunu3h7ohq"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_tmajt"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_naimx"]
+[ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="3_n1r7w"]
 
 [resource]
 script = ExtResource("1_tmajt")
-tags = Array[int]([11])
+tags = Array[ExtResource("2_naimx")]([ExtResource("3_n1r7w")])
 id = "dirt"
 display_name = "Dirt"
 metadata/_custom_type_script = "uid://dviak2555ty3u"

@@ -1,17 +1,18 @@
-[gd_resource type="Resource" script_class="MaterialAction" format=3 uid="uid://blj2dujb6ckk5"]
+[gd_resource type="Resource" script_class="ActionDefinition" format=3 uid="uid://blj2dujb6ckk5"]
 
-[ext_resource type="Resource" uid="uid://br4uf1ijmn7vp" path="res://resources/materials/source/Berry.tres" id="1_k4f0s"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_08k0a"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="1_wkgwm"]
-[ext_resource type="Resource" uid="uid://ckig3dtets12" path="res://resources/materials/final/EdibleBerry.tres" id="2_4jbn2"]
+[ext_resource type="Resource" uid="uid://durxat10coym2" path="res://resources/materials/source/Berry.tres" id="2_pr628"]
+[ext_resource type="Resource" uid="uid://ckig3dtets12" path="res://resources/materials/final/EdibleBerry.tres" id="3_dyxpx"]
 
 [resource]
 script = ExtResource("1_wkgwm")
+inputs = Dictionary[ExtResource("1_08k0a"), int]({
+ExtResource("2_pr628"): 1
+})
+outputs = Dictionary[ExtResource("1_08k0a"), int]({
+ExtResource("3_dyxpx"): 1
+})
 id = "check_berry"
 display_name = "Check Berry"
-inputs = {
-ExtResource("1_k4f0s"): 1
-}
-outputs = {
-ExtResource("2_4jbn2"): 1
-}
 metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

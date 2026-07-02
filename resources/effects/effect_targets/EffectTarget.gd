@@ -8,6 +8,5 @@ enum Operation {
 	PERCENT_ADD
 }
 
-@export var effect: EffectDefinition
-@export var target: int
+@export var target_definition: Definition
 @export var operation: Operation = Operation.FLAT

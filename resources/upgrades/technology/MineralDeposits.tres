@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_bv1c7"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_au26w"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="5_rj8va"]
-[ext_resource type="Resource" uid="uid://dh6gyx8xmoj8" path="res://resources/effects/effect_targets/MineralActionTick.tres" id="6_ti8cb"]
+[ext_resource type="Resource" uid="uid://dh6gyx8xmoj8" path="res://resources/effects/effect_targets/MineralFlat.tres" id="6_ti8cb"]
 
 [resource]
 script = ExtResource("3_bv1c7")

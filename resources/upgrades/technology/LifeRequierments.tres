@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_n5vrh"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_ehlhc"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="5_lnevy"]
-[ext_resource type="Resource" uid="uid://c4wywm74iv5qb" path="res://resources/effects/effect_targets/OrganicActionTick.tres" id="6_j4x1y"]
+[ext_resource type="Resource" uid="uid://c4wywm74iv5qb" path="res://resources/effects/effect_targets/OrganicFlat.tres" id="6_j4x1y"]
 
 [resource]
 script = ExtResource("3_n5vrh")

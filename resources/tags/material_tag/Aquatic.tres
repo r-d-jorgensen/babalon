@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TagDefinition" format=3 uid="uid://oq48i4usysdh"]
+
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_akacw"]
+
+[resource]
+script = ExtResource("1_akacw")
+display_name = "Aquatic"
+metadata/_custom_type_script = "uid://dejms3jn3cx4n"
