@@ -61,13 +61,13 @@ func _apply_core_state(save: SaveGameData) -> void:
 
 	UpgradeManager.upgrades.clear()
 	for id: String in save.upgrades.upgrade_states:
-		var def: UpgradeDefinition = UpgradeManager.upgrade_lookup.get(id)
+		var def:UpgradeDefinition = UpgradeManager.upgrade_lookup.get(id)
 		if def == null:
 			push_warning("Unknown upgrade id: %s" % id)
 			continue
-		var state: UpgradeState = UpgradeState.new(def)
+		var state:UpgradeState = UpgradeState.new(def)
 		state.level = save.upgrades.upgrade_states[id]
-		UpgradeManager.upgrades[id] = state
+		UpgradeManager.upgrades[def.id] = state
 
 	_unpack_materials(MaterialManager.materials, save.materials)
 	_unpack_materials(MaterialManager.created, save.created)
@@ -128,8 +128,8 @@ func _pack_player() -> PlayerSaveData:
 func _pack_upgrades() -> UpgradeSaveData:
 	var upgrades: UpgradeSaveData = UpgradeSaveData.new()
 	var packed_upgrades: Dictionary[String, int] = {}
-	for id: String in UpgradeManager.upgrades.keys():
-		packed_upgrades[id] = UpgradeManager.upgrades[id].level
+	for def:UpgradeDefinition in UpgradeManager.upgrades.keys():
+		packed_upgrades[def.id] = UpgradeManager.upgrades[def.id].level
 	upgrades.upgrade_states = packed_upgrades
 	return upgrades
 

@@ -25,15 +25,12 @@ func has_upgrade(id: String) -> bool:
 
 func load_upgrades() -> void:
 	upgrades.clear()
-	upgrade_lookup.clear()
 	GlobalResourceLoader.recursive_load(
 		"res://resources/upgrades/",
 		func(res: Resource, path: String) -> void:
 			var upgrade: UpgradeDefinition = res
 			if upgrade.id.is_empty():
 				push_error("Upgrade missing id: %s" % path)
-			elif upgrade_lookup.has(upgrade.id):
-				push_error("Duplicate upgrade id: %s" % upgrade.id)
 			else:
 				upgrades[upgrade.id] = UpgradeState.new(upgrade)
 				upgrade_lookup[upgrade.id] = upgrade,
