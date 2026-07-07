@@ -12,7 +12,7 @@ var percent: float = 0.0
 var dirty: bool = true
 var cached_value: float = 0.0
 
-func apply(value: float, op: int, level_delta: int, recalculate: bool = true) -> void:
+func apply(value: float, op: EffectTarget.Operation, level_delta: int) -> void:
 	dirty = true
 	match op:
 		EffectTarget.Operation.FLAT:
@@ -21,10 +21,8 @@ func apply(value: float, op: int, level_delta: int, recalculate: bool = true) ->
 			mult *= pow(value, level_delta)
 		EffectTarget.Operation.PERCENT_ADD:
 			percent += value * level_delta
-	if recalculate:
-		compute()
 
-func compute() -> float:
+func get_value() -> float:
 	if !dirty:
 		return cached_value
 	else:
