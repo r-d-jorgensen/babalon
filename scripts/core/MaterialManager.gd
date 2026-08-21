@@ -12,7 +12,7 @@ var material_delta_per_tick: Dictionary[String, float] = {}
 
 func _ready() -> void:
 	register_manager(System.MATERIAL, self)
-	load_materials() 
+	load_materials()
 	PlayerManager.tick.connect(_on_tick)
 	formula_changed()
 
@@ -24,7 +24,7 @@ func load_materials() -> void:
 	materials_by_id.clear()
 	tick_effect_materials.clear()
 	GlobalResourceLoader.recursive_load(
-		"res://resources/countable_objects/materials/",
+		"res://resources/materials/",
 		func(res: Resource, path: String) -> void:
 			var material: MaterialDefinition = res
 			if material.id.is_empty():
@@ -147,16 +147,13 @@ func _key(object: Variant) -> String:
 
 func get_total_supply() -> Dictionary[TagDefinition, int]:
 	var supply: Dictionary[TagDefinition, int] = {}
-	for id:String in materials.data:
-		var amount: int = materials.get_value(id)
-		var material: MaterialDefinition = materials_by_id.get(id)
-		if material == null:
-			continue
+	for material: MaterialDefinition in materials_list:
+		var amount: int = get_amount(material)
 		if amount <= 0:
 			continue
-		var production: int = amount * material.production_value
+		var total_value: int = amount * material.production_value
 		for tag: TagDefinition in material.tags:
-			supply[tag] = supply.get(tag, 0) + production
+			supply[tag] = supply.get(tag, 0) + total_value
 	return supply
 
 func _bump() -> void:
