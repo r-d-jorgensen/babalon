@@ -131,12 +131,10 @@ func _pack_player() -> PlayerSaveData:
 	return player
 
 func _pack_upgrades() -> UpgradeSaveData:
-	var upgrades: UpgradeSaveData = UpgradeSaveData.new()
-	var packed_upgrades: Dictionary[String, int] = {}
-	for def:UpgradeDefinition in UpgradeManager.upgrades.keys():
-		packed_upgrades[def.id] = UpgradeManager.upgrades[def.id].level
-	upgrades.upgrade_states = packed_upgrades
-	return upgrades
+	var save_data: UpgradeSaveData = UpgradeSaveData.new()
+	for id: String in UpgradeManager.upgrades:
+		save_data.upgrade_states[id] = UpgradeManager.upgrades[id].level
+	return save_data
 
 func _pack_states() -> Array[SaveActionStateData]:
 	var out: Array[SaveActionStateData] = []
