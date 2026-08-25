@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_ud8tx"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_2en3b"]
 [ext_resource type="Resource" uid="uid://dy6fanjyrtax" path="res://resources/upgrades/technology/SafeBerries.tres" id="4_mcbna"]
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_ud8tx"]
 
 [resource]
 script = ExtResource("3_2en3b")

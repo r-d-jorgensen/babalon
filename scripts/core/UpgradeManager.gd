@@ -25,8 +25,7 @@ func load_upgrades() -> void:
 			upgrade_lookup[upgrade.id] = upgrade
 			upgrades[upgrade.id] = UpgradeState.new(upgrade),
 		[".tres"],
-		UpgradeDefinition
-	)
+		UpgradeDefinition)
 	upgrades_changed.emit()
 	Manager.notify_manager(Manager.System.EFFECT)
 
@@ -44,3 +43,23 @@ func get_level(upgrade_id: String) -> int:
 	if state == null:
 		return 0
 	return state.level
+
+func purchase(upgrade_id: String) -> bool:
+	var state: UpgradeState = upgrades.get(upgrade_id)
+	if state == null or state.definition == null:
+		return false
+	if not state.can_upgrade():
+		return false
+
+	for currency: Definition in state.definition.costs:
+		var amount: int = state.definition.costs[currency]
+		if PlayerManager.get_currency(currency.object_type) < amount:
+			return false
+
+	for currency: Definition in state.definition.costs:
+		PlayerManager.change_currency(currency.object_type, -state.definition.costs[currency])
+
+	state.level += 1
+	upgrades_changed.emit()
+	Manager.notify_manager(Manager.System.EFFECT)
+	return true

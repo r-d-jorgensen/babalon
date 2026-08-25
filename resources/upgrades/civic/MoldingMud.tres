@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_omha7"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_qncd8"]
 [ext_resource type="Resource" uid="uid://bi1pqv2dyje5c" path="res://resources/upgrades/civic/PeopleWatching.tres" id="4_omha7"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_re3e2"]
 
 [resource]
 script = ExtResource("3_qncd8")

@@ -91,6 +91,10 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Workers: # / #"
 
+[node name="ConsumptionLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=920462406]
+layout_mode = 2
+text = "Workers: # / #"
+
 [node name="EconomyPages" type="TabContainer" parent="MainUI/MainViews/EconomyView" unique_id=1947823566]
 layout_mode = 2
 size_flags_vertical = 3
