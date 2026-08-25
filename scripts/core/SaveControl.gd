@@ -87,23 +87,7 @@ func _apply_core_state(save: SaveGameData) -> void:
 		ActionManager.states[s.action_id] = state
 
 func _rebuild_all_effects() -> void:
-	EffectManager.effects.clear()
-	EffectManager.load_effects()
-
-	for state: UpgradeState in UpgradeManager.upgrades.values():
-		if state.level == 0:
-			continue
-		for target: EffectTarget in state.upgrade.upgrade_effects:
-			var value: float = state.upgrade.upgrade_effects[target]
-
-			var effect: EffectState = EffectManager.effects[target.effect]
-			effect.apply(
-				target.domain,
-				target.key,
-				value,
-				target.operation,
-				state.level
-			)
+	#TODO rebiuld effects
 	Manager.notify_manager(Manager.System.ALL)
 
 func _emit_all_update_signals() -> void:

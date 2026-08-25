@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("1_lvwcu")
 consumption_requirements = Dictionary[ExtResource("1_p2mje"), int]({
-ExtResource("2_vkfp0"): 4,
-ExtResource("3_vkfp0"): 2
+ExtResource("2_vkfp0"): 2,
+ExtResource("3_vkfp0"): 1
 })
 id = "human"
 display_name = "Human"

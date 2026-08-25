@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_rjkus"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_hiefl"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_hlra7"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_hiefl"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_tfig5"]
-[ext_resource type="Resource" uid="uid://c3r2qdilpippr" path="res://resources/effects/effect_targets/LiquidFlat.tres" id="6_tfig5"]
+[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/EffectDefinition.gd" id="5_hiefl"]
 
 [resource]
 script = ExtResource("2_hlra7")
@@ -14,9 +13,6 @@ ExtResource("2_hiefl"): 1
 })
 required_upgrades = Dictionary[ExtResource("2_hlra7"), int]({
 ExtResource("4_tfig5"): 1
-})
-upgrade_effects = Dictionary[ExtResource("3_hiefl"), float]({
-ExtResource("6_tfig5"): 1.0
 })
 id = "fluid_movement"
 display_name = "Fluid Movement"

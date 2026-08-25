@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://dkhjk1n35bkn8" path="res://resources/upgrades/civic/Community.tres" id="4_4bdpf"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_xse77"]
 [ext_resource type="Resource" uid="uid://ba7y0v3dhg6la" path="res://resources/upgrades/civic/FoodSharing.tres" id="5_1a5bh"]
-[ext_resource type="Resource" uid="uid://u6o4wlo0hbnk" path="res://resources/effects/effect_targets/Unlocks/UnlockTraditions.tres" id="5_rhxgg"]
 
 [resource]
 script = ExtResource("3_6kikd")
@@ -16,9 +15,6 @@ ExtResource("2_rhxgg"): 1
 required_upgrades = Dictionary[ExtResource("3_6kikd"), int]({
 ExtResource("4_4bdpf"): 1,
 ExtResource("5_1a5bh"): 1
-})
-upgrade_effects = Dictionary[ExtResource("4_xse77"), float]({
-ExtResource("5_rhxgg"): 1.0
 })
 id = "tradition"
 display_name = "Tradition"

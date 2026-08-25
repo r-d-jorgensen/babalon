@@ -6,35 +6,41 @@ var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
-	register_manager(System.UPGRADE, self)
+	Manager.register_manager(Manager.System.UPGRADE, self)
 	load_upgrades()
-	formula_changed()
-
-func formula_changed() -> void:
-	return
-
-func get_upgrade(id: String) -> UpgradeState:
-	return upgrades.get(id)
-
-func get_upgrade_level(id: String) -> int:
-	var upgrade: UpgradeState = upgrades.get(id)
-	return upgrade.level if upgrade else 0
-
-func has_upgrade(id: String) -> bool:
-	return get_upgrade_level(id) > 0
 
 func load_upgrades() -> void:
 	upgrades.clear()
+	upgrade_lookup.clear()
 	GlobalResourceLoader.recursive_load(
 		"res://resources/upgrades/",
 		func(res: Resource, path: String) -> void:
 			var upgrade: UpgradeDefinition = res
 			if upgrade.id.is_empty():
 				push_error("Upgrade missing id: %s" % path)
-			else:
-				upgrades[upgrade.id] = UpgradeState.new(upgrade)
-				upgrade_lookup[upgrade.id] = upgrade,
+				return
+			if upgrade_lookup.has(upgrade.id):
+				push_error("Duplicate upgrade id '%s': %s" % [upgrade.id, path])
+				return
+			upgrade_lookup[upgrade.id] = upgrade
+			upgrades[upgrade.id] = UpgradeState.new(upgrade),
 		[".tres"],
 		UpgradeDefinition
 	)
 	upgrades_changed.emit()
+	Manager.notify_manager(Manager.System.EFFECT)
+
+func formula_changed() -> void:
+	Manager.notify_manager(Manager.System.EFFECT)
+
+func get_upgrade(upgrade_id: String) -> UpgradeDefinition:
+	return upgrade_lookup.get(upgrade_id)
+
+func get_upgrade_state(upgrade_id: String) -> UpgradeState:
+	return upgrades.get(upgrade_id)
+
+func get_level(upgrade_id: String) -> int:
+	var state: UpgradeState = get_upgrade_state(upgrade_id)
+	if state == null:
+		return 0
+	return state.level

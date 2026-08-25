@@ -3,14 +3,10 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_mukn6"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_mukn6"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_n8alr"]
-[ext_resource type="Resource" uid="uid://41t8reoytp5" path="res://resources/effects/effect_targets/HumanFlat.tres" id="4_n8alr"]
 
 [resource]
 script = ExtResource("2_mukn6")
 description = "Add to population limit"
-upgrade_effects = Dictionary[ExtResource("3_n8alr"), float]({
-ExtResource("4_n8alr"): 10.0
-})
 id = "cave_nook"
 display_name = "Cave Nook"
 object_type = 4

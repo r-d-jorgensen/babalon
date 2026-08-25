@@ -5,7 +5,6 @@
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_uk2qi"]
 [ext_resource type="Resource" uid="uid://c500js36egjnc" path="res://resources/upgrades/civic/HumanSpecies.tres" id="4_hwuek"]
 [ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_uk2qi"]
-[ext_resource type="Resource" uid="uid://41t8reoytp5" path="res://resources/effects/effect_targets/HumanFlat.tres" id="5_hwuek"]
 
 [resource]
 script = ExtResource("2_pb77k")
@@ -14,9 +13,6 @@ ExtResource("2_uk2qi"): 1
 })
 required_upgrades = Dictionary[ExtResource("2_pb77k"), int]({
 ExtResource("4_hwuek"): 1
-})
-upgrade_effects = Dictionary[ExtResource("4_uk2qi"), float]({
-ExtResource("5_hwuek"): 10.0
 })
 id = "empathy"
 display_name = "Empathy"

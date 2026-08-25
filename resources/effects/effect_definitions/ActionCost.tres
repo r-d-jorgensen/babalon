@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EffectDefinition" format=3 uid="uid://dvu57gk580mt4"]
-
-[ext_resource type="Script" uid="uid://bhvkr00kx3k05" path="res://resources/effects/effect_definitions/EffectDefinition.gd" id="1_ul18s"]
-
-[resource]
-script = ExtResource("1_ul18s")
-id = "action_cost"
-display_name = "Action Cost"
-metadata/_custom_type_script = "uid://bhvkr00kx3k05"
