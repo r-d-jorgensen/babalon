@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_3ahe8"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_wyupq"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_060eh"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_bfoqo"]
 [ext_resource type="Resource" uid="uid://14vn12colo8p" path="res://resources/upgrades/civic/Empathy.tres" id="4_wyupq"]
 
 [resource]

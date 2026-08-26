@@ -14,30 +14,30 @@ func _ready() -> void:
 	buy_button.pressed.connect(_on_buy_pressed)
 	refresh()
 
+func set_state(new_state: UpgradeState) -> void:
+	state = new_state
+	refresh()
+
 func refresh() -> void:
-	if state == null or state.upgrade == null:
+	if state == null or state.definition == null:
 		return
-	name_label.text = state.get_display_name()
-	level_label.text = "%d/%d" % [
-		state.level,
-		state.upgrade.max_level
-	]
+	name_label.text = state.definition.display_name
+	level_label.text = "%d/%d" % [state.level, state.definition.max_level]
 	cost_label.text = _get_cost_text()
 	if state.is_maxed():
 		buy_button.text = "MAX"
 		buy_button.disabled = true
 	else:
 		buy_button.text = "Buy"
-		buy_button.disabled = not state.can_purchase()
+		buy_button.disabled = not state.can_upgrade()
 
 func _get_cost_text() -> String:
 	var parts: Array[String] = []
-	for currency: Definition in state.upgrade.costs:
-		parts.append("%d %s" % [
-			state.upgrade.costs[currency],
-			currency.display_name
-		])
+	for currency: Definition in state.definition.costs:
+		parts.append("%d %s" % [state.definition.costs[currency], currency.display_name])
 	return ", ".join(parts)
 
 func _on_buy_pressed() -> void:
-	state.purchase()
+	if state == null:
+		return
+	UpgradeManager.purchase(state.definition.id)

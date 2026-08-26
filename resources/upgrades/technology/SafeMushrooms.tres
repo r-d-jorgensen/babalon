@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_lr7ur"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_wjgp8"]
 [ext_resource type="Resource" uid="uid://vef0kpdj8k80" path="res://resources/upgrades/exploration/MushroomSource.tres" id="4_ehrw5"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_wjgp8"]
 [ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/LifeRequierments.tres" id="5_ntddm"]
 
 [resource]

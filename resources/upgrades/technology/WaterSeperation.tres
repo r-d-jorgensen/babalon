@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_gajad"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_yay2d"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_m756w"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_m756w"]
 [ext_resource type="Resource" uid="uid://dswdcyvuecebw" path="res://resources/upgrades/technology/FluidMovement.tres" id="4_yay2d"]
 
 [resource]

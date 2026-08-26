@@ -43,7 +43,7 @@ func build_upgrades_ui() -> void:
 	for state: UpgradeState in UpgradeManager.upgrades.values():
 		var row: UpgradeRow = upgrade_row_scene.instantiate()
 		row.state = state
-		match state.upgrade.object_type:
+		match state.definition.object_type:
 			UpgradeDefinition.ObjectType.CIVIC:
 				civics_list.add_child(row)
 			UpgradeDefinition.ObjectType.TECHNOLOGY:

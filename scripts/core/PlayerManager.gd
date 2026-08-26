@@ -88,6 +88,5 @@ func load_currencies() -> void:
 				if not currencies.has(currency.id):
 					currencies[currency.id] = 0,
 		[".tres"],
-		Definition
-	)
+		Definition)
 	currencies_changed.emit()

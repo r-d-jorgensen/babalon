@@ -2,15 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_tpv0a"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_tpv0a"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_e7o4c"]
-[ext_resource type="Resource" uid="uid://dykmq6whuxl1n" path="res://resources/effects/effect_targets/Unlocks/UnlockForest.tres" id="4_e7o4c"]
 
 [resource]
 script = ExtResource("2_tpv0a")
 description = "Open up forrest sector"
-upgrade_effects = Dictionary[ExtResource("3_e7o4c"), float]({
-ExtResource("4_e7o4c"): 1.0
-})
 id = "cave_opening"
 display_name = "Cave Opening"
 object_type = 4

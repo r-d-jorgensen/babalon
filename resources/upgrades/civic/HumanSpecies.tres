@@ -3,16 +3,11 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_b0avk"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_x0x6l"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_c8xi5"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_o1adp"]
-[ext_resource type="Resource" uid="uid://bl7c2hcqpivll" path="res://resources/effects/effect_targets/Unlocks/UnlockHumans.tres" id="5_x0x6l"]
 
 [resource]
 script = ExtResource("3_c8xi5")
 costs = Dictionary[ExtResource("1_b0avk"), int]({
 ExtResource("2_x0x6l"): 1
-})
-upgrade_effects = Dictionary[ExtResource("4_o1adp"), float]({
-ExtResource("5_x0x6l"): 1.0
 })
 id = "human_species"
 display_name = "Human Species"

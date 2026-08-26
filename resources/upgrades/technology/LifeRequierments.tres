@@ -4,8 +4,6 @@
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_j4x1y"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_n5vrh"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_ehlhc"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="5_lnevy"]
-[ext_resource type="Resource" uid="uid://c4wywm74iv5qb" path="res://resources/effects/effect_targets/OrganicFlat.tres" id="6_j4x1y"]
 
 [resource]
 script = ExtResource("3_n5vrh")
@@ -15,9 +13,7 @@ ExtResource("2_j4x1y"): 1
 required_upgrades = Dictionary[ExtResource("3_n5vrh"), int]({
 ExtResource("4_ehlhc"): 1
 })
-upgrade_effects = Dictionary[ExtResource("5_lnevy"), float]({
-ExtResource("6_j4x1y"): 1.0
-})
 id = "life_requierments"
 display_name = "Life Requierments"
+object_type = 3
 metadata/_custom_type_script = "uid://5oe453vttnbh"

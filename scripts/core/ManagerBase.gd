@@ -8,7 +8,10 @@ enum System {
 	WORKER,
 	MATERIAL,
 	PLAYER,
-	UPGRADE
+	UPGRADE,
+	SPELL,
+	PRESTIGE,
+	EFFECT
 }
 static var manager_lookup: Dictionary[System, Manager] = {}
 

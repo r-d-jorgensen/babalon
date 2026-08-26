@@ -3,16 +3,11 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_8mxmq"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_8j0ij"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_0lrjp"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="4_bskaf"]
-[ext_resource type="Resource" uid="uid://bov17vlobb3r7" path="res://resources/effects/effect_targets/Unlocks/UnlockResearch.tres" id="5_8mxmq"]
 
 [resource]
 script = ExtResource("3_0lrjp")
 costs = Dictionary[ExtResource("1_8mxmq"), int]({
 ExtResource("2_8j0ij"): 1
-})
-upgrade_effects = Dictionary[ExtResource("4_bskaf"), float]({
-ExtResource("5_8mxmq"): 1.0
 })
 id = "experiments"
 display_name = "Experiments"

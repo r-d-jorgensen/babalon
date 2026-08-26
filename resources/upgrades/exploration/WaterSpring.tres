@@ -2,15 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_aj3ij"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_12vcq"]
-[ext_resource type="Script" uid="uid://bg1eh85vb18ii" path="res://resources/effects/effect_targets/EffectTarget.gd" id="3_o5fld"]
-[ext_resource type="Resource" uid="uid://cntoh6ipkn8jb" path="res://resources/effects/effect_targets/WaterFlat.tres" id="4_12vcq"]
 
 [resource]
 script = ExtResource("2_12vcq")
 description = "Give passive drinking water"
-upgrade_effects = Dictionary[ExtResource("3_o5fld"), float]({
-ExtResource("4_12vcq"): 10.0
-})
 id = "water_spring"
 display_name = "Water Spring"
 object_type = 4
