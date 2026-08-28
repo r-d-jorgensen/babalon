@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_wlfcv"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_qfx7p"]
-[ext_resource type="Resource" uid="uid://b777k2lc6tob7" path="res://resources/tags/material_tag/Water.tres" id="3_ni23j"]
 [ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="4_bc43f"]
+[ext_resource type="Resource" uid="uid://bs5s8x37p2d6g" path="res://resources/tags/material_tag/Liquid.tres" id="4_qfx7p"]
 
 [resource]
 script = ExtResource("1_wlfcv")
-tags = Array[ExtResource("2_qfx7p")]([ExtResource("3_ni23j"), ExtResource("4_bc43f")])
+tags = Array[ExtResource("2_qfx7p")]([ExtResource("4_bc43f"), ExtResource("4_qfx7p")])
 id = "mud"
 display_name = "Mud"
 metadata/_custom_type_script = "uid://dviak2555ty3u"

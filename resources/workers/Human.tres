@@ -13,4 +13,5 @@ ExtResource("3_vkfp0"): 1
 })
 id = "human"
 display_name = "Human"
+object_type = 2
 metadata/_custom_type_script = "uid://cfxrb7j87l7t1"

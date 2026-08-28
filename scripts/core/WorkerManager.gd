@@ -16,10 +16,12 @@ func _ready() -> void:
 	formula_changed()
 
 func formula_changed() -> void:
-	var increase_value: int = 10 # should pull fron Effect manager and get increase for "human" targeted workers
 	total_optimal_worker_limit = (
 		worker_race.base_optimal_worker_limit +
-		increase_value
+		floori(EffectManager.get_effect_value(
+			EffectDefinition.Effect.WORKER_CAPACITY,
+			worker_race.tags
+		))
 	)
 	total_workers_changed.emit()
 
@@ -30,14 +32,13 @@ func _on_tick() -> void:
 	if _consumption_tick >= worker_race.consumption_time:
 		_consumption_tick = 0
 		_consume_worker_resources()
-	var currency_generated: int = get_currency_per_tick()
+	var currency_generated: float = get_currency_per_tick()
 	if currency_generated > 0:
 		PlayerManager.change_currency(worker_race.object_type, currency_generated)
 
-func get_currency_per_tick() -> int:
-	return ceili(
-		get_total_assigned()
-		* worker_race.worker_currency_per_tick
+func get_currency_per_tick() -> float:
+	return (
+		float(get_total_assigned()) / worker_race.worker_currency_per_tick
 		* get_worker_efficiency()
 	)
 

@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_u3l76")
+id = "gem"
 display_name = "Gem"
 metadata/_custom_type_script = "uid://dejms3jn3cx4n"

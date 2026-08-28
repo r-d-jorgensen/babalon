@@ -8,7 +8,7 @@ var tick_rate: float = 1.0
 var stored_ticks: int = 0
 var catchup_speed_multiplier: int = 1
 var player_click_power: int = 1
-var currencies: Dictionary[String, int] = {}
+var currencies: Dictionary[String, float] = {}
 var currency_lookup: Dictionary[Definition.ObjectType, Definition] = {}
 var currency_id_lookup: Dictionary[String, Definition] = {}
 
@@ -48,14 +48,14 @@ func set_timer_speed(multiplier: int) -> void:
 	else:
 		catchup_speed_multiplier = 1
 
-func change_currency(currency_type: Definition.ObjectType, amount: int) -> bool:
+func change_currency(currency_type: Definition.ObjectType, amount: float) -> bool:
 	var currency: Definition = currency_lookup.get(currency_type)
 	if currency == null:
 		push_warning("Invalid currency type: ", currency_type)
 		return false
 	var key: String = currency.id
 	var current: int = currencies.get(key, 0)
-	var next: int = current + amount
+	var next: float = current + amount
 	if next < 0:
 		return false
 	currencies[key] = next

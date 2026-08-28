@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_ij0kp")
+build_effect_value = 1.0
 tags = Array[ExtResource("2_i0d1r")]([ExtResource("3_30oo7")])
 id = "pictograph"
 display_name = "Pictograph"

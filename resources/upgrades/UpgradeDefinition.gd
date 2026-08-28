@@ -16,4 +16,4 @@ enum UpgradeSource {
 
 @export var max_level: int = 1
 @export var cost_growth: float = 5.0
-@export var effects: Array[EffectDefinition]
+@export var effects: Array[EffectDefinition] = []

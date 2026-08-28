@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_vmt3d")
+id = "tool"
 display_name = "Tool"
 metadata/_custom_type_script = "uid://dejms3jn3cx4n"

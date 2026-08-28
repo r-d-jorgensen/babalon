@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_a1aky")
+id = "grain"
 display_name = "Grain"
 metadata/_custom_type_script = "uid://dejms3jn3cx4n"

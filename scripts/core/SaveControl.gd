@@ -47,7 +47,7 @@ func load_game() -> void:
 
 func _apply_save(save: SaveGameData) -> void:
 	_apply_core_state(save)
-	_rebuild_all_effects()
+	EffectManager.rebuild_all_effects()
 	_emit_all_update_signals()
 
 func _apply_core_state(save: SaveGameData) -> void:
@@ -86,10 +86,6 @@ func _apply_core_state(save: SaveGameData) -> void:
 		state.progress = s.progress
 		ActionManager.states[s.action_id] = state
 
-func _rebuild_all_effects() -> void:
-	#TODO rebiuld effects
-	Manager.notify_manager(Manager.System.ALL)
-
 func _emit_all_update_signals() -> void:
 	UpgradeManager.upgrades_changed.emit()
 	WorkerManager.total_workers_changed.emit()
@@ -108,7 +104,7 @@ func _unpack_materials(map: MaterialMap, data: MaterialSaveData) -> void:
 
 func _pack_player() -> PlayerSaveData:
 	var player: PlayerSaveData = PlayerSaveData.new()
-	var packed: Dictionary[String, int] = {}
+	var packed: Dictionary[String, float] = {}
 	for id: String in PlayerManager.currencies.keys():
 		packed[id] = PlayerManager.currencies[id]
 	player.currencies = packed

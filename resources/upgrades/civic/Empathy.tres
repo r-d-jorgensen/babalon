@@ -3,7 +3,15 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_gas2g"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_pb77k"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_uk2qi"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_hwuek"]
 [ext_resource type="Resource" uid="uid://c500js36egjnc" path="res://resources/upgrades/civic/HumanSpecies.tres" id="4_hwuek"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="4_n7ifn"]
+
+[sub_resource type="Resource" id="Resource_ul4oj"]
+script = ExtResource("3_hwuek")
+effect = 3
+amount = 10.0
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("2_pb77k")
@@ -13,6 +21,7 @@ ExtResource("2_uk2qi"): 1
 required_upgrades = Dictionary[ExtResource("2_pb77k"), int]({
 ExtResource("4_hwuek"): 1
 })
+effects = Array[ExtResource("3_hwuek")]([SubResource("Resource_ul4oj")])
 id = "empathy"
 display_name = "Empathy"
 object_type = 2
