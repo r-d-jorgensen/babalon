@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_b0avk"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_x0x6l"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_c8xi5"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_x0x6l"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_c8xi5"]
 
 [resource]
 script = ExtResource("3_c8xi5")
+description = "Unlocks Humans as a Worker type"
 costs = Dictionary[ExtResource("1_b0avk"), int]({
 ExtResource("2_x0x6l"): 1
 })

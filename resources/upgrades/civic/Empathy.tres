@@ -6,15 +6,18 @@
 [ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_hwuek"]
 [ext_resource type="Resource" uid="uid://c500js36egjnc" path="res://resources/upgrades/civic/HumanSpecies.tres" id="4_hwuek"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="4_n7ifn"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_ul4oj"]
 
 [sub_resource type="Resource" id="Resource_ul4oj"]
 script = ExtResource("3_hwuek")
-effect = 3
-amount = 10.0
+system = 2
+effect = 4
+amount = 0.1
 metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("2_pb77k")
+description = "Improves Culture per tick"
 costs = Dictionary[ExtResource("1_gas2g"), int]({
 ExtResource("2_uk2qi"): 1
 })

@@ -1,13 +1,23 @@
 [gd_resource type="Resource" script_class="WorkerDefinition" format=3 uid="uid://ds7gcrng48m2h"]
 
 [ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="1_4kby3"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_n3ec3"]
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="3_oclyq"]
+[ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="4_c1ryt"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="5_lyjpx"]
+[ext_resource type="Resource" uid="uid://u6pe83k3mruv" path="res://resources/currencies/Discovery.tres" id="6_r0fpv"]
+[ext_resource type="Resource" uid="uid://brirwfydy38f0" path="res://resources/currencies/Truth.tres" id="7_gct23"]
+[ext_resource type="Resource" uid="uid://c3e5y8ouqji8f" path="res://resources/currencies/Favor.tres" id="8_e7kjy"]
 
 [resource]
 script = ExtResource("1_4kby3")
 base_optimal_worker_limit = 20
-consumption_requirements = Dictionary[int, int]({
-2: 3,
-5: 1
+worker_currency_per_tick = Dictionary[ExtResource("3_oclyq"), float]({
+ExtResource("4_c1ryt"): 0.0,
+ExtResource("5_lyjpx"): 1.0,
+ExtResource("6_r0fpv"): 0.0,
+ExtResource("7_gct23"): 0.0,
+ExtResource("8_e7kjy"): 0.0
 })
 id = "dwarf"
 display_name = "Dwarf"

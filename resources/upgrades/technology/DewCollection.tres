@@ -3,16 +3,31 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_yache"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_ok56x"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_7wigv"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_drjoy"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_5yfbk"]
 [ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="4_drjoy"]
+[ext_resource type="Resource" uid="uid://odxu02cupwhs" path="res://resources/actions/GatherWater.tres" id="5_5yfbk"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_v82pl"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="7_v82pl"]
+
+[sub_resource type="Resource" id="Resource_wdyyh"]
+script = ExtResource("3_drjoy")
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_5yfbk")]([ExtResource("5_5yfbk")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_7wigv")
+description = "Increase water gather producation"
 costs = Dictionary[ExtResource("1_yache"), int]({
 ExtResource("2_ok56x"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_7wigv"), int]({
 ExtResource("4_drjoy"): 1
 })
+effects = Array[ExtResource("3_drjoy")]([SubResource("Resource_wdyyh")])
 id = "dew_collection"
 display_name = "Dew Collection"
 metadata/_custom_type_script = "uid://5oe453vttnbh"

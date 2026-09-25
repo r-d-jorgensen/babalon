@@ -2,19 +2,34 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_ajx4f"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_lr7ur"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_ntddm"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_wjgp8"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_c0ex6"]
 [ext_resource type="Resource" uid="uid://vef0kpdj8k80" path="res://resources/upgrades/exploration/MushroomSource.tres" id="4_ehrw5"]
-[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/LifeRequierments.tres" id="5_ntddm"]
+[ext_resource type="Resource" uid="uid://dv8v5ccq8raxw" path="res://resources/actions/CheckMushroom.tres" id="5_3j05l"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_qkp40"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="7_w3lxr"]
+[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/BerryBushes.tres" id="9_2hev4"]
+
+[sub_resource type="Resource" id="Resource_xh0yp"]
+script = ExtResource("3_ntddm")
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_c0ex6")]([ExtResource("5_3j05l")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_wjgp8")
+description = "incease mushroom check produaction"
 costs = Dictionary[ExtResource("1_ajx4f"), int]({
 ExtResource("2_lr7ur"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_wjgp8"), int]({
-ExtResource("5_ntddm"): 1,
+ExtResource("9_2hev4"): 1,
 ExtResource("4_ehrw5"): 1
 })
+effects = Array[ExtResource("3_ntddm")]([SubResource("Resource_xh0yp")])
 id = "safe_mushrooms"
 display_name = "Safe Mushrooms"
 object_type = 3

@@ -2,17 +2,32 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_l4532"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_nstsy"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_aohkm"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_rc6yf"]
-[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/LifeRequierments.tres" id="4_nstsy"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_si807"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_n5edw"]
+[ext_resource type="Resource" uid="uid://blj2dujb6ckk5" path="res://resources/actions/CheckBerry.tres" id="5_x5in4"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="7_bmnge"]
+[ext_resource type="Resource" uid="uid://wlsrgdhlwypb" path="res://resources/upgrades/technology/BerryBushes.tres" id="9_e1j12"]
+
+[sub_resource type="Resource" id="Resource_acpol"]
+script = ExtResource("3_aohkm")
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_si807")]([ExtResource("5_x5in4")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_rc6yf")
+description = "incease berry check produaction"
 costs = Dictionary[ExtResource("1_l4532"), int]({
 ExtResource("2_nstsy"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_rc6yf"), int]({
-ExtResource("4_nstsy"): 1
+ExtResource("9_e1j12"): 1
 })
+effects = Array[ExtResource("3_aohkm")]([SubResource("Resource_acpol")])
 id = "safe_berries"
 display_name = "Safe Berries"
 object_type = 3

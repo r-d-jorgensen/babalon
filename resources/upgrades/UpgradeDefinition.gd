@@ -9,10 +9,10 @@ enum UpgradeSource {
 }
 
 @export_multiline var description: String
-@export var upgrade_source: UpgradeSource
+@export var upgrade_source: UpgradeSource = UpgradeSource.GAMEPLAY
 
-@export var costs: Dictionary[Definition, int]
-@export var required_upgrades: Dictionary[UpgradeDefinition, int]
+@export var costs: Dictionary[Definition, int] = {}
+@export var required_upgrades: Dictionary[UpgradeDefinition, int] = {}
 
 @export var max_level: int = 1
 @export var cost_growth: float = 5.0

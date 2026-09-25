@@ -3,16 +3,31 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_gajad"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_yay2d"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_m756w"]
-[ext_resource type="Resource" uid="uid://dswdcyvuecebw" path="res://resources/upgrades/technology/FluidMovement.tres" id="4_yay2d"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_o4vex"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_qdnjb"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_4ji7e"]
+[ext_resource type="Resource" uid="uid://drsva05j0yl1u" path="res://resources/actions/CheckWater.tres" id="5_inaf3"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="6_qdnjb"]
+[ext_resource type="Resource" uid="uid://dswdcyvuecebw" path="res://resources/upgrades/technology/WaterFlow.tres" id="8_4ji7e"]
+
+[sub_resource type="Resource" id="Resource_kni3u"]
+script = ExtResource("3_o4vex")
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_qdnjb")]([ExtResource("5_inaf3")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_m756w")
+description = "Improve Water check"
 costs = Dictionary[ExtResource("1_gajad"), int]({
 ExtResource("2_yay2d"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_m756w"), int]({
-ExtResource("4_yay2d"): 1
+ExtResource("8_4ji7e"): 1
 })
+effects = Array[ExtResource("3_o4vex")]([SubResource("Resource_kni3u")])
 id = "water_seperation"
 display_name = "Water Seperation"
 object_type = 3

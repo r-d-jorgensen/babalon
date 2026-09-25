@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dswdcyvuecebw"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_o23vu"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_52ht4"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_lkmjo"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_t6310"]
+[ext_resource type="Resource" uid="uid://odxu02cupwhs" path="res://resources/actions/GatherWater.tres" id="5_iq6yy"]
+[ext_resource type="Resource" uid="uid://drsva05j0yl1u" path="res://resources/actions/CheckWater.tres" id="6_k2gyo"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="7_1jupm"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="8_x1w7q"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="9_ufg1d"]
+[ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="10_68nsl"]
+
+[sub_resource type="Resource" id="Resource_687qv"]
+script = ExtResource("3_lkmjo")
+system = 3
+effect = 1
+amount = 1.0
+actions = Array[ExtResource("4_t6310")]([ExtResource("5_iq6yy"), ExtResource("6_k2gyo")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
+
+[resource]
+script = ExtResource("9_ufg1d")
+description = "Increase water gather/check speed"
+costs = Dictionary[ExtResource("1_o23vu"), int]({
+ExtResource("2_52ht4"): 1
+})
+required_upgrades = Dictionary[ExtResource("9_ufg1d"), int]({
+ExtResource("10_68nsl"): 1
+})
+effects = Array[ExtResource("3_lkmjo")]([SubResource("Resource_687qv")])
+id = "water_flow"
+display_name = "Water Flow"
+metadata/_custom_type_script = "uid://5oe453vttnbh"

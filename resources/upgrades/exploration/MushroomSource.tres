@@ -2,10 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_jh7iu"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_l3ye5"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="2_qv7k3"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="3_ayr12"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="4_253bn"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="5_ayr12"]
+
+[sub_resource type="Resource" id="Resource_b8tni"]
+script = ExtResource("2_qv7k3")
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("2_l3ye5")
 description = "Allow for mushroom gathering and sorting"
+effects = Array[ExtResource("2_qv7k3")]([SubResource("Resource_b8tni")])
 id = "mushroom_Source"
 display_name = "Mushroom Source"
 object_type = 4

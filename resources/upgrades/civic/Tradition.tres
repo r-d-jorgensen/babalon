@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_j0a3m"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_rhxgg"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_6kikd"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_xse77"]
 [ext_resource type="Resource" uid="uid://dkhjk1n35bkn8" path="res://resources/upgrades/civic/Community.tres" id="4_4bdpf"]
 [ext_resource type="Resource" uid="uid://ba7y0v3dhg6la" path="res://resources/upgrades/civic/FoodSharing.tres" id="5_1a5bh"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="7_4bdpf"]
 
 [resource]
 script = ExtResource("3_6kikd")
+description = "Open Deeper Cuture Tree"
 costs = Dictionary[ExtResource("1_j0a3m"), int]({
 ExtResource("2_rhxgg"): 1
 })

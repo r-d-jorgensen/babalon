@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://bckcbqaop51pa"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_n1sdm"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_yki3i"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_tw6cu"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_pr4mk"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_tc0y5"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="6_40k3x"]
+[ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="6_tw6cu"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="7_44sxw"]
+[ext_resource type="Resource" uid="uid://bqj2vwkkm1rdk" path="res://resources/tags/material_tag/Gem.tres" id="7_pr4mk"]
+[ext_resource type="Resource" uid="uid://c2gdmcsbiaoqx" path="res://resources/upgrades/technology/DirtPit.tres" id="8_n3pyu"]
+
+[sub_resource type="Resource" id="Resource_e12u4"]
+script = ExtResource("3_tw6cu")
+system = 3
+effect = 1
+amount = 1.0
+tags = Array[ExtResource("5_tc0y5")]([ExtResource("6_tw6cu"), ExtResource("7_pr4mk")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
+
+[resource]
+script = ExtResource("7_44sxw")
+description = "increase mineral/gem gathering speed"
+costs = Dictionary[ExtResource("1_n1sdm"), int]({
+ExtResource("2_yki3i"): 1
+})
+required_upgrades = Dictionary[ExtResource("7_44sxw"), int]({
+ExtResource("8_n3pyu"): 1,
+null: 1
+})
+effects = Array[ExtResource("3_tw6cu")]([SubResource("Resource_e12u4")])
+id = "mining_method"
+display_name = "Mining Method"
+object_type = 3
+metadata/_custom_type_script = "uid://5oe453vttnbh"

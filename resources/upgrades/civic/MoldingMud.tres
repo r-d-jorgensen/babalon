@@ -3,16 +3,30 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_ux7be"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_omha7"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_qncd8"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_re3e2"]
 [ext_resource type="Resource" uid="uid://bi1pqv2dyje5c" path="res://resources/upgrades/civic/PeopleWatching.tres" id="4_omha7"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_pqboh"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_5gf7k"]
+[ext_resource type="Resource" uid="uid://bjiwjnv07oohb" path="res://resources/actions/MakeMud.tres" id="5_ylycb"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="7_5gf7k"]
+
+[sub_resource type="Resource" id="Resource_fi6fo"]
+script = ExtResource("3_re3e2")
+amount = 1.0
+actions = Array[ExtResource("4_pqboh")]([ExtResource("5_ylycb")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_qncd8")
+description = "Reduces mud working cost
+Reduce human creation cost"
 costs = Dictionary[ExtResource("1_ux7be"), int]({
 ExtResource("2_omha7"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_qncd8"), int]({
 ExtResource("4_omha7"): 1
 })
+effects = Array[ExtResource("3_re3e2")]([SubResource("Resource_fi6fo")])
 id = "molding_mud"
 display_name = "Molding Mud"
 object_type = 2

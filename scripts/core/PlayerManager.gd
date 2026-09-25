@@ -13,7 +13,7 @@ var currency_lookup: Dictionary[Definition.ObjectType, Definition] = {}
 var currency_id_lookup: Dictionary[String, Definition] = {}
 
 func _ready() -> void:
-	register_manager(System.PLAYER, self)
+	register_manager(EffectDefinition.System.PLAYER, self)
 	load_currencies()
 	_setup_timer()
 	formula_changed()
@@ -65,7 +65,7 @@ func change_currency(currency_type: Definition.ObjectType, amount: float) -> boo
 func get_currency_by_id(id: String) -> int:
 	return currencies.get(id, 0)
 
-func get_currency(currency_type: Definition.ObjectType) -> int:
+func get_currency(currency_type: Definition.ObjectType) -> float:
 	var currency: Definition = currency_lookup.get(currency_type)
 	if currency == null:
 		return 0

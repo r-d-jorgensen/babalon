@@ -35,6 +35,8 @@ func save_game() -> void:
 	var err : Error = ResourceSaver.save(save, SAVE_PATH)
 	if err != OK:
 		push_error("Failed to save game")
+	else:
+		print("Game saved to: ", ProjectSettings.globalize_path(SAVE_PATH))
 
 func load_game() -> void:
 	if not ResourceLoader.exists(SAVE_PATH):

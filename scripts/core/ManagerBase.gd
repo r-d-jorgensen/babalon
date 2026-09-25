@@ -2,18 +2,7 @@
 extends Node
 class_name Manager
 
-enum System {
-	ALL,
-	ACTION,
-	WORKER,
-	MATERIAL,
-	PLAYER,
-	UPGRADE,
-	SPELL,
-	PRESTIGE,
-	EFFECT
-}
-static var manager_lookup: Dictionary[System, Manager] = {}
+static var manager_lookup: Dictionary[EffectDefinition.System, Manager] = {}
 
 enum TopLevelVariable {
 	NA,
@@ -24,20 +13,20 @@ enum TopLevelVariable {
 @abstract
 func formula_changed() -> void
 
-static func register_manager(controller: System, manager: Manager) -> void:
+static func register_manager(controller: EffectDefinition.System, manager: Manager) -> void:
 	assert(not manager_lookup.has(controller), "Manager already registered for controller %s" % controller)
 	manager_lookup[controller] = manager
 
-static func get_managers(controller: System) -> Array[Manager]:
-	if controller == System.ALL:
+static func get_managers(controller: EffectDefinition.System) -> Array[Manager]:
+	if controller == EffectDefinition.System.GLOBAL:
 		return manager_lookup.values()
 	var manager: Manager = manager_lookup.get(controller)
 	if manager == null:
 		return []
 	return [manager]
 
-static func notify_manager(controller: System) -> void:
-	if controller == System.ALL:
+static func notify_manager(controller: EffectDefinition.System) -> void:
+	if controller == EffectDefinition.System.GLOBAL:
 		for manager: Manager in manager_lookup.values():
 			manager.formula_changed()
 		return

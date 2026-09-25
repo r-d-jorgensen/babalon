@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_8mxmq"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_8j0ij"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_0lrjp"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_8mxmq"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_8j0ij"]
 
 [resource]
 script = ExtResource("3_0lrjp")
+description = "Unlocks Tech Tree"
 costs = Dictionary[ExtResource("1_8mxmq"), int]({
 ExtResource("2_8j0ij"): 1
 })

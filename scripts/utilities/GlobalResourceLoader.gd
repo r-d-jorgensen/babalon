@@ -15,7 +15,7 @@ static func recursive_load(
 		if file == "." or file == "..":
 			file = dir.get_next()
 			continue
-		var full_path: String = path + "/" + file
+		var full_path: String = path.path_join(file)
 		if dir.current_is_dir():
 			recursive_load(full_path, on_load, ext_filter, type_ref)
 		else:

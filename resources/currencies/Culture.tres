@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Definition" format=3 uid="uid://bgun06gxelnff"]
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_trhaw"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_elyi8"]
 
 [resource]
 script = ExtResource("1_trhaw")

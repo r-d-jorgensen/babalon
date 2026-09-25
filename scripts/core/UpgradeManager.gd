@@ -6,7 +6,7 @@ var upgrades: Dictionary[String, UpgradeState] = {}
 var upgrade_lookup: Dictionary[String, UpgradeDefinition] = {}
 
 func _ready() -> void:
-	Manager.register_manager(Manager.System.UPGRADE, self)
+	Manager.register_manager(EffectDefinition.System.UPGRADE, self)
 	load_upgrades()
 
 func load_upgrades() -> void:
@@ -27,10 +27,10 @@ func load_upgrades() -> void:
 		[".tres"],
 		UpgradeDefinition)
 	upgrades_changed.emit()
-	Manager.notify_manager(Manager.System.EFFECT)
+	Manager.notify_manager(EffectDefinition.System.EFFECT)
 
 func formula_changed() -> void:
-	Manager.notify_manager(Manager.System.EFFECT)
+	Manager.notify_manager(EffectDefinition.System.EFFECT)
 
 func get_upgrade(upgrade_id: String) -> UpgradeDefinition:
 	return upgrade_lookup.get(upgrade_id)
@@ -61,5 +61,5 @@ func purchase(upgrade_id: String) -> bool:
 
 	state.level += 1
 	upgrades_changed.emit()
-	Manager.notify_manager(Manager.System.EFFECT)
+	Manager.notify_manager(EffectDefinition.System.EFFECT)
 	return true

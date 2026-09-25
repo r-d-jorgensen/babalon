@@ -1,11 +1,19 @@
 [gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://dk17pg8w7nlya"]
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_liud4"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="2_fbrvk"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="2_liud4"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="3_xg873"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="4_o63du"]
+
+[sub_resource type="Resource" id="Resource_tdp1i"]
+script = ExtResource("2_fbrvk")
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("2_liud4")
 description = "Add to population limit"
+effects = Array[ExtResource("2_fbrvk")]([SubResource("Resource_tdp1i")])
 id = "ground_burrow"
 display_name = "Ground Burrow"
 object_type = 4

@@ -3,16 +3,31 @@
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_np1fu"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="2_hjxkb"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="3_dqhij"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_px2g6"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_8hdf7"]
 [ext_resource type="Resource" uid="uid://c500js36egjnc" path="res://resources/upgrades/civic/HumanSpecies.tres" id="4_hjxkb"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_dda8c"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="6_8hdf7"]
+[ext_resource type="Resource" uid="uid://dj5j5fdfiglod" path="res://resources/workers/Human.tres" id="7_dda8c"]
+
+[sub_resource type="Resource" id="Resource_h4fre"]
+script = ExtResource("3_px2g6")
+system = 2
+effect = 4
+amount = 0.1
+workers = Array[ExtResource("6_8hdf7")]([ExtResource("7_dda8c")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("3_dqhij")
+description = "Increase culture gain per worker"
 costs = Dictionary[ExtResource("1_np1fu"), int]({
 ExtResource("2_hjxkb"): 1
 })
 required_upgrades = Dictionary[ExtResource("3_dqhij"), int]({
 ExtResource("4_hjxkb"): 1
 })
+effects = Array[ExtResource("3_px2g6")]([SubResource("Resource_h4fre")])
 id = "people_watching"
 display_name = "People Watching"
 object_type = 2

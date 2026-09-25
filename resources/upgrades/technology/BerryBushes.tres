@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://wlsrgdhlwypb"]
+
+[ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_a1btp"]
+[ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="2_yqfeo"]
+[ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_4bcjd"]
+[ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_qnovp"]
+[ext_resource type="Resource" uid="uid://delovh1q5tbq1" path="res://resources/actions/GatherBerry.tres" id="5_hgrsg"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="6_m4524"]
+[ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="7_6dvkm"]
+[ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="8_cr60q"]
+[ext_resource type="Resource" uid="uid://47fgwodmxgha" path="res://resources/upgrades/civic/Experiments.tres" id="9_1nmae"]
+
+[sub_resource type="Resource" id="Resource_dml6f"]
+script = ExtResource("3_4bcjd")
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_qnovp")]([ExtResource("5_hgrsg")])
+metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
+
+[resource]
+script = ExtResource("8_cr60q")
+description = "Incease berry gathering producation"
+costs = Dictionary[ExtResource("1_a1btp"), int]({
+ExtResource("2_yqfeo"): 1
+})
+required_upgrades = Dictionary[ExtResource("8_cr60q"), int]({
+ExtResource("9_1nmae"): 1
+})
+effects = Array[ExtResource("3_4bcjd")]([SubResource("Resource_dml6f")])
+id = "berry_bushes"
+display_name = "Berry Bushes"
+object_type = 3
+metadata/_custom_type_script = "uid://5oe453vttnbh"

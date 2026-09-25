@@ -6,23 +6,49 @@ signal workers_changed(action: ActionDefinition)
 var worker_race: WorkerDefinition = preload("res://resources/workers/Human.tres")
 var total_workers: int = 0
 var total_optimal_worker_limit: int = 30
-var _consumption_tick: float = 0
-var _consumption_tick_speed: float = 1
+var total_worker_currency_per_tick: Dictionary[Definition, float] = {}
+var total_worker_demand: Dictionary[TagDefinition, float] = {}
+var _consumption_tick: float = 0.0
+var _consumption_tick_speed: float = 1.0
 var need_fulfillment: Dictionary[TagDefinition, float] = {}
 
 func _ready() -> void:
-	register_manager(System.WORKER, self)
+	register_manager(EffectDefinition.System.WORKER, self)
 	PlayerManager.tick.connect(_on_tick)
 	formula_changed()
 
 func formula_changed() -> void:
-	total_optimal_worker_limit = (
-		worker_race.base_optimal_worker_limit +
-		floori(EffectManager.get_effect_value(
-			EffectDefinition.Effect.WORKER_CAPACITY,
-			worker_race.tags
-		))
-	)
+	total_optimal_worker_limit = floori(EffectManager.get_effect_value(
+		worker_race.base_optimal_worker_limit,
+		EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
+		EffectDefinition.System.WORKER,
+		EffectDefinition.Effect.CAPACITY,
+		worker_race.tags
+	))
+	total_worker_currency_per_tick.clear()
+	for currency: Definition in PlayerManager.currency_id_lookup.values():
+		total_worker_currency_per_tick[currency] = EffectManager.get_effect_value(
+			worker_race.get_currency_per_tick(currency),
+			EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
+			EffectDefinition.System.WORKER,
+			EffectDefinition.Effect.TICK_EFFECT,
+			[],
+			[],
+			[currency],
+			[worker_race]
+		)
+	total_worker_demand.clear()
+	for tag: TagDefinition in worker_race.consumption_requirements:
+		total_worker_demand[tag] = EffectManager.get_effect_value(
+			worker_race.get_required_amount(tag),
+			EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
+			EffectDefinition.System.WORKER,
+			EffectDefinition.Effect.COST,
+			[tag],
+			[],
+			[],
+			[worker_race]
+		)
 	total_workers_changed.emit()
 
 func _on_tick() -> void:
@@ -32,14 +58,21 @@ func _on_tick() -> void:
 	if _consumption_tick >= worker_race.consumption_time:
 		_consumption_tick = 0
 		_consume_worker_resources()
-	var currency_generated: float = get_currency_per_tick()
-	if currency_generated > 0:
-		PlayerManager.change_currency(worker_race.object_type, currency_generated)
+	var assigned_workers: float = float(get_total_assigned())
+	var efficiency: float = get_worker_efficiency()
+	for currency: Definition in total_worker_currency_per_tick:
+		var currency_per_tick: float = (
+			assigned_workers * efficiency *
+			total_worker_currency_per_tick[currency]
+		)
+		if currency_per_tick > 0:
+			PlayerManager.change_currency(currency.object_type, currency_per_tick)
 
-func get_currency_per_tick() -> float:
+func get_currency_per_tick(currency: Definition) -> float:
 	return (
-		float(get_total_assigned()) / worker_race.worker_currency_per_tick
-		* get_worker_efficiency()
+		float(get_total_assigned()) *
+		total_worker_currency_per_tick.get(currency, 0.0) *
+		get_worker_efficiency()
 	)
 
 func change_workers(amount: int) -> bool:
@@ -76,9 +109,8 @@ func unassign_worker(action: ActionDefinition, amount: int = 1) -> void:
 func get_total_demand() -> Dictionary[TagDefinition, int]:
 	var total: Dictionary[TagDefinition, int] = {}
 	var active_workers: int = get_total_assigned()
-	for tag: TagDefinition in worker_race.consumption_requirements:
-		var amount: int = worker_race.consumption_requirements[tag]
-		total[tag] = amount * active_workers
+	for tag: TagDefinition in total_worker_demand:
+		total[tag] = ceili(total_worker_demand[tag] * active_workers)
 	return total
 
 func get_worker_efficiency() -> float:
@@ -101,9 +133,12 @@ func calculate_worker_consumption() -> Dictionary[String, int]:
 	var active_workers: int = get_total_assigned()
 	if active_workers <= 0:
 		return consumption
-	for tag: TagDefinition in worker_race.consumption_requirements:
-		var total_required: int = worker_race.get_required_amount(tag) * active_workers
-		_accumulate_tag_consumption(consumption, tag, total_required)
+	for tag: TagDefinition in total_worker_demand:
+		_accumulate_tag_consumption(
+			consumption,
+			tag,
+			ceili(total_worker_demand[tag] * active_workers)
+		)
 	return consumption
 
 func _consume_worker_resources() -> void:
@@ -111,8 +146,8 @@ func _consume_worker_resources() -> void:
 	var active_workers: int = get_total_assigned()
 	if active_workers <= 0:
 		return
-	for tag: TagDefinition in worker_race.consumption_requirements:
-		var total_required: int = worker_race.get_required_amount(tag) * active_workers
+	for tag: TagDefinition in total_worker_demand:
+		var total_required: int = ceili(total_worker_demand[tag] * active_workers)
 		var consumed: int = _consume_tag_resources(tag, total_required)
 		var fulfillment: float = 1.0
 		if total_required > 0:
