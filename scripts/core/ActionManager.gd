@@ -12,7 +12,8 @@ func _ready() -> void:
 	formula_changed()
 
 func formula_changed() -> void:
-	return
+	for state: ActionState in states.values():
+		state.formula_changed()
 
 func load_actions() -> void:
 	actions.clear()

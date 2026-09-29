@@ -38,17 +38,17 @@ func update_ui() -> void:
 		output_text += "    " + rate_text
 	output_label.text = output_text
 	worker_label.text = str(state.workers_assigned)
-	progress_label.text = "%d ticks remaining" % max(0, node.duration - int(state.progress))
+	progress_label.text = "Worked: %.2f / %.2f" % [state.progress, state.total_duration]
 
 func format_io(dict: Dictionary[Definition, int], is_input: bool) -> String:
 	var parts: Array[String] = []
-	for mat:Definition in dict:
+	for mat: Definition in dict:
 		var value: int = dict[mat]
-		var current: int = MaterialManager.get_amount(mat)
+		var current: float = MaterialManager.get_amount(mat)
 		if is_input:
-			parts.append("| %s: %d / %d" % [mat.display_name, current, value])
+			parts.append("| %s: %.2f / %d" % [mat.display_name, current, value])
 		else:
-			parts.append("%s: %d (+%d)" % [mat.display_name, current, value])
+			parts.append("%s: %.2f (+%d)" % [mat.display_name, current, value])
 	return ", ".join(parts)
 
 func format_rate() -> String:
@@ -57,43 +57,35 @@ func format_rate() -> String:
 		return ""
 	var efficiency: float = WorkerManager.get_worker_efficiency()
 	var per_tick: Dictionary[Definition, float] = {}
-	for mat:Definition in node.outputs:
+	for mat: Definition in node.outputs:
 		var amount: float = (
-			float(node.outputs[mat])
-			* node.base_conversion_rate
+			state.production[mat]
 			* state.workers_assigned
 			* efficiency
-			/ float(node.duration)
+			/ state.total_duration
 		)
 		per_tick[mat] = per_tick.get(mat, 0.0) + amount
-	for mat:Definition in node.inputs:
+	for mat: Definition in node.inputs:
 		var amount: float = (
 			float(node.inputs[mat])
-			* node.base_conversion_rate
 			* state.workers_assigned
 			* efficiency
-			/ float(node.duration)
+			/ state.total_duration
 		)
 		per_tick[mat] = per_tick.get(mat, 0.0) - amount
 	var parts: Array[String] = []
-	for mat:Definition in per_tick:
+	for mat: Definition in per_tick:
 		var rate: float = per_tick[mat]
 		if abs(rate) < 0.001:
 			continue
 		var sign_value: String = "+"
 		if rate < 0:
 			sign_value = ""
-		parts.append(
-			"%s%s/t %s" % [
-				sign_value,
-				snapped(rate, 0.01),
-				mat.display_name
-			]
-		)
+		parts.append("%s%.2f/t %s" % [sign_value, rate, mat.display_name])
 	return "[" + ", ".join(parts) + "]"
 
 func can_run() -> bool:
-	for mat:Definition in node.inputs:
+	for mat: Definition in node.inputs:
 		if MaterialManager.get_amount(mat) < node.inputs[mat]:
 			return false
 	return true
@@ -102,16 +94,16 @@ func _on_action_pressed() -> void:
 	var state: ActionState = ActionManager.get_state(node)
 	if not can_run():
 		return
-	state.progress += PlayerManager.player_click_power * node.base_conversion_rate
-	while state.progress >= node.duration:
-		state.progress -= node.duration
-		for mat:Definition in node.inputs:
+	state.progress += PlayerManager.player_click_power * state.total_speed
+	while state.progress >= state.total_duration:
+		state.progress -= state.total_duration
+		for mat: Definition in node.inputs:
 			if MaterialManager.get_amount(mat) < node.inputs[mat]:
 				state.progress = 0
 				break
 			MaterialManager.change_materials(mat, -node.inputs[mat])
-		for mat:Definition in node.outputs:
-			MaterialManager.change_materials(mat, node.outputs[mat])
+		for mat: Definition in node.outputs:
+			MaterialManager.change_materials(mat, floori(state.production[mat]))
 	update_ui()
 
 func _on_minus_pressed() -> void:

@@ -15,7 +15,7 @@
 script = ExtResource("3_tw6cu")
 system = 3
 effect = 1
-amount = 1.0
+amount = 0.1
 tags = Array[ExtResource("5_tc0y5")]([ExtResource("6_tw6cu"), ExtResource("7_pr4mk")])
 metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
@@ -26,8 +26,8 @@ costs = Dictionary[ExtResource("1_n1sdm"), int]({
 ExtResource("2_yki3i"): 1
 })
 required_upgrades = Dictionary[ExtResource("7_44sxw"), int]({
-ExtResource("8_n3pyu"): 1,
-null: 1
+null: 1,
+ExtResource("8_n3pyu"): 1
 })
 effects = Array[ExtResource("3_tw6cu")]([SubResource("Resource_e12u4")])
 id = "mining_method"

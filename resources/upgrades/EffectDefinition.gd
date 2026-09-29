@@ -18,7 +18,8 @@ enum Effect {
 	SPEED,
 	PRODUCTION,
 	CAPACITY,
-	TICK_EFFECT
+	TICK_EFFECT,
+	DURATION
 }
 
 enum Operation {
