@@ -13,10 +13,11 @@
 
 [sub_resource type="Resource" id="Resource_687qv"]
 script = ExtResource("3_lkmjo")
-system = 3
-effect = 1
+system = 1
+effect = 5
+operation = 2
 amount = 1.0
-actions = Array[ExtResource("4_t6310")]([ExtResource("5_iq6yy"), ExtResource("6_k2gyo")])
+actions = Array[ExtResource("4_t6310")]([ExtResource("6_k2gyo"), ExtResource("5_iq6yy")])
 metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]

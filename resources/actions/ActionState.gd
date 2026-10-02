@@ -22,14 +22,6 @@ func formula_changed() -> void:
 		[],
 		[action]
 	)
-	total_speed = EffectManager.get_effect_value(
-		1.0,
-		EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
-		EffectDefinition.System.ACTION,
-		EffectDefinition.Effect.SPEED,
-		[],
-		[action]
-	)
 	total_duration = EffectManager.get_effect_value(
 		float(action.duration),
 		EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
@@ -41,7 +33,7 @@ func formula_changed() -> void:
 	production.clear()
 	for mat: Definition in action.outputs:
 		production[mat] = EffectManager.get_effect_value(
-			float(action.outputs[mat]),
+			float(action.outputs[mat]) * total_conversion_rate,
 			EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
 			EffectDefinition.System.ACTION,
 			EffectDefinition.Effect.PRODUCTION,
@@ -49,7 +41,6 @@ func formula_changed() -> void:
 			[action],
 			[mat]
 		)
-	print(action.display_name, " ",  total_speed)
 
 func tick() -> void:
 	if action == null or workers_assigned <= 0 or not _can_consume_inputs():

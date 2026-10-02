@@ -43,6 +43,20 @@ func rebuild_all_effects() -> void:
 
 func _add_effect(definition: EffectDefinition, source_id: String, level: int) -> void:
 	var effect_id: String = _get_effect_id(definition)
+	print(
+		"DURATION EFFECT\n",
+		"  id: ", effect_id, "\n",
+		"  system: ", EffectDefinition.System.keys()[definition.system], "\n",
+		"  effect: ", EffectDefinition.Effect.keys()[definition.effect], "\n",
+		"  operation: ", EffectDefinition.Operation.keys()[definition.operation], "\n",
+		"  amount: ", definition.amount, "\n",
+		"  source: ", source_id, "\n",
+		"  level: ", level, "\n",
+		"  tags: ", definition.tags, "\n",
+		"  actions: ", definition.actions, "\n",
+		"  currencies: ", definition.currencies, "\n",
+		"  workers: ", definition.workers
+	)
 	var state: EffectState = effects.get(effect_id)
 	if state == null:
 		state = EffectState.new(definition)

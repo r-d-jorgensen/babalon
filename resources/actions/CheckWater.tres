@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/materials/source/Water.tres" id="2_vw7vg"]
 [ext_resource type="Resource" uid="uid://d14f5nr0q67pm" path="res://resources/materials/final/DrinkableWater.tres" id="3_a8djp"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_2wd37"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_a8djp"]
 
 [resource]
 script = ExtResource("4_2wd37")

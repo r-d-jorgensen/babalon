@@ -5,18 +5,18 @@
 [ext_resource type="Script" uid="uid://blfsdhb6rmjb8" path="res://resources/upgrades/EffectDefinition.gd" id="3_tw6cu"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="4_pr4mk"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="5_tc0y5"]
+[ext_resource type="Resource" uid="uid://dkjuq3a5s70yv" path="res://resources/actions/GatherStone.tres" id="5_tw6cu"]
 [ext_resource type="Script" uid="uid://cfxrb7j87l7t1" path="res://resources/workers/WorkerDefinition.gd" id="6_40k3x"]
-[ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="6_tw6cu"]
+[ext_resource type="Resource" uid="uid://b4obahwarittx" path="res://resources/actions/GatherDirt.tres" id="6_pr4mk"]
 [ext_resource type="Script" uid="uid://5oe453vttnbh" path="res://resources/upgrades/UpgradeDefinition.gd" id="7_44sxw"]
-[ext_resource type="Resource" uid="uid://bqj2vwkkm1rdk" path="res://resources/tags/material_tag/Gem.tres" id="7_pr4mk"]
 [ext_resource type="Resource" uid="uid://c2gdmcsbiaoqx" path="res://resources/upgrades/technology/DirtPit.tres" id="8_n3pyu"]
 
 [sub_resource type="Resource" id="Resource_e12u4"]
 script = ExtResource("3_tw6cu")
-system = 3
-effect = 1
-amount = 0.1
-tags = Array[ExtResource("5_tc0y5")]([ExtResource("6_tw6cu"), ExtResource("7_pr4mk")])
+system = 1
+effect = 2
+amount = 1.0
+actions = Array[ExtResource("4_pr4mk")]([ExtResource("5_tw6cu"), ExtResource("6_pr4mk")])
 metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
