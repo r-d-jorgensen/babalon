@@ -7,7 +7,8 @@ var progress: float = 0.0
 var total_conversion_rate: float = 0.0
 var total_speed: float = 1.0
 var total_duration: float = 0.0
-var production: Dictionary[Definition, float] = {}
+var cost: Dictionary[Definition, int] = {}
+var production: Dictionary[Definition, int] = {}
 
 func _init(base_action: ActionDefinition) -> void:
 	action = base_action
@@ -30,9 +31,21 @@ func formula_changed() -> void:
 		[],
 		[action]
 	)
+
+	cost.clear()
 	production.clear()
+	for mat: Definition in action.inputs:
+		cost[mat] = maxi(1, roundi(EffectManager.get_effect_value(
+			float(action.inputs[mat]),
+			EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
+			EffectDefinition.System.ACTION,
+			EffectDefinition.Effect.COST,
+			[],
+			[action],
+			[mat]
+		)))
 	for mat: Definition in action.outputs:
-		production[mat] = EffectManager.get_effect_value(
+		production[mat] = roundi(EffectManager.get_effect_value(
 			float(action.outputs[mat]) * total_conversion_rate,
 			EffectManager.Formula.SET_ADD_MULTIPLY_DIVIDE,
 			EffectDefinition.System.ACTION,
@@ -40,7 +53,7 @@ func formula_changed() -> void:
 			[],
 			[action],
 			[mat]
-		)
+		))
 
 func tick() -> void:
 	if action == null or workers_assigned <= 0 or not _can_consume_inputs():
@@ -62,15 +75,15 @@ func _complete_cycle() -> void:
 	_produce_outputs()
 
 func _can_consume_inputs() -> bool:
-	for mat: Definition in action.inputs:
-		if MaterialManager.get_amount(mat) < action.inputs[mat]:
+	for mat: Definition in cost:
+		if MaterialManager.get_amount(mat) < cost[mat]:
 			return false
 	return true
 
 func _consume_inputs() -> void:
-	for mat: Definition in action.inputs:
-		MaterialManager.change_materials(mat, -action.inputs[mat])
+	for mat: Definition in cost:
+		MaterialManager.change_materials(mat, -cost[mat])
 
 func _produce_outputs() -> void:
 	for mat: Definition in action.outputs:
-		MaterialManager.change_materials(mat, floori(production[mat]))
+		MaterialManager.change_materials(mat, production[mat])

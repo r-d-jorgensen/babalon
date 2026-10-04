@@ -43,25 +43,11 @@ func rebuild_all_effects() -> void:
 
 func _add_effect(definition: EffectDefinition, source_id: String, level: int) -> void:
 	var effect_id: String = _get_effect_id(definition)
-	print(
-		"DURATION EFFECT\n",
-		"  id: ", effect_id, "\n",
-		"  system: ", EffectDefinition.System.keys()[definition.system], "\n",
-		"  effect: ", EffectDefinition.Effect.keys()[definition.effect], "\n",
-		"  operation: ", EffectDefinition.Operation.keys()[definition.operation], "\n",
-		"  amount: ", definition.amount, "\n",
-		"  source: ", source_id, "\n",
-		"  level: ", level, "\n",
-		"  tags: ", definition.tags, "\n",
-		"  actions: ", definition.actions, "\n",
-		"  currencies: ", definition.currencies, "\n",
-		"  workers: ", definition.workers
-	)
 	var state: EffectState = effects.get(effect_id)
 	if state == null:
 		state = EffectState.new(definition)
 		effects[effect_id] = state
-	state.set_source(source_id, definition.amount * level)
+	state.set_source(source_id, definition.amount * level, definition)
 
 func _get_effect_id(definition: EffectDefinition) -> String:
 	var tag_ids: Array[String] = []
@@ -116,31 +102,33 @@ func _get_effect_values(
 		EffectDefinition.Operation.DIVIDE: 1.0,
 		EffectDefinition.Operation.SET: null
 	}
-	for state: EffectState in effects.values():
-		var definition: EffectDefinition = state.definition
-		if definition.system != system or definition.effect != effect:
-			continue
-		if not (
-			(definition.tags.is_empty() and definition.actions.is_empty() and definition.currencies.is_empty() and definition.workers.is_empty())
-			or (not definition.tags.is_empty() and definition.tags.any(func(tag: TagDefinition) -> bool: return tag in tags))
-			or (not definition.actions.is_empty() and definition.actions.any(func(action: ActionDefinition) -> bool: return action in actions))
-			or (not definition.currencies.is_empty() and definition.currencies.any(func(currency: Definition) -> bool: return currency in currencies))
-			or (not definition.workers.is_empty() and definition.workers.any(func(worker: WorkerDefinition) -> bool: return worker in workers))
-		):
-			continue
 
-		var value: float = state.get_total_value()
-		match definition.operation:
-			EffectDefinition.Operation.SET:
-				values[EffectDefinition.Operation.SET] = value
-			EffectDefinition.Operation.ADD:
-				values[EffectDefinition.Operation.ADD] += value
-			EffectDefinition.Operation.SUBTRACT:
-				values[EffectDefinition.Operation.SUBTRACT] += value
-			EffectDefinition.Operation.MULTIPLY:
-				values[EffectDefinition.Operation.MULTIPLY] *= value
-			EffectDefinition.Operation.DIVIDE:
-				values[EffectDefinition.Operation.DIVIDE] *= value
+	for state: EffectState in effects.values():
+		for source_id: String in state.sources:
+			var definition: EffectDefinition = state.source_definitions[source_id]
+			if definition.system != system or definition.effect != effect:
+				continue
+			if not (
+				(definition.tags.is_empty() and definition.actions.is_empty() and definition.currencies.is_empty() and definition.workers.is_empty())
+				or (not definition.tags.is_empty() and definition.tags.any(func(tag: TagDefinition) -> bool: return tag in tags))
+				or (not definition.actions.is_empty() and definition.actions.any(func(action: ActionDefinition) -> bool: return action in actions))
+				or (not definition.currencies.is_empty() and definition.currencies.any(func(currency: Definition) -> bool: return currency in currencies))
+				or (not definition.workers.is_empty() and definition.workers.any(func(worker: WorkerDefinition) -> bool: return worker in workers))
+			):
+				continue
+
+			var value: float = state.sources[source_id]
+			match definition.operation:
+				EffectDefinition.Operation.SET:
+					values[EffectDefinition.Operation.SET] = value
+				EffectDefinition.Operation.ADD:
+					values[EffectDefinition.Operation.ADD] += value
+				EffectDefinition.Operation.SUBTRACT:
+					values[EffectDefinition.Operation.SUBTRACT] += value
+				EffectDefinition.Operation.MULTIPLY:
+					values[EffectDefinition.Operation.MULTIPLY] *= value
+				EffectDefinition.Operation.DIVIDE:
+					values[EffectDefinition.Operation.DIVIDE] *= value
 	return values
 
 func _formula_default(base: float, effect_values: Dictionary) -> float:

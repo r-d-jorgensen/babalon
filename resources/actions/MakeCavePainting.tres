@@ -5,12 +5,13 @@
 [ext_resource type="Resource" uid="uid://durxat10coym2" path="res://resources/materials/source/Berry.tres" id="1_jmrpw"]
 [ext_resource type="Resource" uid="uid://bsf5quvloqhsn" path="res://resources/materials/source/Stone.tres" id="2_iklag"]
 [ext_resource type="Resource" uid="uid://bir58fbksu4he" path="res://resources/materials/final/CavePainting.tres" id="3_plbf2"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="6_plbf2"]
 
 [resource]
 script = ExtResource("1_ew556")
 inputs = Dictionary[ExtResource("1_iklag"), int]({
-ExtResource("2_iklag"): 1,
-ExtResource("1_jmrpw"): 1
+ExtResource("2_iklag"): 5,
+ExtResource("1_jmrpw"): 5
 })
 outputs = Dictionary[ExtResource("1_iklag"), int]({
 ExtResource("3_plbf2"): 1

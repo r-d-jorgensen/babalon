@@ -14,14 +14,15 @@
 [sub_resource type="Resource" id="Resource_e12u4"]
 script = ExtResource("3_tw6cu")
 system = 1
-effect = 2
-amount = 1.0
+effect = 5
+operation = 2
+amount = 0.1
 actions = Array[ExtResource("4_pr4mk")]([ExtResource("5_tw6cu"), ExtResource("6_pr4mk")])
 metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("7_44sxw")
-description = "increase mineral/gem gathering speed"
+description = "increase stone and dirt gathering speed"
 costs = Dictionary[ExtResource("1_n1sdm"), int]({
 ExtResource("2_yki3i"): 1
 })

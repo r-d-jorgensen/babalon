@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 
 [resource]
 script = ExtResource("8_7dahq")
-description = "Increase dirt gathering"
+description = "Increase dirt gathering producation"
 costs = Dictionary[ExtResource("1_we6bk"), int]({
 ExtResource("2_dhuph"): 1
 })
