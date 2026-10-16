@@ -22,4 +22,18 @@ func is_maxed() -> bool:
 	return level >= get_max_level()
 
 func can_upgrade() -> bool:
-	return level < get_max_level()
+	if is_maxed() or definition == null:
+		return false
+	for required_upgrade: UpgradeDefinition in definition.required_upgrades:
+		if required_upgrade == null:
+			push_warning("Null required upgrade in: " + definition.id)
+			return false
+		var required_level: int = definition.required_upgrades[required_upgrade]
+		if UpgradeManager.get_level(required_upgrade.id) < required_level:
+			return false
+	for currency: Definition in definition.costs:
+		if currency == null:
+			return false
+		if PlayerManager.get_currency(currency.object_type) < definition.costs[currency]:
+			return false
+	return true

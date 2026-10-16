@@ -46,19 +46,16 @@ func get_level(upgrade_id: String) -> int:
 
 func purchase(upgrade_id: String) -> bool:
 	var state: UpgradeState = upgrades.get(upgrade_id)
-	if state == null or state.definition == null:
+	if state == null or state.definition == null or not state.can_upgrade():
 		return false
-	if not state.can_upgrade():
-		return false
-
-	for currency: Definition in state.definition.costs:
-		var amount: int = state.definition.costs[currency]
-		if PlayerManager.get_currency(currency.object_type) < amount:
+	for required_upgrade: UpgradeDefinition in state.definition.required_upgrades:
+		if get_level(required_upgrade.id) < state.definition.required_upgrades[required_upgrade]:
 			return false
-
+	for currency: Definition in state.definition.costs:
+		if PlayerManager.get_currency(currency.object_type) < state.definition.costs[currency]:
+			return false
 	for currency: Definition in state.definition.costs:
 		PlayerManager.change_currency(currency.object_type, -state.definition.costs[currency])
-
 	state.level += 1
 	upgrades_changed.emit()
 	Manager.notify_manager(EffectDefinition.System.EFFECT)
