@@ -27,7 +27,6 @@ costs = Dictionary[ExtResource("1_n1sdm"), int]({
 ExtResource("2_yki3i"): 1
 })
 required_upgrades = Dictionary[ExtResource("7_44sxw"), int]({
-null: 1,
 ExtResource("8_n3pyu"): 1
 })
 effects = Array[ExtResource("3_tw6cu")]([SubResource("Resource_e12u4")])

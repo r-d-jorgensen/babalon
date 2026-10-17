@@ -19,40 +19,6 @@ offset_right = 181.0
 offset_bottom = 66.0
 script = ExtResource("1_rarhs")
 
-[node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=1865018740]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Economy"
-
-[node name="ExplorationButton" type="Button" parent="MainUI/TopTabs" unique_id=822700738]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Exploration"
-
-[node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=262567430]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Civilization"
-
-[node name="StoredTicksLabel" type="Label" parent="MainUI/TopTabs" unique_id=76128759]
-layout_mode = 2
-
-[node name="NormalSpeedButton" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
-layout_mode = 2
-text = "Normal"
-
-[node name="SpeedUp2xButton" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
-layout_mode = 2
-text = "2x"
-
-[node name="SpeedUp5xButton" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
-layout_mode = 2
-text = "5x"
-
 [node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1420970986]
 layout_mode = 2
 size_flags_vertical = 3
@@ -63,25 +29,6 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_0bbpv")
 metadata/_tab_index = 0
-
-[node name="EconomyTabs" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=765912192]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ActionsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1372412441]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Actions"
-
-[node name="ProductionChainsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=234266347]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Production Chains"
-
-[node name="MaterialsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1941188611]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Materials"
 
 [node name="EconomyHeader" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=217860295]
 layout_mode = 2
@@ -126,6 +73,25 @@ metadata/_tab_index = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="EconomyTabs" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=765912192]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1372412441]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Actions"
+
+[node name="ProductionChainsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=234266347]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Production Chains"
+
+[node name="MaterialsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1941188611]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Materials"
+
 [node name="ExplorationPage" type="VBoxContainer" parent="MainUI/MainViews" unique_id=488042039]
 visible = false
 layout_mode = 2
@@ -137,25 +103,6 @@ visible = false
 layout_mode = 2
 script = ExtResource("1_0bbpv")
 metadata/_tab_index = 2
-
-[node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=565446248]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CivicsButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=495600973]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Culture"
-
-[node name="TechnologyButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=2110258482]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Technology"
-
-[node name="TruthButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=1995071546]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Truth"
 
 [node name="CivilizationHeaders" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=845085847]
 layout_mode = 2
@@ -201,3 +148,56 @@ metadata/_tab_index = 2
 [node name="TruthList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/TruthPage" unique_id=1365987948]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=565446248]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CivicsButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=495600973]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Culture"
+
+[node name="TechnologyButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=2110258482]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Technology"
+
+[node name="TruthButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=1995071546]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Truth"
+
+[node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=1865018740]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Economy"
+
+[node name="ExplorationButton" type="Button" parent="MainUI/TopTabs" unique_id=822700738]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exploration"
+
+[node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=262567430]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Civilization"
+
+[node name="StoredTicksLabel" type="Label" parent="MainUI/TopTabs" unique_id=76128759]
+layout_mode = 2
+
+[node name="NormalSpeedButton" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
+layout_mode = 2
+text = "Normal"
+
+[node name="SpeedUp2xButton" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
+layout_mode = 2
+text = "2x"
+
+[node name="SpeedUp5xButton" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
+layout_mode = 2
+text = "5x"

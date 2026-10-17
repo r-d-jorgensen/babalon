@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://blfsdhb6rmjb8"
 [resource]
 script = ExtResource("3_wjgp8")
 description = "incease mushroom check produaction"
+hidden = true
 costs = Dictionary[ExtResource("1_ajx4f"), int]({
 ExtResource("2_lr7ur"): 1
 })

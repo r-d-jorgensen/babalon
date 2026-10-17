@@ -30,4 +30,5 @@ ExtResource("9_ycxn5"): 1
 effects = Array[ExtResource("3_ur6xw")]([SubResource("Resource_kplmg")])
 id = "dirt_pit"
 display_name = "Dirt Pit"
+object_type = 3
 metadata/_custom_type_script = "uid://5oe453vttnbh"

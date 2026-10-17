@@ -21,6 +21,10 @@ func set_state(new_state: UpgradeState) -> void:
 func refresh() -> void:
 	if state == null or state.definition == null:
 		return
+	if state.definition.hidden and not _requirements_met():
+		hide()
+		return
+	show()
 	name_label.text = state.definition.display_name
 	level_label.text = "%d/%d" % [state.level, state.definition.max_level]
 	cost_label.text = _get_cost_text()
@@ -30,6 +34,15 @@ func refresh() -> void:
 	else:
 		buy_button.text = "Buy"
 		buy_button.disabled = not state.can_upgrade()
+
+func _requirements_met() -> bool:
+	for required_upgrade: UpgradeDefinition in state.definition.required_upgrades:
+		if required_upgrade == null:
+			continue
+		var required_level: int = state.definition.required_upgrades[required_upgrade]
+		if UpgradeManager.get_level(required_upgrade.id) < required_level:
+			return false
+	return true
 
 func _get_cost_text() -> String:
 	var parts: Array[String] = []

@@ -32,4 +32,5 @@ ExtResource("10_68nsl"): 1
 effects = Array[ExtResource("3_lkmjo")]([SubResource("Resource_687qv")])
 id = "water_flow"
 display_name = "Water Flow"
+object_type = 3
 metadata/_custom_type_script = "uid://5oe453vttnbh"
