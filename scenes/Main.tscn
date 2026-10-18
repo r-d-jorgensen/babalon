@@ -6,17 +6,23 @@
 [ext_resource type="Script" uid="uid://cwdsvr268t3fv" path="res://scripts/ui/ExplorationView.gd" id="3_rarhs"]
 
 [node name="Root" type="Control" unique_id=1983841383]
+propagate_maximum_size = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MainUI" type="VBoxContainer" parent="." unique_id=1067906767]
-layout_mode = 0
-offset_right = 181.0
-offset_bottom = 66.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rarhs")
 
 [node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1420970986]
@@ -32,7 +38,7 @@ metadata/_tab_index = 0
 
 [node name="EconomyHeader" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=217860295]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 
 [node name="WorkersLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=2024806734]
 layout_mode = 2
@@ -75,7 +81,7 @@ size_flags_vertical = 3
 
 [node name="EconomyTabs" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=765912192]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 8
 
 [node name="ActionsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1372412441]
 layout_mode = 2
@@ -106,6 +112,7 @@ metadata/_tab_index = 2
 
 [node name="CivilizationHeaders" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=845085847]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="CivicsLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=1629923266]
 layout_mode = 2
@@ -151,7 +158,6 @@ size_flags_vertical = 3
 
 [node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=565446248]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="CivicsButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=495600973]
 layout_mode = 2
@@ -170,7 +176,7 @@ text = "Truth"
 
 [node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=1865018740]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 8
 
 [node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
 layout_mode = 2
