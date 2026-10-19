@@ -56,7 +56,7 @@ func update_worker_label(_action: Variant = null) -> void:
 	var available: int = WorkerManager.get_available_workers()
 	var total: int = WorkerManager.total_workers
 	var optimal: int = WorkerManager.total_optimal_worker_limit
-	worker_label.text = "%s Workers: %d / %d (Optimal: %d) |" % [WorkerManager.worker_race.display_name, available, total, optimal]
+	worker_label.text = "%ss %d / %d / %d) |" % [WorkerManager.worker_race.display_name, available, total, optimal]
 
 func update_consumption_labels() -> void:
 	var supply: Dictionary[TagDefinition, int] = MaterialManager.get_total_supply()
@@ -67,7 +67,7 @@ func update_consumption_labels() -> void:
 		if state.workers_assigned <= 0:
 			continue
 		var action: ActionDefinition = state.action
-		for mat_obj:Definition in action.outputs:
+		for mat_obj: Definition in action.outputs:
 			var mat: MaterialDefinition = mat_obj as MaterialDefinition
 			var amount: float = (
 				float(action.outputs[mat])
@@ -77,16 +77,18 @@ func update_consumption_labels() -> void:
 				/ float(action.duration)
 			)
 			for tag: TagDefinition in mat.tags:
-				production[tag] = production.get(tag, 0.0) + (amount * mat.production_value)
-	var parts: Array[String] = []
+				production[tag] = production.get(tag, 0.0) + amount * mat.production_value
+
+	var lowest_ticks: int = -1
 	for tag: TagDefinition in race.consumption_requirements:
 		var total_demand: int = demand.get(tag, 0)
 		var consumption_per_tick: float = float(total_demand) / float(race.consumption_time)
 		var production_per_tick: float = production.get(tag, 0.0)
 		var net: float = production_per_tick - consumption_per_tick
+		if net >= 0.0:
+			continue
 		var supply_amount: int = supply.get(tag, 0)
-		var sign_value: String = "+"
-		if net < 0:
-			sign_value = ""
-		parts.append("%s %d %s%.2f/s" % [tag.display_name, supply_amount, sign_value, net])
-	consumption_label.text = " | ".join(parts)
+		var ticks: int = ceili(float(supply_amount) / -net)
+		if lowest_ticks < 0 or ticks < lowest_ticks:
+			lowest_ticks = ticks
+	consumption_label.text = str(lowest_ticks) if lowest_ticks >= 0 else "∞"

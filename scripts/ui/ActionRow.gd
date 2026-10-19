@@ -5,8 +5,8 @@ class_name ActionRow
 
 @onready var action_button: Button = $ActionButton
 @onready var progress_label: Label = $ProgressLabel
-@onready var input_label: Label = $InputLabel
-@onready var output_label: Label = $OutputLabel
+@onready var input_label: HBoxContainer = $InputLabel
+@onready var output_label: HBoxContainer = $OutputLabel
 @onready var minus_button: Button = $MinusButton
 @onready var worker_label: Label = $WorkerLabel
 @onready var plus_button: Button = $PlusButton
@@ -20,6 +20,16 @@ func _ready() -> void:
 	WorkerManager.workers_changed.connect(_on_workers_changed)
 	PlayerManager.tick.connect(update_ui)
 	MaterialManager.inventory_changed.connect(update_ui)
+
+	action_button.custom_minimum_size = Vector2(28, 28)
+	action_button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	minus_button.custom_minimum_size = Vector2(24, 24)
+	plus_button.custom_minimum_size = Vector2(24, 24)
+	input_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	output_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	input_label.custom_minimum_size.x = 0
+	output_label.custom_minimum_size.x = 0
+
 	update_ui()
 
 func _on_workers_changed(action: ActionDefinition) -> void:
@@ -29,37 +39,56 @@ func _on_workers_changed(action: ActionDefinition) -> void:
 
 func update_ui() -> void:
 	var state: ActionState = ActionManager.get_state(node)
-	action_button.text = node.display_name
+	action_button.text = ""
+	action_button.icon = resize_icon(node.get_icon(), Vector2i(16, 16))
+	action_button.expand_icon = false
+	action_button.custom_minimum_size = Vector2(28, 28)
+	action_button.tooltip_text = node.display_name
 	action_button.disabled = not can_run()
-	input_label.text = format_inputs(state)
-	output_label.text = format_outputs(state)
+	update_material_display(input_label, state.cost, true)
+	update_material_display(output_label, state.production, false)
 	worker_label.text = str(state.workers_assigned)
-	progress_label.text = "Worked: %.2f / %.2f" % [state.progress, state.total_duration]
+	progress_label.text = "%.2f / %.2f" % [state.progress, state.total_duration]
 
-func format_inputs(state: ActionState) -> String:
-	var parts: Array[String] = []
-	for mat: Definition in state.cost:
-		var current: float = MaterialManager.get_amount(mat)
-		parts.append("| %s: %.2f / %.2f" % [
-			mat.display_name,
-			current,
-			state.cost[mat]
-		])
-	return ", ".join(parts)
+func resize_icon(texture: Texture2D, target_size: Vector2i) -> Texture2D:
+	if texture == null:
+		return null
+	var image: Image = texture.get_image()
+	if image == null or image.is_empty():
+		return texture
+	image.resize(target_size.x, target_size.y, Image.INTERPOLATE_LANCZOS)
+	return ImageTexture.create_from_image(image)
 
-func format_outputs(state: ActionState) -> String:
-	var parts: Array[String] = []
-	for mat: Definition in state.production:
-		var current: float = MaterialManager.get_amount(mat)
-		parts.append("%s: %.2f (+%.2f)" % [
-			mat.display_name,
-			current,
-			state.production[mat]
-		])
-	var rate_text: String = format_rate(state)
-	if rate_text != "":
-		parts.append(rate_text)
-	return "    ".join(parts)
+func update_material_display(container: HBoxContainer, materials: Dictionary, show_cost: bool) -> void:
+	for child: Node in container.get_children():
+		container.remove_child(child)
+		child.queue_free()
+
+	for mat: Definition in materials:
+		var entry:HBoxContainer = HBoxContainer.new()
+		entry.add_theme_constant_override("separation", 2)
+
+		var icon_container:Control = Control.new()
+		icon_container.custom_minimum_size = Vector2(12, 12)
+		icon_container.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		icon_container.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+
+		var icon:TextureRect = TextureRect.new()
+		icon.texture = resize_icon(mat.get_icon(), Vector2i(12, 12))
+		icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		icon_container.add_child(icon)
+		entry.add_child(icon_container)
+
+		var label:Label = Label.new()
+		if show_cost:
+			label.text = "%.0f/%.0f" % [MaterialManager.get_amount(mat), materials[mat]]
+		else:
+			label.text = "%.0f" % MaterialManager.get_amount(mat)
+		entry.add_child(label)
+
+		container.add_child(entry)
 
 func format_rate(state: ActionState) -> String:
 	if state.workers_assigned <= 0 or state.total_duration <= 0:
@@ -108,7 +137,6 @@ func _on_action_pressed() -> void:
 			MaterialManager.change_materials(mat, -state.cost[mat])
 		for mat: Definition in state.production:
 			MaterialManager.change_materials(mat, state.production[mat])
-
 	update_ui()
 
 func _on_minus_pressed() -> void:

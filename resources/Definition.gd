@@ -1,6 +1,7 @@
 extends Resource
 class_name Definition
 
+const DEFAULT_ICON: Texture2D = preload("res://assets/icons/default.png")
 enum ObjectType {
 	GENERAL,
 	CONSUMABLE,
@@ -19,6 +20,12 @@ enum ObjectType {
 @export var display_name: String
 @export var object_type: ObjectType = ObjectType.GENERAL
 @export var tags: Array[TagDefinition] = []
+@export var icon: Texture2D
+
+func get_icon() -> Texture2D:
+	if icon != null:
+		return icon
+	return DEFAULT_ICON
 
 func has_tag(tag: TagDefinition) -> bool:
 	return tag in tags

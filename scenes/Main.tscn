@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="1_0bbpv"]
 [ext_resource type="Script" uid="uid://dh88s5js2y03k" path="res://scripts/ui/MainUI.gd" id="1_rarhs"]
+[ext_resource type="Script" uid="uid://c66b2pscuae0x" path="res://scenes/main.gd" id="1_vcsgt"]
 [ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_0bbpv"]
 [ext_resource type="Script" uid="uid://cwdsvr268t3fv" path="res://scripts/ui/ExplorationView.gd" id="3_rarhs"]
 
 [node name="Root" type="Control" unique_id=1983841383]
+custom_minimum_size = Vector2(360, 800)
 propagate_maximum_size = true
 layout_mode = 3
 anchors_preset = 15
@@ -15,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_vcsgt")
 
 [node name="MainUI" type="VBoxContainer" parent="." unique_id=1067906767]
 layout_mode = 1
@@ -23,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 script = ExtResource("1_rarhs")
 
 [node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1420970986]
@@ -98,7 +102,7 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Materials"
 
-[node name="ExplorationPage" type="VBoxContainer" parent="MainUI/MainViews" unique_id=488042039]
+[node name="ExplorationView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=488042039]
 visible = false
 layout_mode = 2
 script = ExtResource("3_rarhs")
@@ -128,6 +132,7 @@ text = "#"
 
 [node name="CivilizationPages" type="TabContainer" parent="MainUI/MainViews/CivilizationView" unique_id=1027177714]
 layout_mode = 2
+size_flags_vertical = 3
 current_tab = 0
 
 [node name="CivicsPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=1317778887]
@@ -176,7 +181,7 @@ text = "Truth"
 
 [node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=1865018740]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 10
 
 [node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=578400775]
 layout_mode = 2
@@ -192,18 +197,3 @@ text = "Exploration"
 layout_mode = 2
 size_flags_vertical = 3
 text = "Civilization"
-
-[node name="StoredTicksLabel" type="Label" parent="MainUI/TopTabs" unique_id=76128759]
-layout_mode = 2
-
-[node name="NormalSpeedButton" type="Button" parent="MainUI/TopTabs" unique_id=1440193682]
-layout_mode = 2
-text = "Normal"
-
-[node name="SpeedUp2xButton" type="Button" parent="MainUI/TopTabs" unique_id=527232097]
-layout_mode = 2
-text = "2x"
-
-[node name="SpeedUp5xButton" type="Button" parent="MainUI/TopTabs" unique_id=1314432603]
-layout_mode = 2
-text = "5x"
