@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="1_iuqwo"]
 [ext_resource type="Script" uid="uid://cc5v6kqf4r0fo" path="res://resources/actions/ActionDefinition.gd" id="1_kd411"]
-[ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/materials/source/Water.tres" id="1_st3ff"]
+[ext_resource type="Texture2D" uid="uid://b7wrqhpt6w8qj" path="res://assets/icons/actions/gather_water.png" id="1_xv8f1"]
+[ext_resource type="Resource" uid="uid://daxnes3sf1ffo" path="res://resources/materials/source/Water.tres" id="3_eoiuw"]
+[ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="4_eoiuw"]
 
 [resource]
 script = ExtResource("1_kd411")
 outputs = Dictionary[ExtResource("1_iuqwo"), int]({
-ExtResource("1_st3ff"): 1
+ExtResource("3_eoiuw"): 1
 })
 id = "gather_water"
 display_name = "Gather Water"
+icon = ExtResource("1_xv8f1")
 metadata/_custom_type_script = "uid://cc5v6kqf4r0fo"

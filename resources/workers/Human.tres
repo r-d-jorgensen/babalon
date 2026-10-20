@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="1_p2mje"]
 [ext_resource type="Resource" uid="uid://b777k2lc6tob7" path="res://resources/tags/material_tag/Water.tres" id="2_vkfp0"]
 [ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_vkfp0"]
+[ext_resource type="Texture2D" uid="uid://b6ojmxu4rq3up" path="res://assets/icons/workers/human.png" id="4_dlhk6"]
 [ext_resource type="Script" uid="uid://bivf1htgw4u0o" path="res://resources/Definition.gd" id="5_p02td"]
 [ext_resource type="Resource" uid="uid://bgun06gxelnff" path="res://resources/currencies/Culture.tres" id="6_dlhk6"]
 [ext_resource type="Resource" uid="uid://t3s0kqqlgnhd" path="res://resources/currencies/Research.tres" id="7_d7vth"]
@@ -27,4 +28,5 @@ ExtResource("10_q7k5r"): 0.0
 id = "human"
 display_name = "Human"
 object_type = 2
+icon = ExtResource("4_dlhk6")
 metadata/_custom_type_script = "uid://cfxrb7j87l7t1"

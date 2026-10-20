@@ -3,14 +3,10 @@
 [ext_resource type="Script" uid="uid://c0avc6u4thevf" path="res://scripts/ui/ActionRow.gd" id="1_dmvyc"]
 
 [node name="ActionRow" type="HBoxContainer" unique_id=901625471]
-custom_minimum_size = Vector2(360, 64)
-custom_maximum_size = Vector2(-1, 124)
-anchors_preset = 14
-anchor_top = 0.5
+custom_minimum_size = Vector2(360, 32)
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

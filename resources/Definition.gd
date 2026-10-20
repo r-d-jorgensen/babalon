@@ -25,6 +25,9 @@ enum ObjectType {
 func get_icon() -> Texture2D:
 	if icon != null:
 		return icon
+	return get_default_icon()
+
+func get_default_icon() -> Texture2D:
 	return DEFAULT_ICON
 
 func has_tag(tag: TagDefinition) -> bool:

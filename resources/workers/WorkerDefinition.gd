@@ -1,6 +1,8 @@
 extends Definition
 class_name WorkerDefinition
 
+const WORKER_DEFAULT_ICON: Texture2D = preload("res://assets/icons/workers/default.png")
+
 @export var base_optimal_worker_limit: int = 30
 @export var consumption_time: int = 10
 @export var consumption_requirements: Dictionary[TagDefinition, int] = {}
@@ -20,3 +22,6 @@ func get_required_amount(tag: TagDefinition) -> int:
 
 func get_currency_per_tick(currency: Definition) -> float:
 	return worker_currency_per_tick.get(currency, 0.0)
+
+func get_default_icon() -> Texture2D:
+	return WORKER_DEFAULT_ICON

@@ -1,6 +1,7 @@
 extends Definition
 class_name ActionDefinition
 
+const ACTION_DEFAULT_ICON: Texture2D = preload("res://assets/icons/actions/default.png")
 enum ActionTag {
 	SOURCE,
 	SORT,
@@ -18,3 +19,6 @@ enum ActionTag {
 
 @export var is_clickable: bool = true
 @export var is_workable: bool = true
+
+func get_default_icon() -> Texture2D:
+	return ACTION_DEFAULT_ICON

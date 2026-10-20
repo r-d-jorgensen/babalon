@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://daxnes3sf1ffo"]
 
+[ext_resource type="Texture2D" uid="uid://dw7oqlcfjq28x" path="res://assets/icons/materials/water.png" id="1_1t00w"]
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_hdfes"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_pd57c"]
 [ext_resource type="Resource" uid="uid://b777k2lc6tob7" path="res://resources/tags/material_tag/Water.tres" id="3_1t00w"]
@@ -7,7 +8,8 @@
 
 [resource]
 script = ExtResource("1_hdfes")
-tags = Array[ExtResource("2_pd57c")]([ExtResource("3_1t00w"), ExtResource("4_ynp6m")])
 id = "water"
 display_name = "Water"
+tags = Array[ExtResource("2_pd57c")]([ExtResource("3_1t00w"), ExtResource("4_ynp6m")])
+icon = ExtResource("1_1t00w")
 metadata/_custom_type_script = "uid://dviak2555ty3u"
