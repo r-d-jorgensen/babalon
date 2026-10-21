@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bsf5quvloqhsn"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_cuute"]
+[ext_resource type="Texture2D" uid="uid://ccvce5sdfuay6" path="res://assets/icons/materials/stone.png" id="1_pwj1s"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_h1i80"]
 [ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="3_pwj1s"]
 
 [resource]
 script = ExtResource("1_cuute")
-tags = Array[ExtResource("2_h1i80")]([ExtResource("3_pwj1s")])
 id = "stone"
 display_name = "Stone"
+tags = Array[ExtResource("2_h1i80")]([ExtResource("3_pwj1s")])
+icon = ExtResource("1_pwj1s")
 metadata/_custom_type_script = "uid://dviak2555ty3u"

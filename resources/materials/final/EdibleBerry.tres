@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://ckig3dtets12"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_7i1rp"]
+[ext_resource type="Texture2D" uid="uid://dx6m3jd5uagr1" path="res://assets/icons/materials/edible_berry.png" id="1_f1raw"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_lvkd5"]
 [ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_f1raw"]
 [ext_resource type="Resource" uid="uid://dx74j0qigv17d" path="res://resources/tags/material_tag/Fruit.tres" id="4_vfnvg"]
 
 [resource]
 script = ExtResource("1_7i1rp")
-tags = Array[ExtResource("2_lvkd5")]([ExtResource("3_f1raw"), ExtResource("4_vfnvg")])
 id = "edible_berry"
 display_name = "Edible Berry"
 object_type = 1
+tags = Array[ExtResource("2_lvkd5")]([ExtResource("3_f1raw"), ExtResource("4_vfnvg")])
+icon = ExtResource("1_f1raw")
 metadata/_custom_type_script = "uid://dviak2555ty3u"

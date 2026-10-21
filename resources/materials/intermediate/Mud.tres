@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://c8ujvd5won4my"]
 
+[ext_resource type="Texture2D" uid="uid://c18s1itlqoky" path="res://assets/icons/materials/mud.png" id="1_ni23j"]
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_wlfcv"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_qfx7p"]
 [ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="4_bc43f"]
@@ -7,7 +8,8 @@
 
 [resource]
 script = ExtResource("1_wlfcv")
-tags = Array[ExtResource("2_qfx7p")]([ExtResource("4_bc43f"), ExtResource("4_qfx7p")])
 id = "mud"
 display_name = "Mud"
+tags = Array[ExtResource("2_qfx7p")]([ExtResource("4_bc43f"), ExtResource("4_qfx7p")])
+icon = ExtResource("1_ni23j")
 metadata/_custom_type_script = "uid://dviak2555ty3u"

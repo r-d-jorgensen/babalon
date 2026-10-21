@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bnjdon5ah1how"]
 
+[ext_resource type="Texture2D" uid="uid://bvhn8v22dojap" path="res://assets/icons/materials/pictograph.png" id="1_30oo7"]
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_ij0kp"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_i0d1r"]
 [ext_resource type="Resource" uid="uid://bwav2dpy4ntyk" path="res://resources/tags/material_tag/Writing.tres" id="3_30oo7"]
@@ -7,8 +8,9 @@
 [resource]
 script = ExtResource("1_ij0kp")
 build_effect_value = 1.0
-tags = Array[ExtResource("2_i0d1r")]([ExtResource("3_30oo7")])
 id = "pictograph"
 display_name = "Pictograph"
 object_type = 3
+tags = Array[ExtResource("2_i0d1r")]([ExtResource("3_30oo7")])
+icon = ExtResource("1_30oo7")
 metadata/_custom_type_script = "uid://dviak2555ty3u"

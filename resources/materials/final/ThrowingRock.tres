@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://bt00y4djnxa88"]
 
+[ext_resource type="Texture2D" uid="uid://djcdaivbhll4s" path="res://assets/icons/materials/throwing_rock.png" id="1_dl3au"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_5r3g6"]
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="2_smom0"]
 [ext_resource type="Resource" uid="uid://baentt633y05m" path="res://resources/tags/material_tag/Mineral.tres" id="3_dl3au"]
@@ -7,8 +8,9 @@
 
 [resource]
 script = ExtResource("2_smom0")
-tags = Array[ExtResource("2_5r3g6")]([ExtResource("3_dl3au"), ExtResource("4_wqcb3")])
 id = "throwing_rock"
 display_name = "Throwing Rock"
 object_type = 4
+tags = Array[ExtResource("2_5r3g6")]([ExtResource("3_dl3au"), ExtResource("4_wqcb3")])
+icon = ExtResource("1_dl3au")
 metadata/_custom_type_script = "uid://dviak2555ty3u"

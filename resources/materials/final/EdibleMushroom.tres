@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="MaterialDefinition" format=3 uid="uid://deirr12u278pd"]
 
 [ext_resource type="Script" uid="uid://dviak2555ty3u" path="res://resources/materials/MaterialDefinition.gd" id="1_l0cix"]
+[ext_resource type="Texture2D" uid="uid://2k0guymoy084" path="res://assets/icons/materials/edible_mushroom.png" id="1_thu3y"]
 [ext_resource type="Script" uid="uid://dejms3jn3cx4n" path="res://resources/tags/TagDefinition.gd" id="2_euibk"]
 [ext_resource type="Resource" uid="uid://cchy0ivxxxgpm" path="res://resources/tags/material_tag/Organic.tres" id="3_xj1lv"]
 [ext_resource type="Resource" uid="uid://1x0snhlvr14m" path="res://resources/tags/material_tag/Fungus.tres" id="4_thu3y"]
 
 [resource]
 script = ExtResource("1_l0cix")
-tags = Array[ExtResource("2_euibk")]([ExtResource("3_xj1lv"), ExtResource("4_thu3y")])
 id = "edible_mushroom"
 display_name = "Edible Mushroom"
 object_type = 1
+tags = Array[ExtResource("2_euibk")]([ExtResource("3_xj1lv"), ExtResource("4_thu3y")])
+icon = ExtResource("1_thu3y")
 metadata/_custom_type_script = "uid://dviak2555ty3u"
