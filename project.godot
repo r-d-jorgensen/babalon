@@ -38,8 +38,7 @@ gdscript/warnings/missing_await=1
 
 [display]
 
-window/size/viewport_width=360
-window/size/viewport_height=800
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
