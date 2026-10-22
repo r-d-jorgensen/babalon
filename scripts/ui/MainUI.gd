@@ -53,6 +53,6 @@ func select_tab(tab: int) -> void:
 	#normal_speed_button.disabled = speed == 1
 	#speed_up_2x_button.disabled = speed == 2
 	#speed_up_5x_button.disabled = speed == 5
-#
+
 #func _update_stored_ticks_label() -> void:
 	#stored_ticks_label.text = "Stored Ticks: %d" % PlayerManager.stored_ticks

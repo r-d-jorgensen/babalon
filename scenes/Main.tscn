@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_vcsgt")
 
 [node name="MidLayer" type="TextureRect" parent="ParallaxBackground" unique_id=831812521]
@@ -43,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_c01mt")
 
 [node name="NearLayer" type="TextureRect" parent="ParallaxBackground" unique_id=1271441508]
@@ -52,4 +54,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_0bbpv")
