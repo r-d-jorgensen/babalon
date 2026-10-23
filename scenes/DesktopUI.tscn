@@ -218,6 +218,7 @@ size_flags_vertical = 4
 tooltip_text = "Economy"
 icon = ExtResource("5_mgfhi")
 icon_alignment = 1
+expand_icon = true
 
 [node name="ExplorationButton" type="Button" parent="MainUI/TopTabs" unique_id=240440157]
 custom_minimum_size = Vector2(32, 32)
@@ -227,6 +228,7 @@ size_flags_vertical = 4
 tooltip_text = "Exploration"
 icon = ExtResource("6_8yj4o")
 icon_alignment = 1
+expand_icon = true
 
 [node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=1782014367]
 custom_minimum_size = Vector2(32, 32)
@@ -235,6 +237,7 @@ size_flags_vertical = 3
 tooltip_text = "Civilization"
 icon = ExtResource("7_fhj73")
 icon_alignment = 1
+expand_icon = true
 
 [node name="SettingsButton" type="Button" parent="MainUI/TopTabs" unique_id=244606547]
 custom_minimum_size = Vector2(32, 32)
@@ -242,3 +245,4 @@ layout_mode = 2
 tooltip_text = "Settings"
 icon = ExtResource("8_h27pm")
 icon_alignment = 1
+expand_icon = true
