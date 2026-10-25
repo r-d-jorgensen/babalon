@@ -1,9 +1,5 @@
 extends VBoxContainer
 
-@onready var civics_label: Label = $CivilizationHeaders/CivicsLabel
-@onready var technology_label: Label = $CivilizationHeaders/TechnologyLabel
-@onready var truth_label: Label = $CivilizationHeaders/TruthLabel
-
 @onready var tabs: TabContainer = $CivilizationPages
 @onready var civics_button: Button = $CivilizationTabs/CivicsButton
 @onready var technology_button: Button = $CivilizationTabs/TechnologyButton
@@ -19,9 +15,7 @@ func _ready() -> void:
 	civics_button.pressed.connect(func() -> void: select_tab(0))
 	technology_button.pressed.connect(func() -> void: select_tab(1))
 	truth_button.pressed.connect(func() -> void: select_tab(2))
-	PlayerManager.currencies_changed.connect(update_display)
 	UpgradeManager.upgrades_changed.connect(build_upgrades_ui)
-	update_display()
 	build_upgrades_ui()
 	select_tab(0)
 
@@ -30,11 +24,6 @@ func select_tab(tab: int) -> void:
 	civics_button.disabled = tab == 0
 	technology_button.disabled = tab == 1
 	truth_button.disabled = tab == 2
-
-func update_display(_unused: Variant = null) -> void:
-	civics_label.text = "Culture: %s" % PlayerManager.get_currency(Definition.ObjectType.CIVIC)
-	technology_label.text = "Research: %s" % PlayerManager.get_currency(Definition.ObjectType.TECHNOLOGY)
-	truth_label.text = "Truth: %s" % PlayerManager.get_currency(Definition.ObjectType.ASCENSION)
 
 func build_upgrades_ui() -> void:
 	_clear_container(civics_list)

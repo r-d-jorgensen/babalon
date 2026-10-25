@@ -1,248 +1,175 @@
 [gd_scene format=3 uid="uid://6pwdpbtms2ql"]
 
-[ext_resource type="Script" uid="uid://dh88s5js2y03k" path="res://scripts/ui/MainUI.gd" id="1_xdyje"]
-[ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_phj1f"]
-[ext_resource type="Script" uid="uid://cwdsvr268t3fv" path="res://scripts/ui/ExplorationView.gd" id="3_lvyvb"]
-[ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="4_oi12v"]
+[ext_resource type="Texture2D" uid="uid://bkjnofo00sxlp" path="res://assets/icons/actions/default.png" id="1_lvyvb"]
+[ext_resource type="Script" uid="uid://ckbg0fctpqq2e" path="res://scenes/DesktopLeftView.gd" id="1_r6qsd"]
+[ext_resource type="Script" uid="uid://bucvm00qhie2d" path="res://scenes/DesktopCenterView.gd" id="2_r6qsd"]
+[ext_resource type="Script" uid="uid://blxfujkip8q4p" path="res://scenes/DesktopRightView.gd" id="3_ru8vg"]
 [ext_resource type="Texture2D" uid="uid://ge5te1bkmtda" path="res://assets/icons/ui/economy.png" id="5_mgfhi"]
 [ext_resource type="Texture2D" uid="uid://dwy64ds706qi7" path="res://assets/icons/ui/exploration.png" id="6_8yj4o"]
 [ext_resource type="Texture2D" uid="uid://dp5ettvwsqoau" path="res://assets/icons/ui/civilization.png" id="7_fhj73"]
 [ext_resource type="Texture2D" uid="uid://lq7b1oum40hn" path="res://assets/icons/ui/setings.png" id="8_h27pm"]
+[ext_resource type="Texture2D" uid="uid://blj48ve32k1kh" path="res://assets/icons/currencies/culture.png" id="9_oi12v"]
+[ext_resource type="Texture2D" uid="uid://dwnd60tsr42oo" path="res://assets/icons/default.png" id="10_mgfhi"]
 
-[node name="MarginContainer" type="MarginContainer" unique_id=1841580625]
-offset_top = 644.0
-offset_right = 2092.0
-offset_bottom = 660.0
+[node name="Control" type="Control" unique_id=1158778766]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1841580625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2027865868]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="LeftMarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1351447346]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="MainUI" type="VBoxContainer" parent="." unique_id=285386945]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("1_xdyje")
-
-[node name="MainViews" type="TabContainer" parent="MainUI" unique_id=1237907052]
+[node name="LeftView" type="TabContainer" parent="MarginContainer/HBoxContainer/LeftMarginContainer" unique_id=1237907052]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/icon_max_width = 32
 current_tab = 0
+tab_0/icon = ExtResource("1_lvyvb")
+tab_1/icon = ExtResource("6_8yj4o")
+script = ExtResource("1_r6qsd")
 
-[node name="EconomyView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=34549249]
+[node name="Production" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftMarginContainer/LeftView" unique_id=1972522732]
 layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("2_phj1f")
 metadata/_tab_index = 0
 
-[node name="EconomyHeader" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=1068858117]
+[node name="ActionList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftMarginContainer/LeftView/Production" unique_id=30546392]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exploration" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftMarginContainer/LeftView" unique_id=1007590640]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ExplorationList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftMarginContainer/LeftView/Exploration" unique_id=906365632]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterMarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=566637258]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="CenterView" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterMarginContainer" unique_id=1262405944]
+layout_mode = 2
+script = ExtResource("2_r6qsd")
+
+[node name="CivilizationHeaders" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView" unique_id=657653339]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="WorkersLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=352163310]
+[node name="CivicsLabel" type="Label" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView/CivilizationHeaders" unique_id=658829717]
+layout_mode = 2
+text = "#"
+
+[node name="TechnologyLabel" type="Label" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView/CivilizationHeaders" unique_id=407935098]
+layout_mode = 2
+text = "#"
+
+[node name="TruthLabel" type="Label" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView/CivilizationHeaders" unique_id=1110263762]
+layout_mode = 2
+text = "#"
+
+[node name="EconomyHeader" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView" unique_id=1068858117]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="WorkersLabel" type="Label" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView/EconomyHeader" unique_id=352163310]
 layout_mode = 2
 text = "Workers: # / #"
 
-[node name="ConsumptionLabel" type="Label" parent="MainUI/MainViews/EconomyView/EconomyHeader" unique_id=433780154]
+[node name="ConsumptionLabel" type="Label" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView/EconomyHeader" unique_id=433780154]
 layout_mode = 2
 text = "Material #/#"
 
-[node name="EconomyPages" type="TabContainer" parent="MainUI/MainViews/EconomyView" unique_id=1980848026]
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 0
-
-[node name="ActionsPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=1972522732]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="ActionList" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/ActionsPage" unique_id=30546392]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ProductionChainPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=1623761487]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="ProductionChain" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/ProductionChainPage" unique_id=898037269]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MaterialsPage" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages" unique_id=1597302250]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="MaterialsList" type="VBoxContainer" parent="MainUI/MainViews/EconomyView/EconomyPages/MaterialsPage" unique_id=25105322]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="EconomyTabs" type="HBoxContainer" parent="MainUI/MainViews/EconomyView" unique_id=1556975914]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="ActionsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1375660063]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Actions"
-
-[node name="ProductionChainsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=591530736]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Production Chains"
-
-[node name="MaterialsButton" type="Button" parent="MainUI/MainViews/EconomyView/EconomyTabs" unique_id=1546711876]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Materials"
-
-[node name="ExplorationView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=1212389809]
-visible = false
-layout_mode = 2
-script = ExtResource("3_lvyvb")
-metadata/_tab_index = 1
-
-[node name="CivilizationView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=2136862013]
-visible = false
-layout_mode = 2
-script = ExtResource("4_oi12v")
-metadata/_tab_index = 2
-
-[node name="CivilizationHeaders" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=657653339]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="CivicsLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=658829717]
-layout_mode = 2
-text = "#"
-
-[node name="TechnologyLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=407935098]
-layout_mode = 2
-text = "#"
-
-[node name="TruthLabel" type="Label" parent="MainUI/MainViews/CivilizationView/CivilizationHeaders" unique_id=1110263762]
-layout_mode = 2
-text = "#"
-
-[node name="CivilizationPages" type="TabContainer" parent="MainUI/MainViews/CivilizationView" unique_id=1268446905]
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 0
-
-[node name="CivicsPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=276414642]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="CivicsList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/CivicsPage" unique_id=1231924782]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TechnologyPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=176954304]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="TechnologyList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/TechnologyPage" unique_id=40696363]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TruthPage" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages" unique_id=423978140]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="TruthList" type="VBoxContainer" parent="MainUI/MainViews/CivilizationView/CivilizationPages/TruthPage" unique_id=842463260]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/CivilizationView" unique_id=678421621]
-layout_mode = 2
-
-[node name="CivicsButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=304896412]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Culture"
-
-[node name="TechnologyButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=594284095]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Technology"
-
-[node name="TruthButton" type="Button" parent="MainUI/MainViews/CivilizationView/CivilizationTabs" unique_id=810838999]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Truth"
-
-[node name="SettingsView" type="VBoxContainer" parent="MainUI/MainViews" unique_id=528364504]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="CivilizationPages" type="TabContainer" parent="MainUI/MainViews/SettingsView" unique_id=406791456]
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 0
-
-[node name="CivicsPage" type="VBoxContainer" parent="MainUI/MainViews/SettingsView/CivilizationPages" unique_id=501954080]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="CivilizationTabs" type="HBoxContainer" parent="MainUI/MainViews/SettingsView" unique_id=2063235103]
-layout_mode = 2
-
-[node name="CivicsButton" type="Button" parent="MainUI/MainViews/SettingsView/CivilizationTabs" unique_id=367682198]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Culture"
-
-[node name="TechnologyButton" type="Button" parent="MainUI/MainViews/SettingsView/CivilizationTabs" unique_id=2058975417]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Technology"
-
-[node name="TruthButton" type="Button" parent="MainUI/MainViews/SettingsView/CivilizationTabs" unique_id=1003058832]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Truth"
-
-[node name="TopTabs" type="HBoxContainer" parent="MainUI" unique_id=192984296]
-custom_minimum_size = Vector2(360, 32)
-layout_mode = 2
-size_flags_vertical = 10
-
-[node name="EconomyButton" type="Button" parent="MainUI/TopTabs" unique_id=1471220160]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-tooltip_text = "Economy"
-icon = ExtResource("5_mgfhi")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ExplorationButton" type="Button" parent="MainUI/TopTabs" unique_id=240440157]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-tooltip_text = "Exploration"
-icon = ExtResource("6_8yj4o")
-icon_alignment = 1
-expand_icon = true
-
-[node name="CivilizationButton" type="Button" parent="MainUI/TopTabs" unique_id=1782014367]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 3
-tooltip_text = "Civilization"
-icon = ExtResource("7_fhj73")
-icon_alignment = 1
-expand_icon = true
-
-[node name="SettingsButton" type="Button" parent="MainUI/TopTabs" unique_id=244606547]
+[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer/CenterMarginContainer/CenterView" unique_id=94366353]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 tooltip_text = "Settings"
 icon = ExtResource("8_h27pm")
 icon_alignment = 1
 expand_icon = true
+
+[node name="RightMarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=847861586]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="RightView" type="TabContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer" unique_id=504423224]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+current_tab = 0
+tab_0/icon = ExtResource("5_mgfhi")
+tab_1/icon = ExtResource("7_fhj73")
+script = ExtResource("3_ru8vg")
+
+[node name="Materials" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView" unique_id=1597302250]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MaterialsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Materials" unique_id=25105322]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Upgrades" type="TabContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView" unique_id=1792482465]
+visible = false
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+current_tab = 0
+tab_0/icon = ExtResource("9_oi12v")
+tab_1/icon = ExtResource("8_h27pm")
+tab_2/icon = ExtResource("10_mgfhi")
+metadata/_tab_index = 1
+
+[node name="Civics" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades" unique_id=1119180432]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CivicsList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades/Civics" unique_id=1412466352]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Technology" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades" unique_id=11979741]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TechnologyList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades/Technology" unique_id=1760195841]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Truth" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades" unique_id=74332646]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TruthList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightMarginContainer/RightView/Upgrades/Truth" unique_id=926749797]
+layout_mode = 2
+size_flags_vertical = 3
