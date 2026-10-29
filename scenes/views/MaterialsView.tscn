@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://du7muc266tai6"]
+
+[node name="Materials" type="VBoxContainer" unique_id=1376469452]
+metadata/_tab_index = 0
+
+[node name="MaterialsList" type="VBoxContainer" parent="." unique_id=1390190256]
+layout_mode = 2
+size_flags_vertical = 3

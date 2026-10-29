@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bhgtebi1jok5n"]
+
+[node name="Exploration" type="VBoxContainer" unique_id=1641720406]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_tab_index = 1
+
+[node name="ExplorationList" type="VBoxContainer" parent="." unique_id=272347306]
+layout_mode = 2
+size_flags_vertical = 3

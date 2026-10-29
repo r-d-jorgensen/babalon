@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://kod2v27fleo4"]
+
+[ext_resource type="Texture2D" uid="uid://blj48ve32k1kh" path="res://assets/icons/currencies/culture.png" id="1_iaet3"]
+[ext_resource type="Texture2D" uid="uid://lq7b1oum40hn" path="res://assets/icons/ui/setings.png" id="2_jcywj"]
+[ext_resource type="Texture2D" uid="uid://dwnd60tsr42oo" path="res://assets/icons/default.png" id="3_xeutl"]
+
+[node name="Upgrades" type="TabContainer" unique_id=1464984194]
+theme_override_constants/icon_max_width = 24
+current_tab = 0
+tab_0/icon = ExtResource("1_iaet3")
+tab_1/icon = ExtResource("2_jcywj")
+tab_2/icon = ExtResource("3_xeutl")
+metadata/_tab_index = 0
+
+[node name="Civics" type="VBoxContainer" parent="." unique_id=2086304302]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CivicsList" type="VBoxContainer" parent="Civics" unique_id=1343259687]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Technology" type="VBoxContainer" parent="." unique_id=1701756125]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TechnologyList" type="VBoxContainer" parent="Technology" unique_id=593143572]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Truth" type="VBoxContainer" parent="." unique_id=481941877]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TruthList" type="VBoxContainer" parent="Truth" unique_id=1908940487]
+layout_mode = 2
+size_flags_vertical = 3

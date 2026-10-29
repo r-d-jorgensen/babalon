@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp5ettvwsqoau"
-path="res://.godot/imported/civilization.png-140c4ab7510c3b67918466f3d1141eab.ctex"
+uid="uid://ge5te1bkmtda"
+path="res://.godot/imported/materials.png-e408e333b0d35d206e7bf644fa833771.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/ui/civilization.png"
-dest_files=["res://.godot/imported/civilization.png-140c4ab7510c3b67918466f3d1141eab.ctex"]
+source_file="res://assets/icons/ui/materials.png"
+dest_files=["res://.godot/imported/materials.png-e408e333b0d35d206e7bf644fa833771.ctex"]
 
 [params]
 

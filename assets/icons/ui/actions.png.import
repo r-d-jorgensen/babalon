@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ge5te1bkmtda"
-path="res://.godot/imported/economy.png-f4d1472b2539417e82e33cc5d85e217d.ctex"
+uid="uid://dypejbvh3gxxb"
+path="res://.godot/imported/actions.png-9ce87b4187813b81fd2032c93a5ecc4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/ui/economy.png"
-dest_files=["res://.godot/imported/economy.png-f4d1472b2539417e82e33cc5d85e217d.ctex"]
+source_file="res://assets/icons/ui/actions.png"
+dest_files=["res://.godot/imported/actions.png-9ce87b4187813b81fd2032c93a5ecc4c.ctex"]
 
 [params]
 

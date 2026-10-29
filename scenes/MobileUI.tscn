@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_h7cb0"]
 [ext_resource type="Script" uid="uid://cwdsvr268t3fv" path="res://scripts/ui/ExplorationView.gd" id="3_dni78"]
 [ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="4_metpv"]
-[ext_resource type="Texture2D" uid="uid://ge5te1bkmtda" path="res://assets/icons/ui/economy.png" id="5_tx8df"]
+[ext_resource type="Texture2D" uid="uid://ge5te1bkmtda" path="res://assets/icons/ui/materials.png" id="5_tx8df"]
 [ext_resource type="Texture2D" uid="uid://dwy64ds706qi7" path="res://assets/icons/ui/exploration.png" id="6_c3u8t"]
-[ext_resource type="Texture2D" uid="uid://dp5ettvwsqoau" path="res://assets/icons/ui/civilization.png" id="7_kkt3i"]
+[ext_resource type="Texture2D" uid="uid://dp5ettvwsqoau" path="res://assets/icons/ui/upgrades.png" id="7_kkt3i"]
 [ext_resource type="Texture2D" uid="uid://lq7b1oum40hn" path="res://assets/icons/ui/setings.png" id="8_xuxgh"]
 
 [node name="MainUI" type="VBoxContainer" unique_id=2075022869]
