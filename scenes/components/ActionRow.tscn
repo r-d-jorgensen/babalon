@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://bqni4ceq653rl"]
 
-[ext_resource type="Script" uid="uid://c0avc6u4thevf" path="res://scripts/ui/ActionRow.gd" id="1_dmvyc"]
+[ext_resource type="Script" uid="uid://c0avc6u4thevf" path="res://scripts/components/ActionRow.gd" id="1_dmvyc"]
 
 [node name="ActionRow" type="HBoxContainer" unique_id=901625471]
 custom_minimum_size = Vector2(360, 32)
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cyld8wfrb0lwl"]
 
-[ext_resource type="Script" uid="uid://c66b2pscuae0x" path="res://scenes/main.gd" id="1_vcsgt"]
+[ext_resource type="Script" uid="uid://c66b2pscuae0x" path="res://scripts/ui/main.gd" id="1_vcsgt"]
 [ext_resource type="Texture2D" uid="uid://dfbjixvwxfwwl" path="res://assets/backgrounds/background.webp" id="2_rvslj"]
 
 [node name="Root" type="Control" unique_id=1983841383]

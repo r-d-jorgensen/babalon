@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://c8n0348qmi87f"]
 
-[ext_resource type="Script" uid="uid://bpl6rl45gn28s" path="res://scripts/ui/MaterialRow.gd" id="1_dmvyc"]
+[ext_resource type="Script" uid="uid://bpl6rl45gn28s" path="res://scripts/components/MaterialRow.gd" id="1_dmvyc"]
 
 [node name="MaterialRow" type="HBoxContainer" unique_id=901625471]
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

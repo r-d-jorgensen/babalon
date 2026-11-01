@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://du7muc266tai6"]
 
+[ext_resource type="Script" uid="uid://dap543lhyis35" path="res://scripts/views/MaterialsView.gd" id="1_mup1a"]
+
 [node name="Materials" type="VBoxContainer" unique_id=1376469452]
+script = ExtResource("1_mup1a")
 metadata/_tab_index = 0
 
 [node name="MaterialsList" type="VBoxContainer" parent="." unique_id=1390190256]

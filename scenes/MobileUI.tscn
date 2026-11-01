@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://di48s6vacc4y8"]
 
 [ext_resource type="Script" uid="uid://dh88s5js2y03k" path="res://scripts/ui/MainUI.gd" id="1_dpu68"]
-[ext_resource type="Script" uid="uid://bahorgyil4ukp" path="res://scripts/ui/EconomyView.gd" id="2_h7cb0"]
-[ext_resource type="Script" uid="uid://cwdsvr268t3fv" path="res://scripts/ui/ExplorationView.gd" id="3_dni78"]
-[ext_resource type="Script" uid="uid://c11m0gdp1bbd4" path="res://scripts/ui/CivilizationView.gd" id="4_metpv"]
 [ext_resource type="Texture2D" uid="uid://ge5te1bkmtda" path="res://assets/icons/ui/materials.png" id="5_tx8df"]
 [ext_resource type="Texture2D" uid="uid://dwy64ds706qi7" path="res://assets/icons/ui/exploration.png" id="6_c3u8t"]
 [ext_resource type="Texture2D" uid="uid://dp5ettvwsqoau" path="res://assets/icons/ui/upgrades.png" id="7_kkt3i"]
@@ -28,7 +25,6 @@ current_tab = 0
 [node name="EconomyView" type="VBoxContainer" parent="MainViews" unique_id=275614169]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("2_h7cb0")
 metadata/_tab_index = 0
 
 [node name="EconomyHeader" type="HBoxContainer" parent="MainViews/EconomyView" unique_id=134853085]
@@ -96,13 +92,11 @@ text = "Materials"
 [node name="ExplorationView" type="VBoxContainer" parent="MainViews" unique_id=1951872690]
 visible = false
 layout_mode = 2
-script = ExtResource("3_dni78")
 metadata/_tab_index = 1
 
 [node name="CivilizationView" type="VBoxContainer" parent="MainViews" unique_id=1497610520]
 visible = false
 layout_mode = 2
-script = ExtResource("4_metpv")
 metadata/_tab_index = 2
 
 [node name="CivilizationHeaders" type="HBoxContainer" parent="MainViews/CivilizationView" unique_id=1521694251]
