@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 @onready var materials_list: VBoxContainer = $MaterialsList
-var action_row_scene: PackedScene = preload("res://scenes/components/ActionRow.tscn")
+const MATERIAL_ROW_SCENE: PackedScene = preload("res://scenes/components/MaterialRow.tscn")
 
 func _ready() -> void:
 	build_materials_ui()
@@ -9,7 +9,7 @@ func _ready() -> void:
 func build_materials_ui() -> void:
 	for child: Node in materials_list.get_children():
 		child.queue_free()
-	for action_data: ActionDefinition in ActionManager.actions:
-		var row: ActionRow = action_row_scene.instantiate()
-		row.node = action_data
+	for material_data: MaterialDefinition in MaterialManager.materials_list:
+		var row: MaterialRow = MATERIAL_ROW_SCENE.instantiate()
+		row.mat = material_data
 		materials_list.add_child(row)
