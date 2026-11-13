@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c0avc6u4thevf" path="res://scripts/components/ActionRow.gd" id="1_dmvyc"]
 
-[node name="ActionRow" type="HBoxContainer" unique_id=901625471]
+[node name="ActionRow" type="VBoxContainer" unique_id=1357850574]
 custom_minimum_size = Vector2(360, 32)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -12,28 +13,80 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_dmvyc")
 
-[node name="ActionButton" type="Button" parent="." unique_id=1343958132]
-layout_mode = 2
-text = "Action"
-
-[node name="ProgressLabel" type="Label" parent="." unique_id=330464371]
-layout_mode = 2
-text = "10"
-
-[node name="InputLabel" type="HBoxContainer" parent="." unique_id=239685188]
+[node name="Header" type="HBoxContainer" parent="." unique_id=1471423263]
 layout_mode = 2
 
-[node name="MinusButton" type="Button" parent="." unique_id=562074589]
+[node name="ActionIcon" type="TextureRect" parent="Header" unique_id=1681974000]
+custom_minimum_size = Vector2(16, 16)
+custom_maximum_size = Vector2(16, 16)
 layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+
+[node name="ActionName" type="Label" parent="Header" unique_id=1373725084]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Action Name"
+
+[node name="ProgressBar" type="ProgressBar" parent="Header" unique_id=1006379255]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="CollapsedOutputs" type="HBoxContainer" parent="Header" unique_id=1104329429]
+layout_mode = 2
+
+[node name="MinimizeButton" type="Button" parent="Header" unique_id=294998251]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "-"
 
-[node name="WorkerLabel" type="Label" parent="." unique_id=1220964231]
+[node name="Content" type="VBoxContainer" parent="." unique_id=2099454247]
 layout_mode = 2
-text = "0"
+size_flags_vertical = 3
 
-[node name="PlusButton" type="Button" parent="." unique_id=1651966820]
+[node name="Materials" type="VBoxContainer" parent="Content" unique_id=1893172451]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputsList" type="VBoxContainer" parent="Content/Materials" unique_id=2080393171]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OutputsList" type="VBoxContainer" parent="Content/Materials" unique_id=963483744]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProductionControls" type="HBoxContainer" parent="Content" unique_id=1429710332]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClickButton" type="Button" parent="Content/ProductionControls" unique_id=619406781]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Action"
+
+[node name="WorkerControls" type="HBoxContainer" parent="Content/ProductionControls" unique_id=802799084]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WorkerButtons" type="HBoxContainer" parent="Content/ProductionControls/WorkerControls" unique_id=1677086007]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RemoveWorkerButton" type="Button" parent="Content/ProductionControls/WorkerControls/WorkerButtons" unique_id=1433709525]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-"
+
+[node name="WorkerCount" type="Label" parent="Content/ProductionControls/WorkerControls/WorkerButtons" unique_id=1608365687]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="AddWorkerButton" type="Button" parent="Content/ProductionControls/WorkerControls/WorkerButtons" unique_id=1974446539]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "+"
-
-[node name="OutputLabel" type="HBoxContainer" parent="." unique_id=1159952915]
-layout_mode = 2

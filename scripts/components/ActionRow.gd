@@ -1,146 +1,146 @@
-extends HBoxContainer
+extends VBoxContainer
 class_name ActionRow
 
 @export var node: ActionDefinition
 
-@onready var action_button: Button = $ActionButton
-@onready var progress_label: Label = $ProgressLabel
-@onready var input_label: HBoxContainer = $InputLabel
-@onready var output_label: HBoxContainer = $OutputLabel
-@onready var minus_button: Button = $MinusButton
-@onready var worker_label: Label = $WorkerLabel
-@onready var plus_button: Button = $PlusButton
+@onready var action_icon: TextureRect = $Header/ActionIcon
+@onready var action_name: Label = $Header/ActionName
+@onready var progress_bar: ProgressBar = $Header/ProgressBar
+@onready var collapsed_outputs: HBoxContainer = $Header/CollapsedOutputs
+@onready var minimize_button: Button = $Header/MinimizeButton
+@onready var content: VBoxContainer = $Content
+@onready var inputs_list: VBoxContainer = $Content/Materials/InputsList
+@onready var outputs_list: VBoxContainer = $Content/Materials/OutputsList
+@onready var click_button: Button = $Content/ProductionControls/ClickButton
+@onready var remove_worker_button: Button = $Content/ProductionControls/WorkerControls/WorkerButtons/RemoveWorkerButton
+@onready var worker_count: Label = $Content/ProductionControls/WorkerControls/WorkerButtons/WorkerCount
+@onready var add_worker_button: Button = $Content/ProductionControls/WorkerControls/WorkerButtons/AddWorkerButton
+
+var minimized: bool = false
 
 func _ready() -> void:
-	if node == null:
-		return
-	action_button.pressed.connect(_on_action_pressed)
-	minus_button.pressed.connect(_on_minus_pressed)
-	plus_button.pressed.connect(_on_plus_pressed)
+	if node == null: return
+	click_button.pressed.connect(_on_action_pressed)
+	remove_worker_button.pressed.connect(_on_minus_pressed)
+	add_worker_button.pressed.connect(_on_plus_pressed)
+	minimize_button.pressed.connect(_on_minimize_pressed)
 	WorkerManager.workers_changed.connect(_on_workers_changed)
 	PlayerManager.tick.connect(update_ui)
 	MaterialManager.inventory_changed.connect(update_ui)
-
-	action_button.custom_minimum_size = Vector2(28, 28)
-	action_button.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	minus_button.custom_minimum_size = Vector2(24, 24)
-	plus_button.custom_minimum_size = Vector2(24, 24)
-	input_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	output_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	input_label.custom_minimum_size.x = 0
-	output_label.custom_minimum_size.x = 0
-
+	action_icon.texture = node.get_icon()
+	action_name.text = node.display_name
 	update_ui()
 
-func _on_workers_changed(action: ActionDefinition) -> void:
-	if action != node:
-		return
-	worker_label.text = str(ActionManager.get_state(node).workers_assigned)
-
 func update_ui() -> void:
+	if node == null: return
 	var state: ActionState = ActionManager.get_state(node)
-	action_button.text = ""
-	action_button.icon = resize_icon(node.get_icon(), Vector2i(16, 16))
-	action_button.expand_icon = false
-	action_button.custom_minimum_size = Vector2(28, 28)
-	action_button.tooltip_text = node.display_name
-	action_button.disabled = not can_run()
-	update_material_display(input_label, state.cost, true)
-	update_material_display(output_label, state.production, false)
-	worker_label.text = str(state.workers_assigned)
-	progress_label.text = "%.2f / %.2f" % [state.progress, state.total_duration]
+	update_progress(state)
+	update_material_lists(state)
+	update_collapsed_outputs(state)
+	update_workers(state)
+	click_button.disabled = not can_run()
 
-func resize_icon(texture: Texture2D, target_size: Vector2i) -> Texture2D:
-	if texture == null:
-		return null
-	var image: Image = texture.get_image()
-	if image == null or image.is_empty():
-		return texture
-	image.resize(target_size.x, target_size.y, Image.INTERPOLATE_LANCZOS)
-	return ImageTexture.create_from_image(image)
+func update_progress(state: ActionState) -> void:
+	progress_bar.min_value = 0
+	progress_bar.max_value = 100
+	if state.total_duration > 0:
+		progress_bar.value = (state.progress / state.total_duration) * 100.0
+	else:
+		progress_bar.value = 0
 
-func update_material_display(container: HBoxContainer, materials: Dictionary, show_cost: bool) -> void:
-	for child: Node in container.get_children():
-		container.remove_child(child)
-		child.queue_free()
+func update_workers(state: ActionState) -> void:
+	worker_count.text = str(state.workers_assigned)
 
+func get_cycles_per_tick(state: ActionState) -> float:
+	if state.workers_assigned <= 0 or state.total_duration <= 0: return 0.0
+	return state.workers_assigned * WorkerManager.get_worker_efficiency() / state.total_duration
+
+func update_material_lists(state: ActionState) -> void:
+	var cycles_per_tick: float = get_cycles_per_tick(state)
+	build_material_list(inputs_list, state.cost, cycles_per_tick, true)
+	build_material_list(outputs_list, state.production, cycles_per_tick, false)
+
+func build_material_list(container: VBoxContainer, materials: Dictionary, cycles_per_tick: float, is_input: bool) -> void:
+	for child: Node in container.get_children(): child.queue_free()
 	for mat: Definition in materials:
+		var amount: float = materials[mat]
+		var automated: float = amount * cycles_per_tick
 		var entry:HBoxContainer = HBoxContainer.new()
-		entry.add_theme_constant_override("separation", 2)
-
-		var icon_container:Control = Control.new()
-		icon_container.custom_minimum_size = Vector2(12, 12)
-		icon_container.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-		icon_container.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-
+		entry.add_theme_constant_override("separation", 4)
 		var icon:TextureRect = TextureRect.new()
-		icon.texture = resize_icon(mat.get_icon(), Vector2i(12, 12))
-		icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		icon.texture = mat.get_icon()
+		icon.custom_minimum_size = Vector2(16, 16)
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		icon_container.add_child(icon)
-		entry.add_child(icon_container)
-
-		var label:Label = Label.new()
-		if show_cost:
-			label.text = "%.0f/%.0f" % [MaterialManager.get_amount(mat), materials[mat]]
-		else:
-			label.text = "%.0f" % MaterialManager.get_amount(mat)
-		entry.add_child(label)
-
+		entry.add_child(icon)
+		var name_label:Label = Label.new()
+		name_label.text = mat.display_name
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		entry.add_child(name_label)
+		var amount_label:Label = Label.new()
+		amount_label.text = ("x%s / x%s/t" if is_input else "+%s / +%s/t") % [format_number(amount), format_number(automated)]
+		entry.add_child(amount_label)
 		container.add_child(entry)
 
-func format_rate(state: ActionState) -> String:
-	if state.workers_assigned <= 0 or state.total_duration <= 0:
-		return ""
-	var efficiency: float = WorkerManager.get_worker_efficiency()
-	var cycles_per_tick: float = (
-		state.workers_assigned
-		* efficiency
-		/ state.total_duration
-	)
-	var per_tick: Dictionary[Definition, float] = {}
+func update_collapsed_outputs(state: ActionState) -> void:
+	for child: Node in collapsed_outputs.get_children(): child.queue_free()
+	var cycles_per_tick: float = get_cycles_per_tick(state)
+	var count: int = 0
 	for mat: Definition in state.production:
-		per_tick[mat] = state.production[mat] * cycles_per_tick
-	for mat: Definition in state.cost:
-		var amount: float = state.cost[mat] * cycles_per_tick
-		per_tick[mat] = per_tick.get(mat, 0.0) - amount
-	var parts: Array[String] = []
-	for mat: Definition in per_tick:
-		var rate: float = per_tick[mat]
-		if abs(rate) < 0.001:
-			continue
-		var sign_value: String = "+"
-		if rate < 0:
-			sign_value = ""
-		parts.append("%s%.2f/t %s" % [sign_value, rate, mat.display_name])
-	return "[" + ", ".join(parts) + "]"
+		if count >= 4: break
+		var entry:HBoxContainer = HBoxContainer.new()
+		entry.add_theme_constant_override("separation", 2)
+		var icon:TextureRect = TextureRect.new()
+		icon.texture = mat.get_icon()
+		icon.custom_minimum_size = Vector2(16, 16)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		entry.add_child(icon)
+		var amount_label:Label = Label.new()
+		amount_label.text = format_number(state.production[mat] * cycles_per_tick)
+		entry.add_child(amount_label)
+		collapsed_outputs.add_child(entry)
+		count += 1
+
+func format_number(value: float) -> String:
+	var rounded: float = round(value)
+	if is_equal_approx(value, rounded): return str(int(rounded))
+	return "%.2f" % value
 
 func can_run() -> bool:
+	if node == null: return false
 	var state: ActionState = ActionManager.get_state(node)
 	for mat: Definition in state.cost:
-		if MaterialManager.get_amount(mat) < state.cost[mat]:
-			return false
+		if MaterialManager.get_amount(mat) < state.cost[mat]: return false
 	return true
 
 func _on_action_pressed() -> void:
+	if not can_run(): return
 	var state: ActionState = ActionManager.get_state(node)
-	if not can_run():
-		return
+	if state.total_duration <= 0: return
 	state.progress += PlayerManager.player_click_power
 	while state.progress >= state.total_duration:
 		state.progress -= state.total_duration
 		if not can_run():
 			state.progress = 0
 			break
-		for mat: Definition in state.cost:
-			MaterialManager.change_materials(mat, -state.cost[mat])
-		for mat: Definition in state.production:
-			MaterialManager.change_materials(mat, state.production[mat])
+		for mat: Definition in state.cost: MaterialManager.change_materials(mat, -state.cost[mat])
+		for mat: Definition in state.production: MaterialManager.change_materials(mat, state.production[mat])
 	update_ui()
+
+func _on_workers_changed(action: ActionDefinition) -> void:
+	if action == node: update_ui()
 
 func _on_minus_pressed() -> void:
 	WorkerManager.unassign_worker(node)
+	update_ui()
 
 func _on_plus_pressed() -> void:
 	WorkerManager.assign_worker(node)
+	update_ui()
+
+func _on_minimize_pressed() -> void:
+	minimized = not minimized
+	content.visible = not minimized
+	collapsed_outputs.visible = minimized
+	minimize_button.text = "+" if minimized else "−"
